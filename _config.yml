@@ -1,0 +1,12 @@
+name: Isaac Rowntree
+
+description: Coder. Dancer. Performer. Trombonist. Guitarist. Singer. Rock Climber. Tap Dancer. Surfer. Coffee Snob. Motorcyclist. Cyclist. Tumbler. Tennis Player. Tough Mudder (5x).
+
+google_analytics: UA-1437134-3
+
+url: https://isaacrowntree.com
+
+exclude:
+    - Gemfile
+    - Gemfile.lock
+    - CNAME
