@@ -5,6 +5,7 @@ description: Coder. Dancer. Performer. Trombonist. Guitarist. Singer. Rock Climb
 google_analytics: UA-1437134-3
 
 url: https://isaacrowntree.com
+enforce_ssl: isaacrowntree.com
 
 exclude:
     - Gemfile
