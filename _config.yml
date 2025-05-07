@@ -1,14 +1,56 @@
 name: Isaac Rowntree
 
-description: Coder. Dancer. Performer. Trombonist. Guitarist. Singer. Rock Climber. Tap Dancer. Surfer. Coffee Snob. Motorcyclist. Cyclist. Tumbler. Tennis Player. Tough Mudder (5x). Kite Surfer.
+description: Coder. Dancer. Performer. Trombonist. Guitarist. Singer. Rock Climber. Tap Dancer. Surfer. Coffee Snob. Motorcyclist. Cyclist. Tumbler. Tennis Player. Tough Mudder (5x). Kite Surfer. Photographer. Videographer. Spartan Race (5x).
 
 google_analytics: G-VSVH3S0MFD
 
 url: https://isaacrowntree.com
 enforce_ssl: isaacrowntree.com
 
+# SEO settings
+title: Isaac Rowntree
+author: Isaac Rowntree
+logo: /images/isaacAlt.jpg
+social:
+  name: Isaac Rowntree
+  links:
+    - https://github.com/isaacrowntree
+    - https://twitter.com/tikwanleep
+
+# Schema.org / JSON-LD
+schema:
+  "@context": https://schema.org
+  "@type": Person
+  name: Isaac Rowntree
+  url: https://isaacrowntree.com
+  image: https://isaacrowntree.com/images/isaacAlt.jpg
+  sameAs:
+    - https://github.com/isaacrowntree
+    - https://twitter.com/tikwanleep
+  jobTitle: Head of Tech
+  worksFor:
+    "@type": Organization
+    name: CamperMate
+  alumniOf:
+    "@type": EducationalOrganization
+    name: Bachelor of Applied Science (Information Technology)
+  knowsAbout:
+    - Software Engineering
+    - Remote Team Management
+    - Serverless Architecture
+    - React
+    - TypeScript
+    - Cloudflare
+    - AI Development
+    - Vector Search
+    - RAG Systems
+    - LLM Integration
+
 exclude:
   - Gemfile
   - Gemfile.lock
   - CNAME
   - vendor
+
+plugins:
+  - jekyll-seo-tag

@@ -1,31 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
-    {% include header-scripts.html %}
-    {% include meta.html %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#5D5FEF">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    {% seo %}
+    
+    <meta name="google-site-verification" content="7gEGmNa9BjGXAHTMIPBrED3YAl43OgnP4lPMhZXZXoQ" />
+    <link rel="canonical" href="{{ site.url }}{% if page.url != '/index.html' %}{{ page.url }}{% endif %}"/>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/logo.png">
+    
+    <!-- Bootstrap 5 -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Custom CSS -->
+    <style>
+      :root {
+        --primary-color: #5D5FEF;
+        --primary-color-rgb: 93, 95, 239;
+        --secondary-color: #6A2BFF;
+        --secondary-color-rgb: 106, 43, 255;
+        --text-color: #212529;
+        --bg-color: #ffffff;
+        --card-bg: #fff;
+        --section-bg: #f8f9fa;
+        --pattern-opacity: 0.03;
+        --border-color: rgba(0,0,0,.125);
+      }
+      
+      [data-theme="dark"] {
+        --primary-color: #8587FF;
+        --primary-color-rgb: 133, 135, 255;
+        --secondary-color: #9D75FF;
+        --secondary-color-rgb: 157, 117, 255;
+        --text-color: #f8f9fa;
+        --bg-color: #121212;
+        --card-bg: #1e1e1e;
+        --section-bg: #242424;
+        --pattern-opacity: 0.06;
+        --border-color: rgba(255,255,255,.125);
+      }
+      
+      body {
+        font-family: 'Outfit', sans-serif;
+        padding-top: 76px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: all 0.3s ease;
+        line-height: 1.7;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+      }
+      
+      .navbar {
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        background-color: var(--card-bg) !important;
+      }
+      
+      .navbar-light .navbar-brand,
+      .navbar-light .nav-link,
+      .navbar-light .navbar-toggler {
+        color: var(--text-color);
+      }
+      
+      .navbar-brand {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: var(--primary-color) !important;
+      }
+      
+      .nav-link {
+        font-weight: 500;
+        color: var(--text-color) !important;
+        margin: 0 10px;
+        transition: color 0.3s;
+      }
+      
+      .nav-link:hover {
+        color: var(--primary-color) !important;
+      }
+      
+      .social-icons .nav-link {
+        font-size: 1.2rem;
+        padding: 0.5rem;
+      }
+      
+      .hero-section {
+        padding: 140px 0 100px;
+        position: relative;
+        color: white;
+        overflow: hidden;
+      }
+      
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('/images/background.jpg') center/cover no-repeat fixed;
+        filter: brightness(0.6);
+        z-index: -2;
+      }
+      
+      .hero-section::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(27, 106, 216, 0.9) 0%, rgba(32, 77, 181, 0.85) 100%);
+        z-index: -1;
+      }
+      
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+      
+      .hero-img {
+        border-radius: 50%;
+        border: 5px solid white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        width: 240px;
+        height: 240px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      
+      .hero-img:hover {
+        transform: scale(1.05);
+      }
+      
+      .section {
+        padding: 80px 0;
+        background-color: var(--section-bg);
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        margin-bottom: 30px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        color: var(--text-color);
+      }
+      
+      .section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 35px rgba(0, 0, 0, 0.05);
+      }
+      
+      .section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      .section:hover::before {
+        opacity: 1;
+      }
+      
+      .section-title {
+        color: var(--primary-color);
+        margin-bottom: 30px;
+        position: relative;
+        padding-bottom: 15px;
+        font-weight: 700;
+      }
+      
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--secondary-color);
+      }
+      
+      .skill-tag {
+        display: inline-block;
+        background-color: rgba(27, 106, 216, 0.1);
+        color: var(--primary-color);
+        padding: 8px 16px;
+        border-radius: 30px;
+        margin: 5px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(27, 106, 216, 0.2);
+      }
+      
+      .skill-tag:hover {
+        background-color: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+      }
+      
+      .timeline-item {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 40px;
+      }
+      
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
+      
+      .timeline-item:hover::before {
+        transform: scale(1.3);
+        background-color: var(--secondary-color);
+      }
+      
+      .timeline-item::after {
+        content: '';
+        position: absolute;
+        left: 7px;
+        top: 15px;
+        bottom: -40px;
+        width: 1px;
+        background-color: #e5e7eb;
+      }
+      
+      .timeline-item:last-child::after {
+        display: none;
+      }
+      
+      .timeline-title {
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: var(--text-color);
+        transition: color 0.3s ease;
+      }
+      
+      .timeline-item:hover .timeline-title {
+        color: var(--primary-color);
+      }
+      
+      .timeline-period {
+        color: var(--secondary-color);
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+      
+      .blockquote {
+        padding: 30px;
+        background-color: var(--section-bg);
+        border-left: 4px solid var(--secondary-color);
+        border-radius: 12px;
+        font-style: italic;
+        position: relative;
+        color: var(--text-color);
+      }
+      
+      .blockquote::before {
+        content: "\201C";
+        font-family: Georgia, serif;
+        font-size: 5rem;
+        position: absolute;
+        top: -20px;
+        left: 10px;
+        color: rgba(var(--primary-color-rgb), 0.1);
+      }
+      
+      .blockquote-footer {
+        font-weight: 500;
+        color: var(--text-color);
+      }
+      
+      .footer {
+        padding: 20px 0;
+        background-color: var(--card-bg);
+        color: var(--text-color);
+        text-align: center;
+        font-size: 14px;
+      }
+      
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .video-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+      }
+      
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      
+      .btn {
+        border-radius: 30px;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+      
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+      }
+      
+      .btn-light {
+        background-color: white;
+        color: var(--primary-color);
+      }
+      
+      .btn-outline-light {
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+      }
+      
+      .btn-outline-light:hover {
+        background-color: white;
+        color: var(--primary-color);
+      }
+      
+      /* Personalized elements */
+      .section ul li {
+        position: relative;
+        padding-left: 5px;
+        margin-bottom: 10px;
+        transition: transform 0.2s ease;
+      }
+      
+      .section ul li:hover {
+        transform: translateX(5px);
+      }
+      
+      a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+      
+      a:hover {
+        color: var(--secondary-color);
+      }
+      
+      a:not(.btn):not(.nav-link)::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--secondary-color);
+        transition: width 0.3s ease;
+      }
+      
+      a:not(.btn):not(.nav-link):hover::after {
+        width: 100%;
+      }
+      
+      /* Personalized background pattern for sections */
+      .section {
+        position: relative;
+      }
+      
+      .pattern-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        opacity: var(--pattern-opacity);
+        z-index: -1;
+      }
+      
+      /* Dark/Light mode toggle */
+      .theme-toggle {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: none;
+        background-color: var(--section-bg);
+        color: var(--text-color);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .theme-toggle:hover {
+        transform: rotate(15deg);
+        background-color: var(--primary-color);
+        color: white;
+      }
+    </style>
+    
+    {% include analytics.html %}
   </head>
   <body>
-
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" role="navigation">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="/">Isaac Rowntree</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="/" aria-label="Isaac Rowntree Homepage">Isaac Rowntree</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a href="https://zackdesign.biz" class="nav-link">Zack Design</a>
+              <a href="https://zackdesign.biz" class="nav-link" aria-label="Zack Design Website">Zack Design</a>
             </li>
             <li class="nav-item">
-              <a href="https://github.com/isaacrowntree" class="nav-link" title="Github"><i class="fab fa-github"></i></a>
+              <a href="https://github.com/isaacrowntree" class="nav-link" aria-label="GitHub Profile"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
             </li>
           </ul>
-          <ul class="navbar-nav navbar-right">
-            <li><a href="mailto:isaac@rowntree.me" class="nav-link"><i class="fa fa-envelope"></i></a></li>
-            <li><a href="https://twitter.com/tikwanleep" class="nav-link"><i class="fab fa-twitter"></i></a></li>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a href="#experience" class="nav-link">Experience</a>
+            </li>
+            <li class="nav-item">
+              <a href="#skills" class="nav-link">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a href="#videos" class="nav-link">Videos</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav social-icons">
+            <li class="nav-item">
+              <a href="mailto:isaac@rowntree.me" class="nav-link" aria-label="Email Contact"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+            </li>
+            <li class="nav-item">
+              <a href="https://twitter.com/tikwanleep" class="nav-link" aria-label="Twitter Profile"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+            </li>
+            <li class="nav-item ms-2">
+              <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                <i class="fas fa-moon" id="theme-icon" aria-hidden="true"></i>
+              </button>
+            </li>
           </ul>
         </div>
       </div>
@@ -33,13 +490,44 @@
 
     {{ content }}
 
-    <nav class="navbar navbar-light bg-light mt-4 text-center" role="navigation">
-      <div class="container text-center">
-         &copy; Isaac Rowntree - Using Github + Jekyll
+    <footer class="footer mt-4" role="contentinfo">
+      <div class="container">
+        <p>&copy; {{ site.time | date: '%Y' }} Isaac Rowntree - Built with <span class="text-danger">❤</span> using Jekyll</p>
       </div>
-    </nav>
+    </footer>
 
-    {% include analytics.html %}
-    {% include footer-scripts.html %}
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
+    
+    <!-- Theme Toggle Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        // Check for saved theme preference or prefer-color-scheme
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+          const currentTheme = document.documentElement.getAttribute('data-theme');
+          let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          
+          document.documentElement.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          
+          if (newTheme === 'dark') {
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+          } else {
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+          }
+        });
+      });
+    </script>
   </body>
 </html>
