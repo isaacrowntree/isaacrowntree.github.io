@@ -11,7 +11,7 @@ layout: default
       </div>
       <div class="col-md-8 col-lg-9">
         <h1 class="mb-3">Isaac Rowntree</h1>
-        <p class="lead mb-4">Coder. Dancer. Performer. Trombonist. Guitarist. Singer. Rock Climber. Tap Dancer. Surfer. Coffee Snob. Motorcyclist. Cyclist. Tumbler. Tennis Player. Tough Mudder (5x). Kite Surfer. Photographer. Videographer. Spartan Race (5x). Spanish Learner.</p>
+        <p class="lead mb-4">Open Source Creator. Coder. Dancer. Performer. Trombonist. Guitarist. Singer. Rock Climber. Tap Dancer. Surfer. Coffee Snob. Motorcyclist. Cyclist. Tumbler. Tennis Player. Tough Mudder (5x). Kite Surfer. Photographer. Videographer. Spartan Race (5x). Spanish Learner.</p>
         <div class="d-flex flex-wrap gap-2">
           <a href="mailto:isaac@rowntree.me" class="btn btn-light" aria-label="Contact via Email"><i class="fa fa-envelope me-2" aria-hidden="true"></i>Contact Me</a>
           <a href="https://github.com/isaacrowntree" class="btn btn-outline-light" aria-label="Visit GitHub Profile"><i class="fab fa-github me-2" aria-hidden="true"></i>GitHub</a>
@@ -779,6 +779,64 @@ layout: default
     </div>
   </div>
   
+  <!-- Projects Section -->
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="section p-4 p-lg-5">
+        <div class="pattern-bg"></div>
+        <h2 class="section-title" id="projects"><i class="fa fa-code-branch me-2" aria-hidden="true"></i>Open Source Projects</h2>
+
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border">
+              <div class="row align-items-start">
+                <div class="col-lg-3 col-md-3 text-center mb-3 mb-md-0">
+                  <div class="showcase-icon bg-primary bg-opacity-10 p-3 p-md-4 rounded mx-auto" style="width: fit-content;">
+                    <i class="fas fa-terminal text-primary fa-2x fa-md-3x"></i>
+                  </div>
+                  <h4 class="mt-2 mt-md-3 mb-1">clickup-cli</h4>
+                  <div class="text-muted small">CLI for ClickUp</div>
+                </div>
+                <div class="col-lg-5 col-md-5">
+                  <p class="small mb-3">Command-line tool for ClickUp with git integration, GitHub linking, and AI agent support. Manage tasks, sprints, and comments without leaving the terminal.</p>
+                  <h6 class="text-success mb-2">Key Features</h6>
+                  <ul class="small mb-0 list-unstyled">
+                    <li><strong>30+</strong> commands for tasks, sprints, and comments</li>
+                    <li><strong>Git integration</strong> -- auto-detects task IDs from branches</li>
+                    <li><strong>AI agent support</strong> -- structured JSON output for Claude Code, Copilot, Cursor</li>
+                    <li><strong>Fuzzy search</strong> -- find tasks and match statuses with partial input</li>
+                  </ul>
+                </div>
+                <div class="col-lg-4 col-12 mt-3 mt-lg-0">
+                  <h6 class="text-secondary mb-2">Tech Stack</h6>
+                  <div class="d-flex flex-wrap mb-3">
+                    <span class="badge bg-light text-dark me-1 mb-1">Go</span>
+                    <span class="badge bg-light text-dark me-1 mb-1">Cobra</span>
+                    <span class="badge bg-light text-dark me-1 mb-1">GitHub API</span>
+                    <span class="badge bg-light text-dark me-1 mb-1">ClickUp API</span>
+                    <span class="badge bg-light text-dark me-1 mb-1">System Keyring</span>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2">
+                    <a href="https://github.com/triptechtravel/clickup-cli" class="btn btn-sm btn-outline-primary"><i class="fab fa-github me-1"></i>Repository</a>
+                    <a href="https://triptechtravel.github.io/clickup-cli/" class="btn btn-sm btn-outline-secondary"><i class="fas fa-book me-1"></i>Docs</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="p-4 bg-primary bg-opacity-10 rounded h-100 d-flex flex-column justify-content-center">
+              <h5 class="text-primary mb-3"><i class="fas fa-terminal me-2"></i>Quick Install</h5>
+              <code class="d-block p-2 bg-dark text-light rounded mb-2 small">brew install triptechtravel/tap/clickup</code>
+              <code class="d-block p-2 bg-dark text-light rounded mb-3 small">go install github.com/triptechtravel/clickup-cli/cmd/clickup@latest</code>
+              <p class="small text-muted mb-0">Works with macOS, Linux, and Windows. Supports bash, zsh, fish, and PowerShell completions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Education & Extracurricular Section -->
   <div class="row mb-5">
     <div class="col-lg-6">
