@@ -667,6 +667,60 @@ layout: default
         </div>
       </div>
     </div>
+
+        <!-- ledger -->
+        <div class="row g-4 mt-4">
+          <div class="col-lg-8">
+            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border">
+              <div class="row align-items-start">
+                <div class="col-lg-3 col-md-3 text-center mb-3 mb-md-0">
+                  <div class="showcase-icon bg-success bg-opacity-10 p-3 p-md-4 rounded mx-auto" style="width: fit-content;">
+                    <i class="fas fa-receipt text-success fa-2x fa-md-3x"></i>
+                  </div>
+                  <h4 class="mt-2 mt-md-3 mb-1">Ledger</h4>
+                  <div class="text-muted small">Personal Finance ETL</div>
+                </div>
+                <div class="col-lg-5 col-md-5">
+                  <p class="small mb-3">Personal finance tool that ingests bank statements from multiple Australian banks, categorises transactions, and generates ATO-ready tax reports with a local web dashboard.</p>
+                  <h6 class="text-success mb-2">Key Features</h6>
+                  <ul class="small mb-0 list-unstyled">
+                    <li><strong>9</strong> bank statement parsers (PDF + CSV)</li>
+                    <li><strong>Auto-categorisation</strong> with regex rules and learning</li>
+                    <li><strong>ATO tax reports</strong> matching individual return sections</li>
+                    <li><strong>Business splits</strong> for expense allocation</li>
+                  </ul>
+                </div>
+                <div class="col-lg-4 col-12 mt-3 mt-lg-0">
+                  <h6 class="text-secondary mb-2">Tech Stack</h6>
+                  <div class="d-flex flex-wrap mb-3">
+                    <span class="badge bg-light text-dark me-1 mb-1">Python</span>
+                    <span class="badge bg-light text-dark me-1 mb-1">Flask</span>
+                    <span class="badge bg-light text-dark me-1 mb-1">SQLite</span>
+                    <span class="badge bg-light text-dark me-1 mb-1">TypeScript</span>
+                    <span class="badge bg-light text-dark me-1 mb-1">Vite</span>
+                    <span class="badge bg-light text-dark me-1 mb-1">pdfplumber</span>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2">
+                    <a href="https://github.com/isaacrowntree/ledger" class="btn btn-sm btn-outline-success"><i class="fab fa-github me-1"></i>Repository</a>
+                    <a href="https://isaacrowntree.github.io/ledger/" class="btn btn-sm btn-outline-secondary"><i class="fas fa-book me-1"></i>Docs</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="p-4 bg-success bg-opacity-10 rounded h-100 d-flex flex-column justify-content-center">
+              <h5 class="text-success mb-3"><i class="fas fa-receipt me-2"></i>Quick Start</h5>
+              <code class="d-block p-2 bg-dark text-light rounded mb-2 small">pip install -e .</code>
+              <code class="d-block p-2 bg-dark text-light rounded mb-2 small">ledger init && ledger ingest</code>
+              <code class="d-block p-2 bg-dark text-light rounded mb-3 small">python -m api</code>
+              <p class="small text-muted mb-0">Local-first. SQLite database. Your financial data stays on your machine.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 
   <!-- Education & Extracurricular Section -->
