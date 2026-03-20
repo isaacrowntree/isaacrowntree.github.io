@@ -580,11 +580,11 @@ layout: default
                   <div class="text-muted small">CLI for Slack</div>
                 </div>
                 <div class="col-lg-5 col-md-5">
-                  <p class="small mb-3">Command-line tool that bridges Slack, ClickUp, and GitHub. Manage your inbox, send messages, check cross-tool activity, and set status without leaving the terminal.</p>
+                  <p class="small mb-3">Command-line tool for Slack. Manage your inbox, send messages, search channels, react to messages, and set status without leaving the terminal.</p>
                   <h6 class="text-success mb-2">Key Features</h6>
                   <ul class="small mb-0 list-unstyled">
                     <li><strong>Activity inbox</strong> -- mentions, DMs, and threads at a glance</li>
-                    <li><strong>Cross-tool digest</strong> -- Slack + ClickUp + GitHub briefing</li>
+                    <li><strong>Full messaging</strong> -- send, search, react, and manage channels</li>
                     <li><strong>AI agent support</strong> -- structured JSON output with JQ filtering</li>
                     <li><strong>1900+ emoji</strong> -- shortcodes rendered as Unicode</li>
                   </ul>
@@ -715,6 +715,104 @@ layout: default
               <code class="d-block p-2 bg-dark text-light rounded mb-2 small">ledger init && ledger ingest</code>
               <code class="d-block p-2 bg-dark text-light rounded mb-3 small">python -m api</code>
               <p class="small text-muted mb-0">Local-first. SQLite database. Your financial data stays on your machine.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+        <!-- react-native-nitro-unzip -->
+        <div class="row g-4 mt-4">
+          <div class="col-lg-8">
+            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border">
+              <div class="row align-items-start">
+                <div class="col-lg-3 col-md-3 text-center mb-3 mb-md-0">
+                  <div class="showcase-icon bg-info bg-opacity-10 p-3 p-md-4 rounded mx-auto" style="width: fit-content;">
+                    <i class="fab fa-react text-info fa-2x fa-md-3x"></i>
+                  </div>
+                  <h4 class="mt-2 mt-md-3 mb-1">nitro-unzip</h4>
+                  <div class="text-muted small">React Native Module</div>
+                </div>
+                <div class="col-lg-5 col-md-5">
+                  <p class="small mb-3">High-performance ZIP operations for React Native, powered by Nitro Modules. Native-level compression and decompression with progress callbacks, cancellation, and password support — no bridge overhead.</p>
+                  <h6 class="text-success mb-2">Key Features</h6>
+                  <ul class="small mb-0 list-unstyled">
+                    <li><strong>~500 files/sec</strong> extraction speed</li>
+                    <li><strong>Zero bridge overhead</strong> via Nitro JSI</li>
+                    <li><strong>Progress callbacks</strong> and cancellation</li>
+                    <li><strong>AES-256</strong> password-protected archives</li>
+                  </ul>
+                </div>
+                <div class="col-lg-4 col-12 mt-3 mt-lg-0">
+                  <h6 class="text-secondary mb-2">Tech Stack</h6>
+                  <div class="d-flex flex-wrap mb-3">
+                    <span class="badge bg-light text-dark me-1 mb-1">TypeScript</span>
+                    <span class="badge bg-light text-dark me-1 mb-1">Swift</span>
+                    <span class="badge bg-light text-dark me-1 mb-1">Kotlin</span>
+                    <span class="badge bg-light text-dark me-1 mb-1">Nitro Modules</span>
+                    <span class="badge bg-light text-dark me-1 mb-1">SSZipArchive</span>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2">
+                    <a href="https://github.com/isaacrowntree/react-native-nitro-unzip" class="btn btn-sm btn-outline-info"><i class="fab fa-github me-1"></i>Repository</a>
+                    <a href="https://isaacrowntree.github.io/react-native-nitro-unzip/" class="btn btn-sm btn-outline-secondary"><i class="fas fa-book me-1"></i>Docs</a>
+                    <a href="https://www.npmjs.com/package/react-native-nitro-unzip" class="btn btn-sm btn-outline-danger"><i class="fab fa-npm me-1"></i>npm</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="p-4 bg-info bg-opacity-10 rounded h-100 d-flex flex-column justify-content-center">
+              <h5 class="text-info mb-3"><i class="fab fa-react me-2"></i>Quick Install</h5>
+              <code class="d-block p-2 bg-dark text-light rounded mb-2 small">npm install react-native-nitro-unzip</code>
+              <code class="d-block p-2 bg-dark text-light rounded mb-3 small">npm install react-native-nitro-modules</code>
+              <p class="small text-muted mb-0">iOS (SSZipArchive) and Android (ZipInputStream). Requires React Native 0.76+ with Nitro Modules.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+        <!-- claude-social-skills & color-grade-ai (compact row) -->
+        <div class="row g-4 mt-4">
+          <div class="col-lg-6">
+            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border h-100">
+              <div class="text-center mb-3">
+                <div class="showcase-icon bg-dark bg-opacity-10 p-3 rounded mx-auto d-inline-block">
+                  <i class="fas fa-robot text-dark fa-2x"></i>
+                </div>
+                <h4 class="mt-2 mb-1">claude-social-skills</h4>
+                <div class="text-muted small">Claude Code Plugins</div>
+              </div>
+              <p class="small mb-3">Claude Code skills for social media posting, eBay listings, and email management. Extend Claude with automated workflows for everyday tasks.</p>
+              <div class="d-flex flex-wrap mb-3">
+                <span class="badge bg-light text-dark me-1 mb-1">Claude Code</span>
+                <span class="badge bg-light text-dark me-1 mb-1">Skills API</span>
+                <span class="badge bg-light text-dark me-1 mb-1">Social Media</span>
+                <span class="badge bg-light text-dark me-1 mb-1">eBay</span>
+              </div>
+              <a href="https://github.com/isaacrowntree/claude-social-skills" class="btn btn-sm btn-outline-dark"><i class="fab fa-github me-1"></i>Repository</a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border h-100">
+              <div class="text-center mb-3">
+                <div class="showcase-icon bg-danger bg-opacity-10 p-3 rounded mx-auto d-inline-block">
+                  <i class="fas fa-palette text-danger fa-2x"></i>
+                </div>
+                <h4 class="mt-2 mb-1">color-grade-ai</h4>
+                <div class="text-muted small">AI Color Grading</div>
+              </div>
+              <p class="small mb-3">AI-powered .cube LUT generator for color correction in DaVinci Resolve and Premiere Pro. Describe a look in natural language and get a professional LUT file.</p>
+              <div class="d-flex flex-wrap mb-3">
+                <span class="badge bg-light text-dark me-1 mb-1">Claude Code Skill</span>
+                <span class="badge bg-light text-dark me-1 mb-1">.cube LUT</span>
+                <span class="badge bg-light text-dark me-1 mb-1">DaVinci Resolve</span>
+                <span class="badge bg-light text-dark me-1 mb-1">Premiere Pro</span>
+              </div>
+              <a href="https://github.com/isaacrowntree/color-grade-ai" class="btn btn-sm btn-outline-danger"><i class="fab fa-github me-1"></i>Repository</a>
             </div>
           </div>
         </div>
