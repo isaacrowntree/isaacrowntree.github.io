@@ -2,936 +2,573 @@
 layout: default
 ---
 
-<!-- Hero Section -->
-<section class="hero-section">
-  <div class="container hero-content">
-    <div class="row align-items-center">
-      <div class="col-md-4 col-lg-3 text-center text-md-start mb-4 mb-md-0">
-        <img src="/images/isaacAlt.jpg" alt="Isaac Rowntree - Engineering Manager" class="hero-img" width="240" height="240">
+<!-- =============================== HERO =============================== -->
+<header class="hero" id="top">
+  <div class="hero-backdrop" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <img src="/images/isaacAlt.jpg" alt="Isaac Rowntree" class="hero-avatar" width="180" height="180">
+      <div>
+        <div class="hero-role">
+          <span class="dot"></span>
+          <span>Head of Tech · CamperMate · Sydney, AU</span>
+        </div>
+        <h1 class="hero-name">Isaac Rowntree</h1>
+        <p class="hero-tagline">
+          Coder<span class="sep">·</span>Dancer<span class="sep">·</span>Photographer<span class="sep">·</span>Videographer<span class="sep">·</span>Trombonist<span class="sep">·</span>Motorcyclist
+        </p>
+        <div class="hero-actions">
+          <a href="mailto:isaac@rowntree.me" class="btn btn--primary"><i class="fas fa-envelope"></i>Email</a>
+          <button type="button" class="btn btn--ghost" data-print><i class="fas fa-file-arrow-down"></i>Download PDF</button>
+          <button type="button" class="btn btn--ghost" data-open-cmdk>
+            <i class="fas fa-magnifying-glass"></i>Jump to…
+            <span class="kbd" data-kbd-mod>⌘</span><span class="kbd">K</span>
+          </button>
+          <a href="https://github.com/isaacrowntree" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fab fa-github"></i>GitHub</a>
+          <a href="https://zackdesign.biz" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fas fa-rocket"></i>Zack Design</a>
+        </div>
       </div>
-      <div class="col-md-8 col-lg-9">
-        <h1 class="mb-3">Isaac Rowntree</h1>
-        <p class="lead mb-4">Open Source Creator. Coder. Dancer. Performer. Trombonist. Guitarist. Singer. Rock Climber. Tap Dancer. Surfer. Coffee Snob. Motorcyclist. Cyclist. Tumbler. Tennis Player. Tough Mudder (5x). Kite Surfer. Photographer. Videographer. Spartan Race (5x). Spanish Learner.</p>
-        <div class="d-flex flex-wrap gap-2">
-          <a href="mailto:isaac@rowntree.me" class="btn btn-light" aria-label="Contact via Email"><i class="fa fa-envelope me-2" aria-hidden="true"></i>Contact Me</a>
-          <a href="https://github.com/isaacrowntree" class="btn btn-outline-light" aria-label="Visit GitHub Profile"><i class="fab fa-github me-2" aria-hidden="true"></i>GitHub</a>
-          <a href="https://twitter.com/tikwanleep" class="btn btn-outline-light" aria-label="Visit Twitter Profile"><i class="fab fa-twitter me-2" aria-hidden="true"></i>Twitter</a>
+    </div>
+  </div>
+  <span class="hero-credit">Background: shot by me · Melbourne 2016</span>
+</header>
+
+<!-- ============================== TL;DR ============================== -->
+<section class="tldr" id="tldr">
+  <div class="wrap">
+    <p class="tldr-body">
+      Twenty years of shipping software — from solo WordPress plugins in 2002 to a fleet of <em>26 Cloudflare Workers</em> and an AI-powered travel platform at CamperMate today. Currently Head of Tech at CamperMate and proprietor of <a href="https://zackdesign.biz">Zack Design</a>, shipping <a href="https://sessionhq.org">SessionHQ</a> — a modern multi-tenant check-in SaaS.
+    </p>
+    <div class="tldr-meta">
+      <span>Based in Sydney, AU</span>
+      <span>·</span>
+      <span>Remote-first since 2016</span>
+      <span>·</span>
+      <a href="mailto:isaac@rowntree.me">isaac@rowntree.me</a>
+      <span>·</span>
+      <a href="https://github.com/isaacrowntree">@isaacrowntree</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== EXPERIENCE =========================== -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Career</div>
+        <h2 class="section-title">Experience</h2>
+      </div>
+      <div class="section-meta">2002 — Present</div>
+    </div>
+
+    <div class="timeline">
+      <article class="role">
+        <div class="role__period">
+          Jul 2020 — Present<small>5+ years</small>
+        </div>
+        <div>
+          <h3 class="role__title">Head of Tech</h3>
+          <div class="role__company">CamperMate · Australia / New Zealand travel platform</div>
+          <p class="role__summary">
+            Strategic replatform across six production systems with zero downtime. Scaled the engineering org, cut software/infrastructure spend to budget, and shipped an AI-powered travel platform used at significant scale.
+          </p>
+          <ul class="role__bullets">
+            <li>Scaled team from <strong>5 under-performers to 3 top-tier performers</strong>; aligned software and infra spend with budget</li>
+            <li>Architected <strong>6 production systems</strong>: React Native app, Next.js platform, B2B dashboard, Analytics portal, Retool admin, + 26 Cloudflare Worker microservices (400k+ LOC)</li>
+            <li>Built the <strong>AI-powered travel platform</strong> — itineraries, translations, smart search — driving substantial user + revenue growth in 3 years</li>
+            <li>Led <strong>org-wide security transformation</strong>: OAuth, YubiKey hardware keys, pen testing</li>
+            <li>Maintained <strong>continuous iOS/Android operation</strong> through a full replatform while retiring legacy systems</li>
+            <li>Established SRE practice (DataDog, Rollbar, automated alerting) → <strong>99.9% uptime, sub-second responses, 99.94% crash-free rate</strong></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role">
+        <div class="role__period">
+          Mar 2016 — Jun 2020<small>4 years</small>
+        </div>
+        <div>
+          <h3 class="role__title">Software Engineer</h3>
+          <div class="role__company">Redbubble · Global creative marketplace</div>
+          <p class="role__summary">
+            Rotated across five engineering teams, from supply-chain logistics to the retail frontend.
+          </p>
+          <ul class="role__bullets">
+            <li><strong>Fulfilment, Visual Merchandising &amp; Supply Chain</strong> — order-routing and inventory systems</li>
+            <li><strong>Frontend Platform</strong> — shared design-system and infra for the retail site</li>
+            <li><strong>Product API Platform</strong> — backends for product data and pricing</li>
+            <li><strong>Membership &amp; Commercial Frontend</strong> — artist and customer-facing surfaces</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role">
+        <div class="role__period">
+          2002 — 2016<small>Before Redbubble</small>
+        </div>
+        <div>
+          <h3 class="role__title">Zack Design · Ray White · TAFE</h3>
+          <div class="role__company">Founder / Senior Developer / Educator</div>
+          <p class="role__summary">
+            Fourteen years running Zack Design as a boutique consultancy, with two stints inside Ray White and a side-line teaching VET multimedia.
+          </p>
+          <ul class="role__bullets">
+            <li><strong>Zack Design (2002–2016)</strong> — Open-source WordPress plugins; Senior Developer at <a href="http://www.bendix.com.au/">Bendix Brakes</a> (Drupal); Tech Lead + Network Architect at iSolar Schools (renewables monitoring) and Power Portal; Tech Lead on a Rails telco POS app</li>
+            <li><strong>Ray White Group (2012–2015)</strong> — Senior Developer on Ray White Office + Agent + Retail sites; Tech Lead on Loan Market Broker, Intranet (Whiteboard), Living Here; Lead Architect on AWS migration; SEO work that <strong>lifted lead conversion from 2.5% → 5%</strong>; SCRUM Master; internal email-signature app saving <strong>$15k/year</strong></li>
+            <li><strong>Swinburne + Gordon TAFE (2009–2011)</strong> — taught VET multimedia, business, finance, OH&amp;S + 1-on-1 disability + adult short courses</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== SELECTED WORK ========================== -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Flagship builds</div>
+        <h2 class="section-title">Selected work</h2>
+      </div>
+      <div class="section-meta">Four deep builds</div>
+    </div>
+
+    <div class="work-grid">
+
+      <!-- CamperMate Platform — the umbrella project (current day-job) -->
+      <article class="work-card">
+        <div class="work-card__id">
+          <span class="work-card__id-label">2020 — Present · Platform</span>
+          <h3 class="work-card__title">CamperMate Replatform</h3>
+          <span class="work-card__kicker">Six systems, zero downtime, still shipping</span>
+        </div>
+        <div class="work-card__body">
+          <p>Ongoing replacement of the legacy CamperMate stack with six interconnected production systems, using Cloudflare Worker proxies for risk-free transitions. Substantial revenue growth and large user base achieved in 3 years, while continuously operating the iOS/Android apps through the migration.</p>
+          <ul>
+            <li><strong>React Native app</strong> 35+ modules, 80%+ test coverage, 99.94% crash-free, large-scale active users</li>
+            <li><strong>Next.js travel platform</strong> 70k+ LOC TypeScript, 119 App Router pages, 202 components, 35+ languages, 10k+ POIs with AI-generated itineraries</li>
+            <li><strong>B2B dashboard + Analytics portal</strong> multi-tenant SaaS, RBAC, municipal clients, Power BI integration</li>
+            <li><strong>26 Cloudflare Workers</strong> 400k+ LOC, global edge deployment, proxy-based risk-free transitions, zero-downtime deploys</li>
+          </ul>
+        </div>
+        <aside class="work-card__aside">
+          <div class="work-card__aside-label">Stack</div>
+          <div class="work-card__stack">
+            <span class="stack-badge">React Native</span>
+            <span class="stack-badge">Next.js 15</span>
+            <span class="stack-badge">CF Workers</span>
+            <span class="stack-badge">PlanetScale</span>
+            <span class="stack-badge">Typesense</span>
+            <span class="stack-badge">Prisma/Kysely</span>
+            <span class="stack-badge">AWS Cognito</span>
+            <span class="stack-badge">Sceptre IaC</span>
+          </div>
+          <div class="work-card__aside-label">Also</div>
+          <div class="work-card__stack">
+            <span class="stack-badge">DataDog</span>
+            <span class="stack-badge">Rollbar</span>
+            <span class="stack-badge">Firebase</span>
+            <span class="stack-badge">Power BI</span>
+          </div>
+        </aside>
+      </article>
+
+      <!-- SessionHQ — Zack Design flagship, brief with cross-link -->
+      <article class="work-card">
+        <div class="work-card__id">
+          <span class="work-card__id-label">2026 · Zack Design</span>
+          <span class="sessionhq-wordmark">Session<span class="sessionhq-wordmark__hq">HQ</span></span>
+          <span class="work-card__kicker">Flagship SaaS · my own product</span>
+        </div>
+        <div class="work-card__body">
+          <p>Modern multi-tenant check-in platform for dance studios, gyms, and martial-arts schools. PIN pad, NFC tap, QR kiosk check-in, pass management, Square payments, real-time analytics, GDPR-ready from day one. Shipped and running real customers.</p>
+          <ul>
+            <li><strong>Architecture</strong> Next.js 16 + React 19 on Cloudflare Workers via OpenNext; Supabase Postgres with row-level security per tenant</li>
+            <li><strong>Payments</strong> Square integration — cards-on-file, auto-renew, PCI-safe tokenisation via Supabase Vault</li>
+            <li><strong>Testing</strong> 800+ tests across Vitest and Playwright</li>
+          </ul>
+        </div>
+        <aside class="work-card__aside">
+          <div class="work-card__aside-label">Stack</div>
+          <div class="work-card__stack">
+            <span class="stack-badge">Next.js 16</span>
+            <span class="stack-badge">React 19</span>
+            <span class="stack-badge">CF Workers</span>
+            <span class="stack-badge">Supabase</span>
+            <span class="stack-badge">Square</span>
+            <span class="stack-badge">Tailwind 4</span>
+            <span class="stack-badge">Playwright</span>
+          </div>
+          <div class="work-card__aside-label">Links</div>
+          <div class="work-card__links">
+            <a href="https://sessionhq.org" target="_blank" rel="noopener" class="work-card__link"><i class="fas fa-globe"></i>sessionhq.org</a>
+            <a href="https://zackdesign.biz/sessionhq-launch/" target="_blank" rel="noopener" class="work-card__link"><i class="fas fa-book"></i>Launch story</a>
+          </div>
+        </aside>
+      </article>
+
+      <!-- AI travel platform -->
+      <article class="work-card">
+        <div class="work-card__id">
+          <span class="work-card__id-label">2022 — Present · 4 years</span>
+          <h3 class="work-card__title">AI Travel Platform</h3>
+          <span class="work-card__kicker">Started with Elasticsearch, now an agentic layer</span>
+        </div>
+        <div class="work-card__body">
+          <p>Four years of compounding AI investment across CamperMate — started when Elasticsearch was first introduced for search, grew into a full AI layer: generated itineraries, contextual activity recommendations, typo-tolerant hybrid search, automated multi-language content translation, and a conversational travel agent. Running on Cloudflare AI Workers with hybrid online/offline capability in the mobile app.</p>
+          <ul>
+            <li><strong>Conversational agent</strong> travel Q&amp;A grounded over POIs and routes</li>
+            <li><strong>RAG + vector search</strong> across 10k+ POIs in <strong>35+ languages</strong></li>
+            <li><strong>Automated translation</strong> keeps the catalogue current without manual ops</li>
+            <li><strong>Search evolution</strong> Elasticsearch → Typesense for typo-tolerance at scale</li>
+            <li><strong>Smart geographic validation</strong> for submitted content</li>
+          </ul>
+        </div>
+        <aside class="work-card__aside">
+          <div class="work-card__aside-label">Stack</div>
+          <div class="work-card__stack">
+            <span class="stack-badge">CF AI Workers</span>
+            <span class="stack-badge">GPT-4</span>
+            <span class="stack-badge">Llama</span>
+            <span class="stack-badge">RAG</span>
+            <span class="stack-badge">Vector Search</span>
+            <span class="stack-badge">Typesense</span>
+            <span class="stack-badge">Elasticsearch</span>
+            <span class="stack-badge">TypeScript</span>
+          </div>
+        </aside>
+      </article>
+
+      <!-- Pre-CamperMate highlights -->
+      <article class="work-card">
+        <div class="work-card__id">
+          <span class="work-card__id-label">2012 — 2016 · Enterprise</span>
+          <h3 class="work-card__title">Ray White + iSolar + Power Portal</h3>
+          <span class="work-card__kicker">Earlier tech-lead work</span>
+        </div>
+        <div class="work-card__body">
+          <p>Four years of tech-lead and architect roles spanning real estate, renewable energy monitoring, and enterprise power — before the move to Redbubble and CamperMate.</p>
+          <ul>
+            <li><strong>Ray White</strong> Lead Architect on AWS migration; Tech Lead on Intranet (Whiteboard), Loan Market Broker, Living Here; SEO work taking lead conversion from <strong>2.5% → 5%</strong></li>
+            <li><strong>iSolar Schools</strong> Tech Lead + Network Architect on the schools renewable-energy monitoring system</li>
+            <li><strong>Power Portal</strong> Tech Lead + Network Architect on an enterprise power-company suite</li>
+            <li><strong>Bendix Brakes</strong> Senior Developer (Drupal) during the Zack Design years</li>
+          </ul>
+        </div>
+        <aside class="work-card__aside">
+          <div class="work-card__aside-label">Stack</div>
+          <div class="work-card__stack">
+            <span class="stack-badge">AWS</span>
+            <span class="stack-badge">Ruby on Rails</span>
+            <span class="stack-badge">Drupal</span>
+            <span class="stack-badge">WordPress</span>
+            <span class="stack-badge">Salesforce</span>
+            <span class="stack-badge">SEO / Analytics</span>
+          </div>
+        </aside>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================== OSS ============================== -->
+<section class="section" id="oss">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Shipped in public</div>
+        <h2 class="section-title">Open source</h2>
+      </div>
+      <a href="https://github.com/isaacrowntree" target="_blank" rel="noopener" class="btn btn--ghost btn--sm"><i class="fab fa-github"></i>More on GitHub</a>
+    </div>
+
+    <div class="oss-grid">
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">slackbuzz-cli</h3>
+          <span class="oss-card__kicker">Go · CLI</span>
+        </div>
+        <p class="oss-card__body">Slack from the terminal. Inbox, messages, search, reactions, status — no leaving flow. Ships as a Homebrew tap.</p>
+        <div class="oss-card__footer">
+          <span class="stack-badge">Go</span><span class="stack-badge">Cobra</span><span class="stack-badge">Slack API</span>
+          <a href="https://github.com/triptechtravel/slackbuzz-cli" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">clickup-cli</h3>
+          <span class="oss-card__kicker">Go · CLI</span>
+        </div>
+        <p class="oss-card__body">ClickUp from the terminal with git integration and AI-agent-friendly JSON output. 30+ commands for tasks, sprints, comments.</p>
+        <div class="oss-card__footer">
+          <span class="stack-badge">Go</span><span class="stack-badge">Cobra</span><span class="stack-badge">GitHub API</span>
+          <a href="https://github.com/triptechtravel/clickup-cli" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">ledger</h3>
+          <span class="oss-card__kicker">Python · Finance</span>
+        </div>
+        <p class="oss-card__body">Personal-finance ETL for Australian banks → ATO-ready tax reports. 9 bank parsers, rules-based categorisation, local SQLite.</p>
+        <div class="oss-card__footer">
+          <span class="stack-badge">Python</span><span class="stack-badge">Flask</span><span class="stack-badge">SQLite</span>
+          <a href="https://github.com/isaacrowntree/ledger" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">react-native-nitro-unzip</h3>
+          <span class="oss-card__kicker">RN · Native module</span>
+        </div>
+        <p class="oss-card__body">High-performance ZIP for React Native via Nitro JSI. ~500 files/sec, progress callbacks, AES-256, zero bridge overhead.</p>
+        <div class="oss-card__footer">
+          <span class="stack-badge">TypeScript</span><span class="stack-badge">Swift</span><span class="stack-badge">Kotlin</span>
+          <a href="https://github.com/isaacrowntree/react-native-nitro-unzip" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">claude-social-skills</h3>
+          <span class="oss-card__kicker">Claude Code · Plugins</span>
+        </div>
+        <p class="oss-card__body">Claude Code plugin marketplace for social posting (X, Reddit, FB, IG), eBay listings, and Himalaya email — scripts + skills, no MCP.</p>
+        <div class="oss-card__footer">
+          <span class="stack-badge">Python</span><span class="stack-badge">Claude Code</span>
+          <a href="https://github.com/isaacrowntree/claude-social-skills" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">color-grade-ai</h3>
+          <span class="oss-card__kicker">Claude skill · Video</span>
+        </div>
+        <p class="oss-card__body">AI-assisted <code>.cube</code> LUT generator for DaVinci Resolve and Premiere. Analyses a frame, writes a targeted correction LUT.</p>
+        <div class="oss-card__footer">
+          <span class="stack-badge">Python</span><span class="stack-badge">Ruby</span>
+          <a href="https://github.com/isaacrowntree/color-grade-ai" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">deflicker-runner</h3>
+          <span class="oss-card__kicker">Python · Video</span>
+        </div>
+        <p class="oss-card__body">Kills LED PWM flicker in 4K video in <strong>400MB of RAM</strong>. GPU-accelerated, streams via ffmpeg without buffering whole clips.</p>
+        <div class="oss-card__footer">
+          <span class="stack-badge">Python</span><span class="stack-badge">ffmpeg</span><span class="stack-badge">GPU</span>
+          <a href="https://github.com/isaacrowntree/deflicker-runner" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">stamp-scanner</h3>
+          <span class="oss-card__kicker">iOS + Mac · Vision</span>
+        </div>
+        <p class="oss-card__body">iPhone-as-macro-scanner paired with Mac running SAM 3 segmentation + local Qwen3-VL identification. Everything stays on-device.</p>
+        <div class="oss-card__footer">
+          <span class="stack-badge">Swift</span><span class="stack-badge">Python</span><span class="stack-badge">SAM 3</span>
+          <a href="https://github.com/isaacrowntree/stamp-scanner" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SKILLS ============================ -->
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-label">What I'm fluent in</div>
+        <h2 class="section-title">Skills</h2>
+      </div>
+      <div class="section-meta">Current · 2026</div>
+    </div>
+
+    <div class="skills">
+      <div class="skill-row">
+        <div class="skill-row__label">Languages</div>
+        <div class="skill-row__items">
+          <span class="skill-pill">TypeScript</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">Go</span>
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">Ruby</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">Swift</span>
+          <span class="skill-pill">Kotlin</span>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <div class="skill-row__label">Frameworks</div>
+        <div class="skill-row__items">
+          <span class="skill-pill">Next.js</span>
+          <span class="skill-pill">React</span>
+          <span class="skill-pill">React Native</span>
+          <span class="skill-pill">Expo</span>
+          <span class="skill-pill">Nitro Modules</span>
+          <span class="skill-pill">Hono</span>
+          <span class="skill-pill">tRPC</span>
+          <span class="skill-pill">GraphQL</span>
+          <span class="skill-pill">Flask</span>
+          <span class="skill-pill">Tailwind</span>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <div class="skill-row__label">Infra &amp; Data</div>
+        <div class="skill-row__items">
+          <span class="skill-pill">Cloudflare Workers</span>
+          <span class="skill-pill">Supabase</span>
+          <span class="skill-pill">PlanetScale</span>
+          <span class="skill-pill">Postgres</span>
+          <span class="skill-pill">Typesense</span>
+          <span class="skill-pill">Prisma / Kysely</span>
+          <span class="skill-pill">BigQuery</span>
+          <span class="skill-pill">Sentry</span>
+          <span class="skill-pill">DataDog</span>
+          <span class="skill-pill">Rollbar</span>
+          <span class="skill-pill">AWS (Cognito / Amplify)</span>
+          <span class="skill-pill">Sceptre IaC</span>
+          <span class="skill-pill">Firebase</span>
+          <span class="skill-pill">Resend</span>
+          <span class="skill-pill">Sequin</span>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <div class="skill-row__label">AI &amp; ML</div>
+        <div class="skill-row__items">
+          <span class="skill-pill">Claude Code skills</span>
+          <span class="skill-pill">CF AI Workers</span>
+          <span class="skill-pill">GPT-4</span>
+          <span class="skill-pill">Llama</span>
+          <span class="skill-pill">Qwen3-VL</span>
+          <span class="skill-pill">RAG</span>
+          <span class="skill-pill">Vector search</span>
+          <span class="skill-pill">SAM 3</span>
+          <span class="skill-pill">Ollama</span>
+          <span class="skill-pill">ETL pipelines</span>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <div class="skill-row__label">Leadership</div>
+        <div class="skill-row__items">
+          <span class="skill-pill">Team scaling</span>
+          <span class="skill-pill">Technical hiring</span>
+          <span class="skill-pill">Performance management</span>
+          <span class="skill-pill">Architecture</span>
+          <span class="skill-pill">Budget ownership</span>
+          <span class="skill-pill">Board presentations</span>
+          <span class="skill-pill">Security (OAuth / YubiKey / RBAC / GDPR)</span>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <div class="skill-row__label">DevOps &amp; SRE</div>
+        <div class="skill-row__items">
+          <span class="skill-pill">GitHub Actions</span>
+          <span class="skill-pill">Zero-downtime deploys</span>
+          <span class="skill-pill">Playwright</span>
+          <span class="skill-pill">Vitest / Jest</span>
+          <span class="skill-pill">Doppler secrets</span>
+          <span class="skill-pill">Observability</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="container my-5">
-  <!-- Experience Section - Full Width -->
-  <div class="row mb-5">
-    <div class="col-12">
-      <div class="section p-4 p-lg-5">
-        <div class="pattern-bg"></div>
-        <h2 class="section-title" id="experience"><i class="fa fa-building me-2" aria-hidden="true"></i>Experience</h2>
-        
-        <div class="timeline-item">
-          <h4 class="timeline-title">Head of Tech - CamperMate</h4>
-          <div class="timeline-period">July 2020 - Present</div>
-          <div class="timeline-content">
-            <div class="mb-4">
-              <h5 class="text-primary mb-3">Enterprise-Scale Technical Leadership</h5>
-              <ul class="mb-3">
-                <li>Scaled team from 5 under-performers to 3 top-level performers; aligned software/infrastructure costs with budget</li>
-                <li>Architected and delivered 6 production systems: <strong>React Native app</strong>, <strong>Next.js platform</strong>, <strong>B2B dashboard</strong>, <strong>Analytics portal</strong>, <strong>Retool admin portal</strong>, and <strong>26 Cloudflare Worker microservices</strong></li>
-                <li>Built AI-powered travel platform with substantial user growth and revenue in 3 years</li>
-                <li>Led org-wide security transformation: <strong>OAuth</strong>, <strong>YubiKey hardware verification</strong>, <strong>penetration testing</strong></li>
-                <li>Maintained continuous operation of iOS/Android apps throughout complete replatform while deleting legacy systems</li>
-                <li>Established SRE practices with <strong>DataDog</strong>, <strong>Rollbar</strong>, automated alerting -- 99.9% uptime, sub-second response times</li>
-              </ul>
-            </div>
-            
-             <div class="row g-3 mb-4">
-               <div class="col-lg-6 col-xl-4">
-                 <div class="metric-card p-3 p-md-4 bg-primary bg-opacity-10 rounded border h-100">
-                   <div class="d-flex align-items-center mb-2">
-                     <i class="fab fa-react text-primary fa-lg fa-md-2x me-2 me-md-3"></i>
-                     <div>
-                       <h6 class="text-primary mb-1">React Native</h6>
-                       <div class="small text-muted">Cross-platform mobile</div>
-                     </div>
-                   </div>
-                   <ul class="small mb-0 list-unstyled">
-                     <li><strong>35+</strong> modules & components</li>
-                     <li><strong>80%+</strong> test coverage</li>
-                     <li><strong>Large-scale</strong> active users</li>
-                     <li><strong>99.94%</strong> crash-free rate</li>
-                   </ul>
-                 </div>
-               </div>
-               <div class="col-lg-6 col-xl-4">
-                 <div class="metric-card p-3 p-md-4 bg-success bg-opacity-10 rounded border h-100">
-                   <div class="d-flex align-items-center mb-2">
-                     <i class="fas fa-globe text-success fa-lg fa-md-2x me-2 me-md-3"></i>
-                     <div>
-                       <h6 class="text-success mb-1">Next.js Platform</h6>
-                       <div class="small text-muted">Full-stack website</div>
-                     </div>
-                   </div>
-                   <ul class="small mb-0 list-unstyled">
-                     <li><strong>70,333+</strong> lines TypeScript</li>
-                     <li><strong>119</strong> App Router pages</li>
-                     <li><strong>202</strong> components</li>
-                     <li><strong>35+</strong> languages</li>
-                   </ul>
-                 </div>
-               </div>
-               <div class="col-lg-6 col-xl-4">
-                 <div class="metric-card p-3 p-md-4 bg-warning bg-opacity-10 rounded border h-100">
-                   <div class="d-flex align-items-center mb-2">
-                     <i class="fas fa-chart-line text-warning fa-lg fa-md-2x me-2 me-md-3"></i>
-                     <div>
-                       <h6 class="text-warning mb-1">B2B Dashboard</h6>
-                       <div class="small text-muted">Business platform</div>
-                     </div>
-                   </div>
-                   <ul class="small mb-0 list-unstyled">
-                     <li><strong>13</strong> test suites</li>
-                     <li><strong>20+</strong> form fields</li>
-                     <li><strong>Multi-tier</strong> auth</li>
-                     <li><strong>Drag & drop</strong> photos</li>
-                   </ul>
-                 </div>
-               </div>
-               <div class="col-lg-6 col-xl-4">
-                 <div class="metric-card p-3 p-md-4 bg-danger bg-opacity-10 rounded border h-100">
-                   <div class="d-flex align-items-center mb-2">
-                     <i class="fas fa-chart-bar text-danger fa-lg fa-md-2x me-2 me-md-3"></i>
-                     <div>
-                       <h6 class="text-danger mb-1">Analytics Portal</h6>
-                       <div class="small text-muted">Enterprise SaaS</div>
-                     </div>
-                   </div>
-                   <ul class="small mb-0 list-unstyled">
-                     <li><strong>Multi-tenant</strong> SaaS</li>
-                     <li><strong>Municipal</strong> clients</li>
-                     <li><strong>RBAC</strong> security</li>
-                     <li><strong>Power BI</strong> integration</li>
-                   </ul>
-                 </div>
-               </div>
-               <div class="col-lg-6 col-xl-8">
-                 <div class="metric-card p-3 p-md-4 bg-info bg-opacity-10 rounded border h-100">
-                   <div class="d-flex align-items-center mb-2">
-                     <i class="fas fa-cloud text-info fa-lg fa-md-2x me-2 me-md-3"></i>
-                     <div>
-                       <h6 class="text-info mb-1">Worker Functions</h6>
-                       <div class="small text-muted">Serverless microservices</div>
-                     </div>
-                   </div>
-                   <div class="row">
-                     <div class="col-md-6">
-                       <ul class="small mb-0 list-unstyled">
-                         <li><strong>26</strong> microservices</li>
-                         <li><strong>400,000+</strong> lines code</li>
-                         <li><strong>V8</strong> JS engine</li>
-                       </ul>
-                     </div>
-                     <div class="col-md-6">
-                       <ul class="small mb-0 list-unstyled">
-                         <li><strong>Global</strong> edge deployment</li>
-                         <li><strong>Risk-free</strong> transitions</li>
-                         <li><strong>Zero-downtime</strong> deploys</li>
-                       </ul>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             </div>
-            
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <h4 class="timeline-title">Software Engineer with Redbubble</h4>
-          <div class="timeline-period">March 2016 - June 2020</div>
-          <div class="timeline-content">
-            <ul class="mb-0">
-              <li>Fulfilment, Visual Merchandising and Supply Chain Team</li>
-              <li>Frontend Platform Team</li>
-              <li>Product API Platform Team</li>
-              <li>Membership Frontend Team</li>
-              <li>Commercial Frontend Team</li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <h4 class="timeline-title">Owner and Director of Zack Design</h4>
-          <div class="timeline-period">May 2002 - 2016</div>
-          <div class="timeline-content">
-            <ul class="mb-0">
-              <li><a href="https://wordpress.org/plugins/">Open Source Wordpress Plugin Development</a></li>
-              <li>Senior Developer, <a href="http://www.bendix.com.au/">Bendix Brakes</a> (Drupal)</li>
-              <li>Tech Lead & Network Architect, <a href="http://www.isolarschools.com/">iSolar Schools (Renewable Energy Monitoring System)</a></li>
-              <li>Tech Lead & Network Architect, <a href="http://www.powerportal.com.au/">Power Portal (Enterprise Power Company Suite)</a></li>
-              <li>Tech Lead, Telco POS App (Ruby on Rails)</li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <h4 class="timeline-title">Teacher at Swinburne TAFE and Gordon TAFE</h4>
-          <div class="timeline-period">2009 - 2011 (2 years)</div>
-          <div class="timeline-content">
-            <p class="mb-0">VET Multimedia, Business, Finance, OH&S - 1on1 Disability - Adult Short Courses (Office Skills)</p>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <h4 class="timeline-title">Senior Developer, Digital and Analytical Analyst, and Tech Lead at Ray White Group</h4>
-          <div class="timeline-period">Jan 2012 - Mar 2015 (approx 4 years including additional time as subcontractor)</div>
-          <div class="timeline-content">
-            <ul class="mb-0">
-              <li>Senior Developer Ray White Office, Agent, and Retail Sites</li>
-              <li>Tech Lead Loan Market Broker, Intranet, and Retail Sites</li>
-              <li>Digital Analysis and SEO (from 2.5% to 5% lead conversion)</li>
-              <li>Tech Lead Ray White Intranet (Whiteboard)</li>
-              <li>Tech Lead Living Here sites</li>
-              <li>Lead Architect Migration to AWS</li>
-              <li>SCRUM Master (+ JIRA)</li>
-              <li>Email Signature app saving the company $15,000/year</li>
-            </ul>
-          </div>
-        </div>
+<!-- =========================== REFERENCES =========================== -->
+<section class="section" id="references">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Who vouches</div>
+        <h2 class="section-title">References</h2>
       </div>
-      </div>
+      <div class="section-meta">Three voices · more on request</div>
     </div>
-    
-    <!-- Skills Section -->
-  <div class="row mb-5">
-    <div class="col-12">
-      <div class="section p-4 p-lg-5">
-        <div class="pattern-bg"></div>
-        <h2 class="section-title" id="skills"><i class="fa fa-code me-2" aria-hidden="true"></i>Skills & Expertise</h2>
-        
-        <div class="skill-cloud">
-          <div class="skill-group">
-            <h6 class="skill-group-label">Leadership</h6>
-            <span class="skill-badge skill-badge-leadership">Team Scaling</span>
-            <span class="skill-badge skill-badge-leadership">Performance Management</span>
-            <span class="skill-badge skill-badge-leadership">Technical Budget</span>
-            <span class="skill-badge skill-badge-leadership">Enterprise Sales Support</span>
-            <span class="skill-badge skill-badge-leadership">Board Presentations</span>
-          </div>
 
-          <div class="skill-group">
-            <h6 class="skill-group-label">Languages</h6>
-            <span class="skill-badge skill-badge-lang">TypeScript</span>
-            <span class="skill-badge skill-badge-lang">JavaScript</span>
-            <span class="skill-badge skill-badge-lang">Go</span>
-            <span class="skill-badge skill-badge-lang">Python</span>
-            <span class="skill-badge skill-badge-lang">Ruby</span>
-            <span class="skill-badge skill-badge-lang">SQL</span>
-            <span class="skill-badge skill-badge-lang">Swift</span>
-            <span class="skill-badge skill-badge-lang">Kotlin</span>
-          </div>
+    <div class="refs-list">
+      <blockquote class="ref">
+        <p class="ref__quote">Although Isaac's job title was Senior Developer, he performed many roles — instrumental in all facets of digital development and digital marketing. Lead architect on the AWS migration, lead generation (Salesforce), intranet builds, and SEO/analytics. Values that enhanced not just the dev team but the whole company. I would happily re-employ him — a valuable asset to any team.</p>
+        <footer class="ref__author">
+          <p class="ref__name">Scott Morgan</p>
+          <p class="ref__role">Head of Digital Development<br>Ray White Group</p>
+          <p class="ref__source">Ray White · senior developer</p>
+        </footer>
+      </blockquote>
 
-          <div class="skill-group">
-            <h6 class="skill-group-label">Frontend & Mobile</h6>
-            <span class="skill-badge skill-badge-frontend">React 19</span>
-            <span class="skill-badge skill-badge-frontend">Next.js 15</span>
-            <span class="skill-badge skill-badge-frontend">React Native</span>
-            <span class="skill-badge skill-badge-frontend">PWA</span>
-            <span class="skill-badge skill-badge-frontend">Mobile-First</span>
-          </div>
+      <blockquote class="ref">
+        <p class="ref__quote">Zack Design rescued a huge project for MJ Penner Consulting, re-building from scratch in a couple of weeks what our previous contractor could not do in months. Isaac's engineering leadership has allowed us to make smarter decisions that have saved us thousands of dollars on every project we've engaged together.</p>
+        <footer class="ref__author">
+          <p class="ref__name">Michael Penner</p>
+          <p class="ref__role">Director<br>MJ Penner Consulting</p>
+          <p class="ref__source">Zack Design client</p>
+        </footer>
+      </blockquote>
 
-          <div class="skill-group">
-            <h6 class="skill-group-label">Backend & APIs</h6>
-            <span class="skill-badge skill-badge-backend">Node.js</span>
-            <span class="skill-badge skill-badge-backend">Hono</span>
-            <span class="skill-badge skill-badge-backend">tRPC</span>
-            <span class="skill-badge skill-badge-backend">GraphQL</span>
-            <span class="skill-badge skill-badge-backend">REST</span>
-            <span class="skill-badge skill-badge-backend">Strapi CMS</span>
-            <span class="skill-badge skill-badge-backend">Serverless</span>
-          </div>
-
-          <div class="skill-group">
-            <h6 class="skill-group-label">AI & ML</h6>
-            <span class="skill-badge skill-badge-ai">Cloudflare AI Workers</span>
-            <span class="skill-badge skill-badge-ai">GPT-4</span>
-            <span class="skill-badge skill-badge-ai">Llama</span>
-            <span class="skill-badge skill-badge-ai">RAG</span>
-            <span class="skill-badge skill-badge-ai">Vector Search</span>
-            <span class="skill-badge skill-badge-ai">AI Translation</span>
-          </div>
-
-          <div class="skill-group">
-            <h6 class="skill-group-label">Cloud & Infra</h6>
-            <span class="skill-badge skill-badge-cloud">AWS</span>
-            <span class="skill-badge skill-badge-cloud">Cloudflare Workers</span>
-            <span class="skill-badge skill-badge-cloud">Edge Computing</span>
-            <span class="skill-badge skill-badge-cloud">Sceptre IaC</span>
-            <span class="skill-badge skill-badge-cloud">Doppler Secrets</span>
-          </div>
-
-          <div class="skill-group">
-            <h6 class="skill-group-label">Data</h6>
-            <span class="skill-badge skill-badge-data">PlanetScale MySQL</span>
-            <span class="skill-badge skill-badge-data">BigQuery</span>
-            <span class="skill-badge skill-badge-data">Typesense</span>
-            <span class="skill-badge skill-badge-data">Prisma</span>
-            <span class="skill-badge skill-badge-data">Power BI</span>
-            <span class="skill-badge skill-badge-data">ETL Pipelines</span>
-          </div>
-
-          <div class="skill-group">
-            <h6 class="skill-group-label">Security</h6>
-            <span class="skill-badge skill-badge-security">OAuth</span>
-            <span class="skill-badge skill-badge-security">YubiKey</span>
-            <span class="skill-badge skill-badge-security">RBAC</span>
-            <span class="skill-badge skill-badge-security">Pen Testing</span>
-            <span class="skill-badge skill-badge-security">JWT</span>
-            <span class="skill-badge skill-badge-security">GDPR</span>
-          </div>
-
-          <div class="skill-group">
-            <h6 class="skill-group-label">DevOps & SRE</h6>
-            <span class="skill-badge skill-badge-devops">GitHub Actions</span>
-            <span class="skill-badge skill-badge-devops">Jest / Vitest</span>
-            <span class="skill-badge skill-badge-devops">Playwright</span>
-            <span class="skill-badge skill-badge-devops">DataDog</span>
-            <span class="skill-badge skill-badge-devops">Rollbar</span>
-            <span class="skill-badge skill-badge-devops">Zero-Downtime Deploy</span>
-          </div>
-        </div>
-      </div>
+      <blockquote class="ref">
+        <p class="ref__quote">Isaac and his team at Zack Design have been an integral part of our online success. Their technical expertise, software development skills, and project management work is outstanding. I would not hesitate in recommending their services.</p>
+        <footer class="ref__author">
+          <p class="ref__name">Tomas Molloy</p>
+          <p class="ref__role">Director<br>iSolar</p>
+          <p class="ref__source">Zack Design client</p>
+        </footer>
+      </blockquote>
     </div>
   </div>
-  
-  <!-- Technical Showcase Section -->
-  <div class="row mb-5">
-    <div class="col-12">
-      <div class="section p-4 p-lg-5">
-        <div class="pattern-bg"></div>
-        <h2 class="section-title" id="technical-showcase"><i class="fa fa-rocket me-2" aria-hidden="true"></i>Technical Showcase</h2>
+</section>
 
-        <!-- SessionHQ — Flagship Product -->
-        <div class="row g-4 mb-5">
-          <div class="col-lg-8">
-            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border">
-              <div class="row align-items-start">
-                <div class="col-lg-3 col-md-3 text-center mb-3 mb-md-0">
-                  <span class="sessionhq-wordmark" aria-label="SessionHQ">Session<span class="sessionhq-hq">HQ</span></span>
-                  <div class="text-muted small mt-2">Class check-in platform</div>
-                  <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 mt-2"><i class="fas fa-star me-1"></i>Flagship</span>
-                </div>
-                <div class="col-lg-5 col-md-5">
-                  <p class="small mb-3">The modern check-in platform for dance studios, gyms, and martial arts schools. PIN pad, NFC tap, QR kiosk check-in, pass management, Square payments, real-time attendance — all in one multi-tenant SaaS.</p>
-                  <h6 class="text-success mb-2">Key Features</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li><strong>PIN + NFC + QR</strong> kiosk check-in</li>
-                    <li><strong>Pass management</strong> with Cards-on-File auto-renewal</li>
-                    <li><strong>Multi-tenant</strong> with Postgres row-level security</li>
-                    <li><strong>Real-time</strong> attendance, revenue, LTV analytics</li>
-                    <li><strong>GDPR-ready</strong> from day one (export, erasure, audit trail)</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-12 mt-3 mt-lg-0">
-                  <h6 class="text-secondary mb-2">Tech Stack</h6>
-                  <div class="d-flex flex-wrap mb-3">
-                    <span class="badge bg-light text-dark me-1 mb-1">Next.js 16</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">React 19</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Cloudflare Workers</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Supabase</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Square</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Tailwind 4</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Sentry</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Playwright</span>
-                  </div>
-                  <div class="d-flex flex-wrap gap-2">
-                    <a href="https://sessionhq.org" target="_blank" rel="noopener" class="btn btn-sm btn-primary"><i class="fas fa-globe me-1"></i>Visit sessionhq.org</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="p-4 bg-primary bg-opacity-10 rounded h-100 d-flex flex-column justify-content-center">
-              <h5 class="text-primary mb-3"><i class="fas fa-globe me-2"></i>Live at</h5>
-              <a href="https://sessionhq.org" target="_blank" rel="noopener" class="d-block p-2 bg-dark text-light rounded mb-2 small text-decoration-none"><i class="fas fa-external-link-alt me-2"></i>sessionhq.org</a>
-              <a href="https://www.havanahastingsdance.com.au/" target="_blank" rel="noopener" class="d-block p-2 bg-dark text-light rounded mb-3 small text-decoration-none"><i class="fas fa-external-link-alt me-2"></i>havanahastingsdance.com.au</a>
-              <p class="small text-muted mb-0"><strong>Founding partner:</strong> Havana on the Hastings — Port Macquarie's Latin dance community (Cuban salsa, bachata, urban kiz, rueda).</p>
-            </div>
-          </div>
-        </div>
+<!-- =========================== BEYOND CODE =========================== -->
+<section class="beyond" id="beyond">
+  <div class="wrap">
+    <p class="beyond-line">
+      Dancer, trombonist, photographer/videographer as <span>@zemonstas</span>, motorcyclist, cyclist, <span>5× Tough Mudder</span>, <span>5× Spartan</span>, three summers working dance events in Sweden, and — most recently — learning Spanish.
+    </p>
+  </div>
+</section>
 
-        <!-- CamperMate Platform -->
-        <div class="row g-4 mb-5">
-          <div class="col-12">
-            <div class="showcase-intro p-4 bg-primary bg-opacity-10 rounded">
-              <h4 class="text-primary mb-2">CamperMate Platform -- Strategic Replatform, Zero Downtime, 6 New Systems, Significant Business Growth</h4>
-              <p class="mb-0">Led complete replacement of legacy platform with six interconnected production systems, using Cloudflare Worker proxies for risk-free transitions. Substantial revenue growth and large user base achieved in 3 years.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- React Native Mobile App -->
-        <div class="row g-4 mb-4">
-          <div class="col-12">
-            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border">
-              <div class="row align-items-start">
-                <div class="col-lg-2 col-md-3 text-center mb-3 mb-md-0">
-                  <div class="showcase-icon bg-primary bg-opacity-10 p-3 p-md-4 rounded mx-auto" style="width: fit-content;">
-                    <i class="fab fa-react text-primary fa-2x fa-md-3x"></i>
-                  </div>
-                  <h4 class="mt-2 mt-md-3 mb-1">React Native</h4>
-                  <div class="text-muted small">Cross-platform iOS/Android</div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6">
-                  <h6 class="text-success mb-2">Scale & Metrics</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li><strong>Large-scale</strong> active users</li>
-                    <li><strong>99.94%</strong> crash-free rate</li>
-                    <li><strong>High</strong> engagement</li>
-                    <li><strong>23%</strong> day-1 retention</li>
-                    <li><strong>35+</strong> modules</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-md-6 col-6">
-                  <h6 class="text-primary mb-2">Key Features</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li>Production-grade reliability monitoring</li>
-                    <li>Firebase Crashlytics integration</li>
-                    <li>Hybrid online/offline search</li>
-                    <li>Multi-provider authentication</li>
-                    <li>Real-time data synchronization</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-12">
-                  <h6 class="text-secondary mb-2">Architecture & Tech Stack</h6>
-                  <div class="d-flex flex-wrap">
-                    <span class="badge bg-light text-dark me-1 mb-1">Clean Architecture</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">SOLID Principles</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">TypeScript</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Firebase</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">80%+ Test Coverage</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Next.js Web Platform -->
-        <div class="row g-4 mb-4">
-          <div class="col-12">
-            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border">
-              <div class="row align-items-start">
-                <div class="col-lg-2 col-md-3 text-center mb-3 mb-md-0">
-                  <div class="showcase-icon bg-success bg-opacity-10 p-3 p-md-4 rounded mx-auto" style="width: fit-content;">
-                    <i class="fas fa-globe text-success fa-2x fa-md-3x"></i>
-                  </div>
-                  <h4 class="mt-2 mt-md-3 mb-1">Next.js Platform</h4>
-                  <div class="text-muted small">Full-stack travel website</div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6">
-                  <h6 class="text-success mb-2">Scale & Metrics</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li><strong>70,333+</strong> lines TypeScript</li>
-                    <li><strong>119</strong> App Router pages</li>
-                    <li><strong>202</strong> components</li>
-                    <li><strong>35+</strong> languages</li>
-                    <li><strong>10,000+</strong> POIs</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-md-6 col-6">
-                  <h6 class="text-primary mb-2">AI-Powered Features</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li>AI-generated travel itineraries</li>
-                    <li>Intelligent search with typo tolerance</li>
-                    <li>Automated content translation</li>
-                    <li>Contextual activity recommendations</li>
-                    <li>Smart geographic validation</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-12">
-                  <h6 class="text-secondary mb-2">Tech Stack</h6>
-                  <div class="d-flex flex-wrap">
-                    <span class="badge bg-light text-dark me-1 mb-1">Next.js 15</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">React 19</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">TypeScript</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Prisma/Kysely</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Typesense</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- B2B Business Dashboard -->
-        <div class="row g-4 mb-4">
-          <div class="col-12">
-            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border">
-              <div class="row align-items-start">
-                <div class="col-lg-2 col-md-3 text-center mb-3 mb-md-0">
-                  <div class="showcase-icon bg-warning bg-opacity-10 p-3 p-md-4 rounded mx-auto" style="width: fit-content;">
-                    <i class="fas fa-chart-line text-warning fa-2x fa-md-3x"></i>
-                  </div>
-                  <h4 class="mt-2 mt-md-3 mb-1">B2B Dashboard</h4>
-                  <div class="text-muted small">Business management platform</div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6">
-                  <h6 class="text-success mb-2">Scale & Features</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li><strong>13</strong> test suites</li>
-                    <li><strong>20+</strong> form fields</li>
-                    <li><strong>Multi-tier</strong> auth</li>
-                    <li><strong>Drag & drop</strong> photos</li>
-                    <li><strong>Intl</strong> phone validation</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-md-6 col-6">
-                  <h6 class="text-primary mb-2">Business Features</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li>POI listing management system</li>
-                    <li>Photo galleries with positioning</li>
-                    <li>Customer review management</li>
-                    <li>Freemium business model</li>
-                    <li>PowerBI analytics integration</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-12">
-                  <h6 class="text-secondary mb-2">Tech Stack</h6>
-                  <div class="d-flex flex-wrap">
-                    <span class="badge bg-light text-dark me-1 mb-1">Next.js 15</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">AWS Cognito</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Kysely</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Zod</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">React Hook Form</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Analytics Portal -->
-        <div class="row g-4 mb-4">
-          <div class="col-12">
-            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border">
-              <div class="row align-items-start">
-                <div class="col-lg-2 col-md-3 text-center mb-3 mb-md-0">
-                  <div class="showcase-icon bg-danger bg-opacity-10 p-3 p-md-4 rounded mx-auto" style="width: fit-content;">
-                    <i class="fas fa-chart-bar text-danger fa-2x fa-md-3x"></i>
-                  </div>
-                  <h4 class="mt-2 mt-md-3 mb-1">Analytics Portal</h4>
-                  <div class="text-muted small">Enterprise SaaS analytics</div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6">
-                  <h6 class="text-success mb-2">Enterprise Features</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li><strong>Multi-tenant</strong> SaaS</li>
-                    <li><strong>Municipal</strong> clients</li>
-                    <li><strong>RBAC</strong> security</li>
-                    <li><strong>Data isolation</strong></li>
-                    <li><strong>Power BI</strong> integration</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-md-6 col-6">
-                  <h6 class="text-primary mb-2">Technical Architecture</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li>AWS Amplify cloud infrastructure</li>
-                    <li>AWS Cognito authentication system</li>
-                    <li>Sceptre infrastructure as code</li>
-                    <li>React 18 with Next.js 14</li>
-                    <li>Complete CI/CD pipeline automation</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-12">
-                  <h6 class="text-secondary mb-2">Enterprise Stack</h6>
-                  <div class="d-flex flex-wrap">
-                    <span class="badge bg-light text-dark me-1 mb-1">AWS Amplify</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">AWS Cognito</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Sceptre</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Power BI</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">TypeScript</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Cloudflare Workers -->
-        <div class="row g-4">
-          <div class="col-12">
-            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border">
-              <div class="row align-items-start">
-                <div class="col-lg-2 col-md-3 text-center mb-3 mb-md-0">
-                  <div class="showcase-icon bg-info bg-opacity-10 p-3 p-md-4 rounded mx-auto" style="width: fit-content;">
-                    <i class="fas fa-cloud text-info fa-2x fa-md-3x"></i>
-                  </div>
-                  <h4 class="mt-2 mt-md-3 mb-1">Worker Functions</h4>
-                  <div class="text-muted small">Serverless microservices</div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6">
-                  <h6 class="text-success mb-2">Scale & Metrics</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li><strong>26</strong> microservices</li>
-                    <li><strong>400,000+</strong> lines code</li>
-                    <li><strong>V8</strong> JS engine</li>
-                    <li><strong>10+</strong> API integrations</li>
-                    <li><strong>Global</strong> edge deployment</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-md-6 col-6">
-                  <h6 class="text-primary mb-2">Advanced Capabilities</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li>Risk-free system transitions via proxy routing</li>
-                    <li>AI conversational travel agent</li>
-                    <li>Real-time data synchronization</li>
-                    <li>Multi-language content processing</li>
-                    <li>Zero-downtime deployment strategies</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-12">
-                  <h6 class="text-secondary mb-2">Infrastructure</h6>
-                  <div class="d-flex flex-wrap">
-                    <span class="badge bg-light text-dark me-1 mb-1">Serverless</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Edge Computing</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Event-Driven</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Auto-Scaling</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Proxy Routing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-      </div>
+<!-- ============================= EDUCATION ============================= -->
+<div class="wrap">
+  <div class="education" id="education">
+    <span class="education__label">Education</span>
+    <div class="education__items">
+      BAppSc Information Technology<span class="sep">·</span>Cert IV Training &amp; Assessment<span class="sep">·</span><a href="https://bento.io" target="_blank" rel="noopener">BentoBox</a><span class="sep">·</span>PD courses in AWS, UX, Agile, Salesforce
     </div>
   </div>
-  
-  <!-- Projects Section -->
-  <div class="row mb-5">
-    <div class="col-12">
-      <div class="section p-4 p-lg-5">
-        <div class="pattern-bg"></div>
-        <h2 class="section-title" id="projects"><i class="fa fa-code-branch me-2" aria-hidden="true"></i>Open Source Projects</h2>
-
-        <!-- slackbuzz -->
-        <div class="row g-4 mb-4">
-          <div class="col-lg-8">
-            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border">
-              <div class="row align-items-start">
-                <div class="col-lg-3 col-md-3 text-center mb-3 mb-md-0">
-                  <div class="showcase-icon bg-warning bg-opacity-10 p-3 p-md-4 rounded mx-auto" style="width: fit-content;">
-                    <i class="fab fa-slack text-warning fa-2x fa-md-3x"></i>
-                  </div>
-                  <h4 class="mt-2 mt-md-3 mb-1">slackbuzz</h4>
-                  <div class="text-muted small">CLI for Slack</div>
-                </div>
-                <div class="col-lg-5 col-md-5">
-                  <p class="small mb-3">Command-line tool for Slack. Manage your inbox, send messages, search channels, react to messages, and set status without leaving the terminal.</p>
-                  <h6 class="text-success mb-2">Key Features</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li><strong>Activity inbox</strong> -- mentions, DMs, and threads at a glance</li>
-                    <li><strong>Full messaging</strong> -- send, search, react, and manage channels</li>
-                    <li><strong>AI agent support</strong> -- structured JSON output with JQ filtering</li>
-                    <li><strong>1900+ emoji</strong> -- shortcodes rendered as Unicode</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-12 mt-3 mt-lg-0">
-                  <h6 class="text-secondary mb-2">Tech Stack</h6>
-                  <div class="d-flex flex-wrap mb-3">
-                    <span class="badge bg-light text-dark me-1 mb-1">Go</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Cobra</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Slack API</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">ClickUp API</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">GitHub API</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">System Keyring</span>
-                  </div>
-                  <div class="d-flex flex-wrap gap-2">
-                    <a href="https://github.com/triptechtravel/slackbuzz-cli" class="btn btn-sm btn-outline-warning"><i class="fab fa-github me-1"></i>Repository</a>
-                    <a href="https://triptechtravel.github.io/slackbuzz-cli/" class="btn btn-sm btn-outline-secondary"><i class="fas fa-book me-1"></i>Docs</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="p-4 bg-warning bg-opacity-10 rounded h-100 d-flex flex-column justify-content-center">
-              <h5 class="text-warning mb-3"><i class="fab fa-slack me-2"></i>Quick Install</h5>
-              <code class="d-block p-2 bg-dark text-light rounded mb-2 small">brew install triptechtravel/tap/slackbuzz</code>
-              <code class="d-block p-2 bg-dark text-light rounded mb-3 small">go install github.com/triptechtravel/slackbuzz-cli/cmd/slackbuzz@latest</code>
-              <p class="small text-muted mb-0">Works with macOS, Linux, and Windows. Supports bash, zsh, fish, and PowerShell completions.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- clickup-cli -->
-        <div class="row g-4">
-          <div class="col-lg-8">
-            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border">
-              <div class="row align-items-start">
-                <div class="col-lg-3 col-md-3 text-center mb-3 mb-md-0">
-                  <div class="showcase-icon bg-primary bg-opacity-10 p-3 p-md-4 rounded mx-auto" style="width: fit-content;">
-                    <i class="fas fa-terminal text-primary fa-2x fa-md-3x"></i>
-                  </div>
-                  <h4 class="mt-2 mt-md-3 mb-1">clickup-cli</h4>
-                  <div class="text-muted small">CLI for ClickUp</div>
-                </div>
-                <div class="col-lg-5 col-md-5">
-                  <p class="small mb-3">Command-line tool for ClickUp with git integration, GitHub linking, and AI agent support. Manage tasks, sprints, and comments without leaving the terminal.</p>
-                  <h6 class="text-success mb-2">Key Features</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li><strong>30+</strong> commands for tasks, sprints, and comments</li>
-                    <li><strong>Git integration</strong> -- auto-detects task IDs from branches</li>
-                    <li><strong>AI agent support</strong> -- structured JSON output for Claude Code, Copilot, Cursor</li>
-                    <li><strong>Fuzzy search</strong> -- find tasks and match statuses with partial input</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-12 mt-3 mt-lg-0">
-                  <h6 class="text-secondary mb-2">Tech Stack</h6>
-                  <div class="d-flex flex-wrap mb-3">
-                    <span class="badge bg-light text-dark me-1 mb-1">Go</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Cobra</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">GitHub API</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">ClickUp API</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">System Keyring</span>
-                  </div>
-                  <div class="d-flex flex-wrap gap-2">
-                    <a href="https://github.com/triptechtravel/clickup-cli" class="btn btn-sm btn-outline-primary"><i class="fab fa-github me-1"></i>Repository</a>
-                    <a href="https://triptechtravel.github.io/clickup-cli/" class="btn btn-sm btn-outline-secondary"><i class="fas fa-book me-1"></i>Docs</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="p-4 bg-primary bg-opacity-10 rounded h-100 d-flex flex-column justify-content-center">
-              <h5 class="text-primary mb-3"><i class="fas fa-terminal me-2"></i>Quick Install</h5>
-              <code class="d-block p-2 bg-dark text-light rounded mb-2 small">brew install triptechtravel/tap/clickup</code>
-              <code class="d-block p-2 bg-dark text-light rounded mb-3 small">go install github.com/triptechtravel/clickup-cli/cmd/clickup@latest</code>
-              <p class="small text-muted mb-0">Works with macOS, Linux, and Windows. Supports bash, zsh, fish, and PowerShell completions.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ledger -->
-        <div class="row g-4 mt-4">
-          <div class="col-lg-8">
-            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border">
-              <div class="row align-items-start">
-                <div class="col-lg-3 col-md-3 text-center mb-3 mb-md-0">
-                  <div class="showcase-icon bg-success bg-opacity-10 p-3 p-md-4 rounded mx-auto" style="width: fit-content;">
-                    <i class="fas fa-receipt text-success fa-2x fa-md-3x"></i>
-                  </div>
-                  <h4 class="mt-2 mt-md-3 mb-1">Ledger</h4>
-                  <div class="text-muted small">Personal Finance ETL</div>
-                </div>
-                <div class="col-lg-5 col-md-5">
-                  <p class="small mb-3">Personal finance tool that ingests bank statements from multiple Australian banks, categorises transactions, and generates ATO-ready tax reports with a local web dashboard.</p>
-                  <h6 class="text-success mb-2">Key Features</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li><strong>9</strong> bank statement parsers (PDF + CSV)</li>
-                    <li><strong>Auto-categorisation</strong> with regex rules and learning</li>
-                    <li><strong>ATO tax reports</strong> matching individual return sections</li>
-                    <li><strong>Business splits</strong> for expense allocation</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-12 mt-3 mt-lg-0">
-                  <h6 class="text-secondary mb-2">Tech Stack</h6>
-                  <div class="d-flex flex-wrap mb-3">
-                    <span class="badge bg-light text-dark me-1 mb-1">Python</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Flask</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">SQLite</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">TypeScript</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Vite</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">pdfplumber</span>
-                  </div>
-                  <div class="d-flex flex-wrap gap-2">
-                    <a href="https://github.com/isaacrowntree/ledger" class="btn btn-sm btn-outline-success"><i class="fab fa-github me-1"></i>Repository</a>
-                    <a href="https://isaacrowntree.github.io/ledger/" class="btn btn-sm btn-outline-secondary"><i class="fas fa-book me-1"></i>Docs</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="p-4 bg-success bg-opacity-10 rounded h-100 d-flex flex-column justify-content-center">
-              <h5 class="text-success mb-3"><i class="fas fa-receipt me-2"></i>Quick Start</h5>
-              <code class="d-block p-2 bg-dark text-light rounded mb-2 small">pip install -e .</code>
-              <code class="d-block p-2 bg-dark text-light rounded mb-2 small">ledger init && ledger ingest</code>
-              <code class="d-block p-2 bg-dark text-light rounded mb-3 small">python -m api</code>
-              <p class="small text-muted mb-0">Local-first. SQLite database. Your financial data stays on your machine.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- react-native-nitro-unzip -->
-        <div class="row g-4 mt-4">
-          <div class="col-lg-8">
-            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border">
-              <div class="row align-items-start">
-                <div class="col-lg-3 col-md-3 text-center mb-3 mb-md-0">
-                  <div class="showcase-icon bg-info bg-opacity-10 p-3 p-md-4 rounded mx-auto" style="width: fit-content;">
-                    <i class="fab fa-react text-info fa-2x fa-md-3x"></i>
-                  </div>
-                  <h4 class="mt-2 mt-md-3 mb-1">nitro-unzip</h4>
-                  <div class="text-muted small">React Native Module</div>
-                </div>
-                <div class="col-lg-5 col-md-5">
-                  <p class="small mb-3">High-performance ZIP operations for React Native, powered by Nitro Modules. Native-level compression and decompression with progress callbacks, cancellation, and password support — no bridge overhead.</p>
-                  <h6 class="text-success mb-2">Key Features</h6>
-                  <ul class="small mb-0 list-unstyled">
-                    <li><strong>~500 files/sec</strong> extraction speed</li>
-                    <li><strong>Zero bridge overhead</strong> via Nitro JSI</li>
-                    <li><strong>Progress callbacks</strong> and cancellation</li>
-                    <li><strong>AES-256</strong> password-protected archives</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 col-12 mt-3 mt-lg-0">
-                  <h6 class="text-secondary mb-2">Tech Stack</h6>
-                  <div class="d-flex flex-wrap mb-3">
-                    <span class="badge bg-light text-dark me-1 mb-1">TypeScript</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Swift</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Kotlin</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">Nitro Modules</span>
-                    <span class="badge bg-light text-dark me-1 mb-1">SSZipArchive</span>
-                  </div>
-                  <div class="d-flex flex-wrap gap-2">
-                    <a href="https://github.com/isaacrowntree/react-native-nitro-unzip" class="btn btn-sm btn-outline-info"><i class="fab fa-github me-1"></i>Repository</a>
-                    <a href="https://isaacrowntree.github.io/react-native-nitro-unzip/" class="btn btn-sm btn-outline-secondary"><i class="fas fa-book me-1"></i>Docs</a>
-                    <a href="https://www.npmjs.com/package/react-native-nitro-unzip" class="btn btn-sm btn-outline-danger"><i class="fab fa-npm me-1"></i>npm</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="p-4 bg-info bg-opacity-10 rounded h-100 d-flex flex-column justify-content-center">
-              <h5 class="text-info mb-3"><i class="fab fa-react me-2"></i>Quick Install</h5>
-              <code class="d-block p-2 bg-dark text-light rounded mb-2 small">npm install react-native-nitro-unzip</code>
-              <code class="d-block p-2 bg-dark text-light rounded mb-3 small">npm install react-native-nitro-modules</code>
-              <p class="small text-muted mb-0">iOS (SSZipArchive) and Android (ZipInputStream). Requires React Native 0.76+ with Nitro Modules.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- claude-social-skills & color-grade-ai (compact row) -->
-        <div class="row g-4 mt-4">
-          <div class="col-lg-6">
-            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border h-100">
-              <div class="text-center mb-3">
-                <div class="showcase-icon bg-dark bg-opacity-10 p-3 rounded mx-auto d-inline-block">
-                  <i class="fas fa-robot text-dark fa-2x"></i>
-                </div>
-                <h4 class="mt-2 mb-1">claude-social-skills</h4>
-                <div class="text-muted small">Claude Code Plugins</div>
-              </div>
-              <p class="small mb-3">Claude Code skills for social media posting, eBay listings, and email management. Extend Claude with automated workflows for everyday tasks.</p>
-              <div class="d-flex flex-wrap mb-3">
-                <span class="badge bg-light text-dark me-1 mb-1">Claude Code</span>
-                <span class="badge bg-light text-dark me-1 mb-1">Skills API</span>
-                <span class="badge bg-light text-dark me-1 mb-1">Social Media</span>
-                <span class="badge bg-light text-dark me-1 mb-1">eBay</span>
-              </div>
-              <a href="https://github.com/isaacrowntree/claude-social-skills" class="btn btn-sm btn-outline-dark"><i class="fab fa-github me-1"></i>Repository</a>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="tech-showcase-card p-3 p-md-4 bg-white rounded shadow-sm border h-100">
-              <div class="text-center mb-3">
-                <div class="showcase-icon bg-danger bg-opacity-10 p-3 rounded mx-auto d-inline-block">
-                  <i class="fas fa-palette text-danger fa-2x"></i>
-                </div>
-                <h4 class="mt-2 mb-1">color-grade-ai</h4>
-                <div class="text-muted small">AI Color Grading</div>
-              </div>
-              <p class="small mb-3">AI-powered .cube LUT generator for color correction in DaVinci Resolve and Premiere Pro. Describe a look in natural language and get a professional LUT file.</p>
-              <div class="d-flex flex-wrap mb-3">
-                <span class="badge bg-light text-dark me-1 mb-1">Claude Code Skill</span>
-                <span class="badge bg-light text-dark me-1 mb-1">.cube LUT</span>
-                <span class="badge bg-light text-dark me-1 mb-1">DaVinci Resolve</span>
-                <span class="badge bg-light text-dark me-1 mb-1">Premiere Pro</span>
-              </div>
-              <a href="https://github.com/isaacrowntree/color-grade-ai" class="btn btn-sm btn-outline-danger"><i class="fab fa-github me-1"></i>Repository</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- Education & Extracurricular Section -->
-  <div class="row mb-5">
-    <div class="col-lg-6">
-      <div class="section p-4 p-lg-5 h-100">
-        <div class="pattern-bg"></div>
-        <h2 class="section-title" id="education"><i class="fa fa-graduation-cap me-2" aria-hidden="true"></i>Education</h2>
-        <ul class="mb-0">
-          <li>Bachelor of Applied Science (Information Technology)</li>
-          <li>Certificate IV - Training and Assessment</li>
-          <li><a href="https://bento.io">BentoBox</a></li>
-          <li>Professional Development courses including: AWS, UX, Agile, Salesforce</li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="section p-4 p-lg-5 h-100">
-        <div class="pattern-bg"></div>
-        <h2 class="section-title"><i class="fa fa-running me-2"></i>Extra-curricular</h2>
-        <ul class="mb-0">
-          <li>Deeply passionate about photography and videography, capturing moments through both still images and dynamic videos</li>
-          <li>Completed 5 Spartan Races and 5 Tough Mudders -- embracing brutal terrain and obstacles</li>
-          <li>Worked and volunteered three summers in Sweden as Event Manager and Bar staff at dance events <small>2012, 2013, 2015</small></li>
-          <li>Volunteered one year <small>2014</small> as an English coach for international students</li>
-          <li>Trombone player for over 20 years, dancer for 9 years with choreography experience</li>
-          <li>Love long bike rides anywhere between 40 and 100km with coworkers and friends on weekends</li>
-          <li>Inveterate traveler and collector of geeky gadgets</li>
-          <li>Currently learning Spanish to enhance cross-cultural communication and personal growth</li>
-          <li>Drank way too much coffee, went cold turkey. Possibly my greatest accomplishment to date</li>
-        </ul>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Testimonial Section -->
-  <div class="row mb-5">
-    <div class="col-12">
-      <div class="section p-4 p-lg-5">
-        <div class="pattern-bg"></div>
-        <h2 class="section-title" id="testimonials"><i class="fa fa-quote-left me-2" aria-hidden="true"></i>Reference</h2>
-        
-        <blockquote class="blockquote mb-0">
-          <div class="row g-4">
-            <div class="col-md-6">
-              <p>...Although Isaac's job title was Senior Developer, in his time
-              with the company Isaac performed many roles outside of that role.
-              He was instrumental in all facets of Digital Development and
-              Digital Marketing.</p>
-              
-              <p>Isaac performed as lead architect on many projects; migration to AWS,
-              lead generation (Salesforce), Intranet builds plus numerous more. Isaac also was
-              the lead in all SEO implementations including being an Analytics Analyst.</p>
-            </div>
-            <div class="col-md-6">
-              <p>Isaac always performed all tasks with a passion and commitment to making a difference,
-              displaying values that not only enhanced the development team,
-              but the greater company as well.</p>
-              
-              <p>I have no hesitation in recommending Isaac for any IT/development position
-              and if the chance arises I would happily re-employ him as I truly
-              consider him to be a valuable asset to any team...</p>
-            </div>
-          </div>
-          <footer class="blockquote-footer mt-3">
-            Scott Morgan, Head of Digital Development <cite><a href="http://raywhite.com/">Ray White</a></cite>
-          </footer>
-        </blockquote>
-      </div>
-    </div>
-  </div>
-  
 </div>
+
+<!-- ============================= CONTACT ============================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2 class="contact-title">Let's <em>work together</em>.</h2>
+    <p class="contact-lead">
+      I'm always interested in conversations about engineering leadership, AI-in-production, SaaS product work, and deep technical problems.
+    </p>
+    <div class="contact-channels">
+      <a href="mailto:isaac@rowntree.me" class="btn btn--primary"><i class="fas fa-envelope"></i>isaac@rowntree.me</a>
+      <a href="https://github.com/isaacrowntree" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fab fa-github"></i>GitHub</a>
+      <a href="https://twitter.com/tikwanleep" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fab fa-x-twitter"></i>Twitter / X</a>
+      <a href="https://www.linkedin.com/in/zemonstas/" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fab fa-linkedin"></i>LinkedIn</a>
+      <a href="https://www.instagram.com/zemonstas" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fab fa-instagram"></i>@zemonstas</a>
+      <button type="button" class="btn btn--ghost" data-print><i class="fas fa-file-arrow-down"></i>Download PDF</button>
+    </div>
+  </div>
+</section>

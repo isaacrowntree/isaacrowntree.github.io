@@ -1,0 +1,186 @@
+/* =========================================================================
+   print.css — clean resume output for Ctrl/Cmd+P → Save as PDF
+   ========================================================================= */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 1.5cm 1.5cm;
+  }
+
+  html { scroll-behavior: auto; }
+
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    font-family: 'Inter', Helvetica, Arial, sans-serif !important;
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+
+  body::before, body::after { display: none !important; }
+
+  .topbar, .rail, .cmdk-overlay { display: none !important; }
+
+  main { padding-top: 0 !important; }
+
+  a {
+    color: #1d4ed8 !important;
+    text-decoration: underline;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .display-serif,
+  .hero-name,
+  .section-title,
+  .role__title,
+  .work-card__title,
+  .contact-title,
+  .tldr-body {
+    font-family: 'Georgia', 'Instrument Serif', serif !important;
+    color: #111 !important;
+  }
+
+  .mono, .section-label, .section-meta, .hero-role, .hero-tagline,
+  .role__period, .role__company, .work-card__id-label, .work-card__kicker,
+  .stack-badge, .work-card__link, .oss-card__title, .oss-card__kicker,
+  .skill-row__label, .skill-pill, .ref-card__role, .education__label,
+  .education__items, .footer-bar {
+    font-family: 'Menlo', 'Courier New', monospace !important;
+    color: #444 !important;
+  }
+
+  .hero {
+    padding: 0 0 0.5cm;
+    border-bottom: 1px solid #ccc;
+    page-break-after: avoid;
+  }
+
+  .hero-grid {
+    grid-template-columns: 80px 1fr;
+    gap: 0.8cm;
+  }
+
+  .hero-avatar {
+    width: 80px;
+    height: 80px;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  .hero-name {
+    font-size: 26pt !important;
+    color: #111 !important;
+  }
+
+  .hero-role { color: #2563eb !important; }
+
+  .hero-role .dot { display: none; }
+
+  .hero-actions .btn { display: none; }
+
+  .hero-actions::before {
+    content: "isaac@rowntree.me · github.com/isaacrowntree · zackdesign.biz";
+    font-family: 'Menlo', 'Courier New', monospace;
+    font-size: 9pt;
+    color: #444;
+  }
+
+  .section {
+    padding: 0.5cm 0;
+    page-break-inside: auto;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .section-head { margin-bottom: 0.4cm; }
+
+  .section-title { font-size: 16pt !important; }
+
+  .section-label { color: #2563eb !important; }
+
+  .tldr { padding: 0.5cm 0; border-bottom: 1px solid #ddd; }
+  .tldr-body { font-size: 12pt !important; color: #111 !important; }
+  .tldr-body em { color: #2563eb !important; }
+
+  .timeline .role,
+  .work-card,
+  .oss-card,
+  .ref,
+  .skill-row {
+    page-break-inside: avoid;
+    background: #fff !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 4px !important;
+    padding: 0.4cm !important;
+    margin-bottom: 0.25cm !important;
+    backdrop-filter: none !important;
+  }
+
+  .timeline .role { border: none !important; padding: 0.3cm 0 !important; border-top: 1px solid #eee !important; }
+  .timeline .role:first-child { border-top: none !important; padding-top: 0 !important; }
+
+  .role { grid-template-columns: 120px 1fr !important; gap: 0.4cm !important; }
+  .role__period { color: #2563eb !important; font-size: 8.5pt; }
+  .role__title { font-size: 13pt !important; color: #111 !important; }
+  .role__company { font-size: 9pt; }
+  .role__bullets li { color: #222 !important; font-size: 9.5pt; }
+  .role__bullets li::before { color: #2563eb !important; }
+  .role__bullets li strong { color: #111 !important; }
+
+  .work-grid { gap: 0.25cm !important; }
+  .work-card { grid-template-columns: 1fr !important; gap: 0.3cm !important; }
+  .work-card__aside { padding-left: 0 !important; border-left: none !important; border-top: 1px solid #eee !important; padding-top: 0.3cm !important; }
+  .work-card__title { font-size: 13pt !important; color: #111 !important; }
+  .work-card__body p, .work-card__body li { color: #222 !important; font-size: 9.5pt; }
+  .work-card__body li::before { color: #2563eb !important; }
+  .work-card__body li strong { color: #111 !important; }
+
+  .stack-badge,
+  .skill-pill,
+  .oss-card__link,
+  .work-card__link {
+    background: #f3f4f6 !important;
+    color: #333 !important;
+    border: 1px solid #ddd !important;
+  }
+
+  .oss-grid { gap: 0.25cm !important; grid-template-columns: 1fr 1fr !important; }
+  .oss-card__body { color: #333 !important; font-size: 9pt; }
+
+  .skills { gap: 0 !important; }
+  .skill-row { grid-template-columns: 120px 1fr !important; gap: 0.4cm !important; border: none !important; padding: 0.25cm 0 !important; border-top: 1px solid #eee !important; }
+  .skill-row:first-child { border-top: none !important; padding-top: 0 !important; }
+  .skill-row__label { color: #2563eb !important; }
+
+  .refs-grid { grid-template-columns: 1fr !important; }
+  .ref-card::before { color: #cbd5e1 !important; }
+  .ref-card__quote { color: #111 !important; font-size: 10pt; }
+  .ref-card__name { color: #111 !important; }
+  .ref-card__role { color: #555 !important; }
+
+  .beyond { padding: 0.4cm 0; }
+  .beyond-line { color: #333 !important; font-size: 10pt; }
+  .beyond-line span { color: #b45309 !important; }
+
+  .education { padding: 0.4cm 0; }
+  .education__label { color: #2563eb !important; }
+  .education__items { color: #333 !important; }
+
+  .contact { padding: 0.4cm 0 0.2cm; border-top: 1px solid #ddd; }
+  .contact-title { font-size: 14pt !important; color: #111 !important; }
+  .contact-title em { color: #2563eb !important; }
+  .contact-lead { color: #444 !important; font-size: 9.5pt; }
+
+  .contact-channels { justify-content: flex-start; }
+
+  .contact-channels .btn {
+    background: #fff !important;
+    color: #2563eb !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+  }
+
+  .footer-bar { padding: 0.25cm 0; color: #666 !important; border-top: 1px solid #eee; font-size: 7.5pt; }
+
+  .pulse, .dot { display: none !important; }
+}

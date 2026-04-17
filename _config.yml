@@ -1,6 +1,6 @@
 name: Isaac Rowntree
 
-description: Coder. Dancer. Performer. Trombonist. Guitarist. Singer. Rock Climber. Tap Dancer. Surfer. Coffee Snob. Motorcyclist. Cyclist. Tumbler. Tennis Player. Tough Mudder (5x). Kite Surfer. Photographer. Videographer. Spartan Race (5x).
+description: Head of Tech at CamperMate. Coder, dancer, photographer, videographer, trombonist, motorcyclist. Twenty years of shipping software.
 
 google_analytics: G-VSVH3S0MFD
 
@@ -16,6 +16,8 @@ social:
   links:
     - https://github.com/isaacrowntree
     - https://twitter.com/tikwanleep
+    - https://www.linkedin.com/in/zemonstas/
+    - https://www.instagram.com/zemonstas
 
 # Schema.org / JSON-LD
 schema:
@@ -27,6 +29,9 @@ schema:
   sameAs:
     - https://github.com/isaacrowntree
     - https://twitter.com/tikwanleep
+    - https://www.linkedin.com/in/zemonstas/
+    - https://www.instagram.com/zemonstas
+    - https://zackdesign.biz
   jobTitle: Head of Tech
   worksFor:
     "@type": Organization
@@ -36,11 +41,15 @@ schema:
     name: Bachelor of Applied Science (Information Technology)
   knowsAbout:
     - Software Engineering
-    - Remote Team Management
+    - Engineering Leadership
     - Serverless Architecture
-    - React
+    - Cloudflare Workers
+    - React Native
+    - Next.js
     - TypeScript
-    - Cloudflare
+    - Supabase
+    - PlanetScale
+    - Typesense
     - AI Development
     - Vector Search
     - RAG Systems
@@ -51,6 +60,8 @@ exclude:
   - Gemfile.lock
   - CNAME
   - vendor
+  - README.md
+  - .git
 
 plugins:
   - jekyll-seo-tag

@@ -3,797 +3,87 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#5D5FEF">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0A0A1A">
+
     {% seo %}
-    
+
     <meta name="google-site-verification" content="7gEGmNa9BjGXAHTMIPBrED3YAl43OgnP4lPMhZXZXoQ" />
     <link rel="canonical" href="{{ site.url }}{% if page.url != '/index.html' %}{{ page.url }}{% endif %}"/>
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/logo.png">
-    
-    <!-- Bootstrap 5 -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
-    <!-- Google Fonts -->
+
+    <!-- Fonts: Inter (body), Instrument Serif (display), JetBrains Mono (mono) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Inter:wght@700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    
-    <!-- Custom CSS -->
-    <style>
-      :root {
-        --primary-color: #5D5FEF;
-        --primary-color-rgb: 93, 95, 239;
-        --secondary-color: #6A2BFF;
-        --secondary-color-rgb: 106, 43, 255;
-        --text-color: #212529;
-        --bg-color: #ffffff;
-        --card-bg: #fff;
-        --section-bg: #f8f9fa;
-        --pattern-opacity: 0.03;
-        --border-color: rgba(0,0,0,.125);
-      }
-      
-      [data-theme="dark"] {
-        --primary-color: #8587FF;
-        --primary-color-rgb: 133, 135, 255;
-        --secondary-color: #9D75FF;
-        --secondary-color-rgb: 157, 117, 255;
-        --text-color: #f8f9fa;
-        --bg-color: #121212;
-        --card-bg: #1e1e1e;
-        --section-bg: #242424;
-        --pattern-opacity: 0.06;
-        --border-color: rgba(255,255,255,.125);
-      }
-      
-      body {
-        font-family: 'Outfit', sans-serif;
-        padding-top: 76px;
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        transition: all 0.3s ease;
-        line-height: 1.7;
-      }
-      
-      h1, h2, h3, h4, h5, h6 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-      }
-      
-      .navbar {
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        background-color: var(--card-bg) !important;
-      }
-      
-      .navbar-light .navbar-brand,
-      .navbar-light .nav-link,
-      .navbar-light .navbar-toggler {
-        color: var(--text-color);
-      }
-      
-      .navbar-brand {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        font-size: 1.5rem;
-        color: var(--primary-color) !important;
-      }
-      
-      .nav-link {
-        font-weight: 500;
-        color: var(--text-color) !important;
-        margin: 0 10px;
-        transition: color 0.3s;
-      }
-      
-      .nav-link:hover {
-        color: var(--primary-color) !important;
-      }
-      
-      .social-icons .nav-link {
-        font-size: 1.2rem;
-        padding: 0.5rem;
-      }
-      
-      .hero-section {
-        padding: 140px 0 100px;
-        position: relative;
-        color: white;
-        overflow: hidden;
-      }
-      
-      .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url('/images/background.jpg') center/cover no-repeat fixed;
-        filter: brightness(0.6);
-        z-index: -2;
-      }
-      
-      .hero-section::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(27, 106, 216, 0.9) 0%, rgba(32, 77, 181, 0.85) 100%);
-        z-index: -1;
-      }
-      
-      .hero-content {
-        position: relative;
-        z-index: 1;
-      }
-      
-      .hero-img {
-        border-radius: 50%;
-        border: 5px solid white;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        width: 240px;
-        height: 240px;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-      }
-      
-      .hero-img:hover {
-        transform: scale(1.05);
-      }
-      
-      .section {
-        padding: 80px 0;
-        background-color: var(--section-bg);
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        margin-bottom: 30px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        overflow: hidden;
-        color: var(--text-color);
-      }
-      
-      .section:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 35px rgba(0, 0, 0, 0.05);
-      }
-      
-      .section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      
-      .section:hover::before {
-        opacity: 1;
-      }
-      
-      .section-title {
-        color: var(--primary-color);
-        margin-bottom: 30px;
-        position: relative;
-        padding-bottom: 15px;
-        font-weight: 700;
-      }
-      
-      .section-title::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 50px;
-        height: 3px;
-        background-color: var(--secondary-color);
-      }
-      
-      .skill-tag {
-        display: inline-block;
-        background-color: rgba(27, 106, 216, 0.1);
-        color: var(--primary-color);
-        padding: 8px 16px;
-        border-radius: 30px;
-        margin: 5px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(27, 106, 216, 0.2);
-      }
-      
-      .skill-tag:hover {
-        background-color: var(--primary-color);
-        color: white;
-        transform: translateY(-2px);
-      }
-      
-      .timeline-item {
-        position: relative;
-        padding-left: 30px;
-        margin-bottom: 40px;
-      }
-      
-      .timeline-item::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        background-color: var(--primary-color);
-        transition: transform 0.3s ease, background-color 0.3s ease;
-      }
-      
-      .timeline-item:hover::before {
-        transform: scale(1.3);
-        background-color: var(--secondary-color);
-      }
-      
-      .timeline-item::after {
-        content: '';
-        position: absolute;
-        left: 7px;
-        top: 15px;
-        bottom: -40px;
-        width: 1px;
-        background-color: #e5e7eb;
-      }
-      
-      .timeline-item:last-child::after {
-        display: none;
-      }
-      
-      .timeline-title {
-        font-weight: 600;
-        margin-bottom: 5px;
-        color: var(--text-color);
-        transition: color 0.3s ease;
-      }
-      
-      .timeline-item:hover .timeline-title {
-        color: var(--primary-color);
-      }
-      
-      .timeline-period {
-        color: var(--secondary-color);
-        font-size: 0.9rem;
-        margin-bottom: 10px;
-        font-weight: 500;
-      }
-      
-      .blockquote {
-        padding: 30px;
-        background-color: var(--section-bg);
-        border-left: 4px solid var(--secondary-color);
-        border-radius: 12px;
-        font-style: italic;
-        position: relative;
-        color: var(--text-color);
-      }
-      
-      .blockquote::before {
-        content: "\201C";
-        font-family: Georgia, serif;
-        font-size: 5rem;
-        position: absolute;
-        top: -20px;
-        left: 10px;
-        color: rgba(var(--primary-color-rgb), 0.1);
-      }
-      
-      .blockquote-footer {
-        font-weight: 500;
-        color: var(--text-color);
-      }
-      
-      .footer {
-        padding: 20px 0;
-        background-color: var(--card-bg);
-        color: var(--text-color);
-        text-align: center;
-        font-size: 14px;
-      }
-      
-      .video-container {
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        overflow: hidden;
-        border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      
-      .video-container:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-      }
-      
-      .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
-      
-      .btn {
-        border-radius: 30px;
-        padding: 10px 20px;
-        transition: all 0.3s ease;
-        font-weight: 500;
-      }
-      
-      .btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
-      }
-      
-      .btn-light {
-        background-color: white;
-        color: var(--primary-color);
-      }
-      
-      .btn-outline-light {
-        color: white;
-        border: 2px solid rgba(255, 255, 255, 0.8);
-      }
-      
-      .btn-outline-light:hover {
-        background-color: white;
-        color: var(--primary-color);
-      }
-      
-      /* Personalized elements */
-      .section ul li {
-        position: relative;
-        padding-left: 5px;
-        margin-bottom: 10px;
-        transition: transform 0.2s ease;
-      }
-      
-      .section ul li:hover {
-        transform: translateX(5px);
-      }
-      
-      a {
-        color: var(--primary-color);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s ease;
-        position: relative;
-      }
-      
-      a:hover {
-        color: var(--secondary-color);
-      }
-      
-      a:not(.btn):not(.nav-link)::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: var(--secondary-color);
-        transition: width 0.3s ease;
-      }
-      
-      a:not(.btn):not(.nav-link):hover::after {
-        width: 100%;
-      }
-      
-      /* Personalized background pattern for sections */
-      .section {
-        position: relative;
-      }
-      
-      .pattern-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        opacity: var(--pattern-opacity);
-        z-index: -1;
-      }
-      
-      /* Dark/Light mode toggle */
-      .theme-toggle {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        border: none;
-        background-color: var(--section-bg);
-        color: var(--text-color);
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-      
-      .theme-toggle:hover {
-        transform: rotate(15deg);
-        background-color: var(--primary-color);
-        color: white;
-      }
-      
-      /* Technical Showcase Styles */
-      .tech-showcase-card {
-        transition: all 0.3s ease;
-        border: 1px solid var(--border-color) !important;
-        background-color: var(--card-bg) !important;
-      }
-      
-      .tech-showcase-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
-      }
-      
-      .showcase-icon {
-        border-radius: 12px;
-      }
-      
-      .metric-card {
-        border-radius: 8px;
-        transition: all 0.3s ease;
-      }
-      
-      .metric-card:hover {
-        transform: translateY(-2px);
-      }
-      
-      .achievement-summary {
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      }
-      
-      .bg-gradient {
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
-      }
-      
-      .showcase-intro {
-        border-left: 4px solid var(--primary-color);
-      }
-      
-      .achievement-metric .h2 {
-        font-weight: 700;
-        font-size: 2.5rem;
-      }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-      /* Skill Cloud */
-      .skill-cloud {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-      }
+    <!-- Resume stylesheet -->
+    <link rel="stylesheet" href="/css/resume.css">
+    <link rel="stylesheet" href="/css/print.css" media="print">
 
-      .skill-group {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .skill-group-label {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: var(--text-color);
-        opacity: 0.6;
-        min-width: 120px;
-        margin: 0;
-      }
-
-      .skill-badge {
-        display: inline-block;
-        padding: 0.35rem 0.85rem;
-        border-radius: 20px;
-        font-size: 0.82rem;
-        font-weight: 500;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .skill-badge:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      }
-
-      /* Skill badge category colours */
-      .skill-badge-leadership { background: rgba(93,95,239,0.12); color: #5D5FEF; }
-      .skill-badge-lang { background: rgba(25,135,84,0.12); color: #198754; }
-      .skill-badge-frontend { background: rgba(13,202,240,0.12); color: #0891b2; }
-      .skill-badge-backend { background: rgba(111,66,193,0.12); color: #6f42c1; }
-      .skill-badge-ai { background: rgba(255,193,7,0.15); color: #b45309; }
-      .skill-badge-cloud { background: rgba(13,110,253,0.12); color: #0d6efd; }
-      .skill-badge-data { background: rgba(220,53,69,0.12); color: #dc3545; }
-      .skill-badge-security { background: rgba(108,117,125,0.15); color: #495057; }
-      .skill-badge-devops { background: rgba(32,201,151,0.12); color: #0f766e; }
-
-      /* Dark mode skill badges */
-      [data-theme="dark"] .skill-badge-leadership { background: rgba(133,135,255,0.2); color: #a5a7ff; }
-      [data-theme="dark"] .skill-badge-lang { background: rgba(32,201,151,0.2); color: #20c997; }
-      [data-theme="dark"] .skill-badge-frontend { background: rgba(13,202,240,0.2); color: #0dcaf0; }
-      [data-theme="dark"] .skill-badge-backend { background: rgba(157,117,255,0.2); color: #9d75ff; }
-      [data-theme="dark"] .skill-badge-ai { background: rgba(255,193,7,0.2); color: #ffc107; }
-      [data-theme="dark"] .skill-badge-cloud { background: rgba(13,110,253,0.2); color: #6ea8fe; }
-      [data-theme="dark"] .skill-badge-data { background: rgba(220,53,69,0.2); color: #ea868f; }
-      [data-theme="dark"] .skill-badge-security { background: rgba(173,181,189,0.2); color: #adb5bd; }
-      [data-theme="dark"] .skill-badge-devops { background: rgba(32,201,151,0.2); color: #20c997; }
-
-      /* Mobile responsive improvements */
-      @media (max-width: 767.98px) {
-        .achievement-metric .h2 {
-          font-size: 1.8rem;
-        }
-        
-        .tech-showcase-card {
-          margin-bottom: 1rem;
-        }
-        
-        .showcase-icon {
-          width: 60px !important;
-          height: 60px !important;
-          display: flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-        }
-        
-        .showcase-icon i {
-          font-size: 1.5rem !important;
-        }
-        
-        .metric-card {
-          margin-bottom: 0.75rem;
-        }
-        
-        .hero-img {
-          width: 180px !important;
-          height: 180px !important;
-        }
-        
-        .section {
-          padding: 1.5rem !important;
-        }
-        
-        .skill-tag {
-          font-size: 0.75rem;
-          margin-bottom: 0.25rem;
-        }
-
-        .skill-group-label {
-          min-width: 100%;
-          margin-bottom: 0.25rem;
-        }
-
-        .skill-badge {
-          font-size: 0.75rem;
-          padding: 0.25rem 0.65rem;
-        }
-      }
-      
-      @media (max-width: 575.98px) {
-        .achievement-metric .h2 {
-          font-size: 1.5rem;
-        }
-        
-        .hero-content h1 {
-          font-size: 2rem;
-        }
-        
-        .hero-content .lead {
-          font-size: 1rem;
-        }
-        
-        .section-title {
-          font-size: 1.5rem;
-        }
-      }
-      
-      /* Dark mode adjustments for showcase */
-      [data-theme="dark"] .tech-showcase-card {
-        background-color: var(--card-bg) !important;
-        border-color: var(--border-color) !important;
-      }
-      
-      [data-theme="dark"] .badge.bg-light {
-        background-color: var(--section-bg) !important;
-        color: var(--text-color) !important;
-      }
-      
-      /* Dark mode adjustments for skills section */
-      [data-theme="dark"] .bg-primary.bg-opacity-10 {
-        background-color: rgba(var(--primary-color-rgb), 0.15) !important;
-      }
-      
-      [data-theme="dark"] .bg-success.bg-opacity-10 {
-        background-color: rgba(25, 135, 84, 0.15) !important;
-      }
-      
-      [data-theme="dark"] .bg-warning.bg-opacity-10 {
-        background-color: rgba(255, 193, 7, 0.15) !important;
-      }
-      
-      [data-theme="dark"] .bg-danger.bg-opacity-10 {
-        background-color: rgba(220, 53, 69, 0.15) !important;
-      }
-      
-      [data-theme="dark"] .text-muted {
-        color: rgba(var(--text-color), 0.7) !important;
-      }
-      
-      [data-theme="dark"] .text-primary {
-        color: var(--primary-color) !important;
-      }
-      
-      [data-theme="dark"] .text-success {
-        color: #20c997 !important;
-      }
-      
-      [data-theme="dark"] .text-warning {
-        color: #ffc107 !important;
-      }
-      
-      [data-theme="dark"] .text-danger {
-        color: #dc3545 !important;
-      }
-      
-      [data-theme="dark"] .text-info {
-        color: #0dcaf0 !important;
-      }
-      
-      [data-theme="dark"] .text-secondary {
-        color: #6c757d !important;
-      }
-      
-      [data-theme="dark"] .text-dark {
-        color: var(--text-color) !important;
-      }
-      
-      /* Dark mode navbar adjustments */
-      [data-theme="dark"] .navbar-toggler {
-        border-color: var(--border-color);
-      }
-      
-      [data-theme="dark"] .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28248, 249, 250, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='m4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-      }
-
-      /* SessionHQ wordmark — mirrors the live product logo (font-bold, tracking-tight). */
-      .sessionhq-wordmark {
-        display: inline-block;
-        padding: 0.55rem 1.15rem;
-        background: linear-gradient(135deg, #0a0a0f, #16161e);
-        border-radius: 0.75rem;
-        font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-        font-weight: 700;
-        letter-spacing: -0.025em;
-        font-size: 1.75rem;
-        line-height: 1;
-        color: #ffffff;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      }
-      .sessionhq-hq {
-        background: linear-gradient(to right, #818cf8, #60a5fa, #22d3ee);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-    </style>
-    
     {% include analytics.html %}
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="/" aria-label="Isaac Rowntree Homepage">Isaac Rowntree</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    <!-- Top bar -->
+    <nav class="topbar" aria-label="Primary">
+      <a class="topbar__brand" href="/">
+        <span class="display-serif">Isaac Rowntree</span>
+        <span class="mono">head of tech</span>
+      </a>
+      <div class="topbar__nav">
+        <a href="https://zackdesign.biz" class="topbar__link" target="_blank" rel="noopener">Zack Design</a>
+        <a href="https://github.com/isaacrowntree" class="topbar__link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <button type="button" class="topbar__link" data-open-cmdk aria-label="Open command palette">
+          <i class="fas fa-magnifying-glass"></i>
+          <span class="kbd" data-kbd-mod>⌘</span><span class="kbd">K</span>
         </button>
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a href="https://zackdesign.biz" class="nav-link" aria-label="Zack Design Website">Zack Design</a>
-            </li>
-            <li class="nav-item">
-              <a href="https://github.com/isaacrowntree" class="nav-link" aria-label="GitHub Profile"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a href="#experience" class="nav-link">Experience</a>
-            </li>
-            <li class="nav-item">
-              <a href="#skills" class="nav-link">Skills</a>
-            </li>
-            <li class="nav-item">
-              <a href="#technical-showcase" class="nav-link">Tech Showcase</a>
-            </li>
-            <li class="nav-item">
-              <a href="#projects" class="nav-link">Projects</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav social-icons">
-            <li class="nav-item">
-              <a href="mailto:isaac@rowntree.me" class="nav-link" aria-label="Email Contact"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-            </li>
-            <li class="nav-item">
-              <a href="https://twitter.com/tikwanleep" class="nav-link" aria-label="Twitter Profile"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-            </li>
-            <li class="nav-item ms-2">
-              <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
-                <i class="fas fa-moon" id="theme-icon" aria-hidden="true"></i>
-              </button>
-            </li>
-          </ul>
-        </div>
       </div>
     </nav>
 
-    {{ content }}
+    <!-- Side rail (desktop only) -->
+    <nav class="rail" aria-label="Section jumps">
+      <button type="button" class="rail__dot" data-target="tldr" data-label="Overview" aria-label="Overview"></button>
+      <button type="button" class="rail__dot" data-target="experience" data-label="Experience" aria-label="Experience"></button>
+      <button type="button" class="rail__dot" data-target="work" data-label="Selected work" aria-label="Selected work"></button>
+      <button type="button" class="rail__dot" data-target="oss" data-label="Open source" aria-label="Open source"></button>
+      <button type="button" class="rail__dot" data-target="skills" data-label="Skills" aria-label="Skills"></button>
+      <button type="button" class="rail__dot" data-target="references" data-label="References" aria-label="References"></button>
+      <button type="button" class="rail__dot" data-target="beyond" data-label="Beyond code" aria-label="Beyond code"></button>
+      <button type="button" class="rail__dot" data-target="contact" data-label="Contact" aria-label="Contact"></button>
+    </nav>
 
-    <footer class="footer mt-4" role="contentinfo">
-      <div class="container">
-        <p>&copy; {{ site.time | date: '%Y' }} Isaac Rowntree - Built with <span class="text-danger">❤</span> using Jekyll</p>
+    <!-- Command palette modal -->
+    <div class="cmdk-overlay" id="cmdk" role="dialog" aria-modal="true" aria-label="Command palette" hidden="false">
+      <div class="cmdk" role="combobox" aria-haspopup="listbox">
+        <input type="text" class="cmdk__input" placeholder="Type to search sections or actions…" aria-label="Search">
+        <div class="cmdk__list" role="listbox"></div>
+        <div class="cmdk__footer">
+          <span><span class="kbd">↑</span><span class="kbd">↓</span> navigate</span>
+          <span><span class="kbd">↵</span> select</span>
+          <span><span class="kbd" data-kbd-mod>⌘</span><span class="kbd">K</span> toggle</span>
+          <span><span class="kbd">Esc</span> close</span>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer class="footer-bar">
+      <div class="wrap">
+        © {{ site.time | date: '%Y' }} Isaac Rowntree ·
+        <a href="https://zackdesign.biz">Zack Design</a> ·
+        Built with Jekyll
       </div>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
-    
-    <!-- Theme Toggle Script -->
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        
-        // Check for saved theme preference or prefer-color-scheme
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-          themeIcon.classList.replace('fa-moon', 'fa-sun');
-        }
-        
-        themeToggle.addEventListener('click', () => {
-          const currentTheme = document.documentElement.getAttribute('data-theme');
-          let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-          
-          document.documentElement.setAttribute('data-theme', newTheme);
-          localStorage.setItem('theme', newTheme);
-          
-          if (newTheme === 'dark') {
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-          } else {
-            themeIcon.classList.replace('fa-sun', 'fa-moon');
-          }
-        });
-      });
-    </script>
+    <script src="/js/app.js" defer></script>
   </body>
 </html>
