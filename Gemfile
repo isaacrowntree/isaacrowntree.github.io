@@ -1,8 +1,10 @@
-source 'https://rubygems.org'
-gem "github-pages", group: :jekyll_plugins
+source "https://rubygems.org"
 
-# If you have any plugins, put them here!
+gem "jekyll", "~> 4.4"
+
 group :jekyll_plugins do
-    gem 'jekyll-seo-tag'
-  end
-  
+  gem "jekyll-seo-tag"
+end
+
+# webrick is no longer a default gem from Ruby 3.0+, needed for `jekyll serve`
+gem "webrick", "~> 1.9"

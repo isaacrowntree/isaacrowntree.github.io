@@ -58,10 +58,11 @@ schema:
 exclude:
   - Gemfile
   - Gemfile.lock
-  - CNAME
   - vendor
   - README.md
   - .git
+# NOTE: CNAME is intentionally NOT excluded — it must ship in the built
+# artifact so the isaacrowntree.com custom domain is preserved on deploy.
 
 plugins:
   - jekyll-seo-tag
