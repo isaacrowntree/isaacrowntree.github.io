@@ -860,6 +860,33 @@ a:hover { color: var(--accent-hover); }
 
 .oss-card__link:hover { color: var(--accent); }
 
+/* Contribution cards — repo name + upstream fix */
+.oss-card__repo {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--pearl-muted);
+  margin-top: -0.2rem;
+}
+
+.contrib-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--border-soft);
+  color: var(--pearl-soft);
+}
+
+.contrib-badge--merged {
+  color: #6EE7B7;
+  border-color: rgba(110, 231, 183, 0.4);
+  background: rgba(110, 231, 183, 0.08);
+}
+
 /* -------------------------------------------------------------------------
    Skills
    ------------------------------------------------------------------------- */

@@ -66,6 +66,7 @@
     { id: 'experience', group: 'Jump to', label: 'Experience', icon: 'fa-briefcase', type: 'jump' },
     { id: 'work', group: 'Jump to', label: 'Selected work', icon: 'fa-rocket', type: 'jump' },
     { id: 'oss', group: 'Jump to', label: 'Open source', icon: 'fa-code-branch', type: 'jump' },
+    { id: 'contributions', group: 'Jump to', label: 'Contributions', icon: 'fa-code-merge', type: 'jump' },
     { id: 'skills', group: 'Jump to', label: 'Skills', icon: 'fa-layer-group', type: 'jump' },
     { id: 'references', group: 'Jump to', label: 'References', icon: 'fa-quote-left', type: 'jump' },
     { id: 'beyond', group: 'Jump to', label: 'Beyond code', icon: 'fa-heart', type: 'jump' },
