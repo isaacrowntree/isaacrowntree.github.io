@@ -1143,6 +1143,21 @@
     max-width: 300px;
   }
 
+  .app-link {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--sugar);
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(255, 177, 61, .5);
+  }
+
+  .app-link:hover { border-bottom-style: solid; }
+
+  .app-link:focus-visible {
+    outline: 3px solid var(--taro);
+    outline-offset: 3px;
+  }
+
   /* demo locale switch: the page mixes, the product localizes */
   .lang-toggle {
     display: flex;
@@ -1759,7 +1774,8 @@
         <button class="lt on" data-l="en" aria-pressed="true">EN</button>
         <button class="lt" data-l="zh" aria-pressed="false" lang="zh-Hans">中文</button>
       </div>
-      <p class="caption">Tilt the card. Two taps to a free drink.</p>
+      <p class="caption">Tilt the card. Two taps to a free drink.<br>
+      <a class="app-link" href="./app/">Open the full-screen demo app →</a></p>
     </div>
   </section>
 
