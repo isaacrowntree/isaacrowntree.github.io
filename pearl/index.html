@@ -1,0 +1,2491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#150E1E">
+<title>PEARL — Sydney's late-night sugar run</title>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, dl, dd, ul, ol, figure, blockquote { margin: 0; padding: 0; }
+  :root {
+    /* Night-market ground. Purple-biased darks, never neutral grey. */
+    --ground:    #150E1E;
+    --ground-2:  #1E1429;
+    --surface:   #241A33;
+    --edge:      #362848;
+
+    --milk:      #FFF4E4;
+    --milk-dim:  #C9BCD4;
+    --milk-mute: #8E7FA0;
+
+    --taro:      #B18AF0;
+    --lychee:    #FF6E96;
+    --sugar:     #FFB13D;
+    --matcha:    #5FD79B;
+
+    /* In-app (the lit object) */
+    --app-bg:    #FFF4E4;
+    --app-card:  #FFFFFF;
+    --app-ink:   #2A1B3D;
+    --app-mute:  #6E5F82;   /* 5.3:1 on app-bg — AA at small sizes */
+    --app-line:  #EFE2D2;
+    --app-lock:  #8D7FA1;
+    --seal-ink:  #B82450;   /* vermillion seal-paste red, 5.0:1 on cream */
+
+    --display: ui-rounded, "SF Pro Rounded", "PingFang SC", "Hiragino Maru Gothic ProN",
+               "Microsoft YaHei", "Varela Round", system-ui, sans-serif;
+    --body: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", sans-serif;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+
+    --r-lg: 28px;
+    --r-md: 18px;
+    --r-sm: 12px;
+  }
+
+  /* Deliberate single-theme commitment: this page is a night market at 9pm.
+     A light variant would undo the one idea the design is making. */
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    background:
+      radial-gradient(1100px 700px at 78% -8%, #3A1F52 0%, transparent 60%),
+      radial-gradient(900px 600px at 4% 105%, #2B1240 0%, transparent 55%),
+      var(--ground);
+    color: var(--milk);
+    font-family: var(--body);
+    line-height: 1.55;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grain: keeps the flat darks from reading as a default gradient hero. */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: .1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");
+  }
+
+  /* Bokeh: the night-market lights, drifting slowly behind everything. */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(24px);
+    pointer-events: none;
+    z-index: 0;
+    animation: drift ease-in-out infinite alternate;
+  }
+  .o1 { width: 200px; height: 200px; top: 6%;  left: -60px;  background: var(--taro);   opacity: .14; animation-duration: 19s; }
+  .o2 { width: 130px; height: 130px; top: 28%; right: -30px; background: var(--lychee); opacity: .12; animation-duration: 23s; animation-delay: -6s; }
+  .o3 { width: 90px;  height: 90px;  top: 62%; left: 8%;     background: var(--sugar);  opacity: .13; animation-duration: 15s; animation-delay: -3s; }
+  .o4 { width: 160px; height: 160px; top: 78%; right: 12%;   background: var(--taro);   opacity: .10; animation-duration: 26s; animation-delay: -11s; }
+  .o5 { width: 70px;  height: 70px;  top: 44%; left: 46%;    background: var(--lychee); opacity: .09; animation-duration: 21s; animation-delay: -8s; }
+
+  @keyframes drift {
+    to { transform: translate(20px, -32px); }
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px 96px;
+  }
+
+  /* ---------- load choreography ---------- */
+
+  @keyframes enter {
+    from { opacity: 0; transform: translateY(22px); }
+  }
+
+  .masthead { animation: enter .7s cubic-bezier(.16, 1, .3, 1) both; }
+  .eyebrow  { animation: enter .7s cubic-bezier(.16, 1, .3, 1) .08s both; }
+  h1        { animation: enter .7s cubic-bezier(.16, 1, .3, 1) .16s both; }
+  .lede     { animation: enter .7s cubic-bezier(.16, 1, .3, 1) .24s both; }
+  .facts    { animation: enter .7s cubic-bezier(.16, 1, .3, 1) .32s both; }
+
+  @keyframes phoneIn {
+    0%   { opacity: 0; transform: translateY(56px) scale(.94) rotate(2deg); }
+    70%  { transform: translateY(-6px); }
+    100% { opacity: 1; }
+  }
+
+  .phone { animation: phoneIn .9s cubic-bezier(.16, 1, .3, 1) .35s both; }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 28px 0 40px;
+  }
+
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: .16em;
+    color: var(--milk);
+    line-height: 1.1;
+  }
+
+  .hanzi {
+    display: block;
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .42em;
+    color: var(--taro);
+  }
+
+  .ticker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: .04em;
+    color: var(--milk-dim);
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid var(--edge);
+    border-radius: 999px;
+    padding: 8px 16px;
+  }
+
+  .ticker b {
+    display: inline-block;
+    color: var(--sugar);
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+  }
+
+  .bump { animation: bump .3s cubic-bezier(.2, 1.6, .4, 1); }
+
+  @keyframes bump {
+    40% { transform: scale(1.35); color: var(--sugar); }
+  }
+
+  .pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--matcha);
+    box-shadow: 0 0 0 0 rgba(95, 215, 155, .7);
+    animation: pulse 2.2s ease-out infinite;
+  }
+
+  @keyframes pulse {
+    to { box-shadow: 0 0 0 9px rgba(95, 215, 155, 0); }
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--taro);
+    margin-bottom: 20px;
+  }
+
+  .eyebrow [lang] { text-transform: none; letter-spacing: .2em; }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(42px, 6.2vw, 74px);
+    line-height: .98;
+    letter-spacing: -.03em;
+    text-wrap: balance;
+    margin-bottom: 24px;
+  }
+
+  h1 .hl {
+    background: linear-gradient(100deg, var(--lychee), var(--sugar));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .lede {
+    font-size: 18.5px;
+    color: var(--milk-dim);
+    max-width: 48ch;
+    margin-bottom: 36px;
+  }
+
+  .lede strong { color: var(--milk); font-weight: 600; }
+
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--edge);
+    border: 1px solid var(--edge);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    max-width: 520px;
+  }
+
+  .fact {
+    background: var(--ground-2);
+    padding: 18px 20px;
+  }
+
+  .fact dt {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--milk-mute);
+    margin-bottom: 8px;
+  }
+
+  .fact dd {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 27px;
+    letter-spacing: -.02em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .fact:nth-child(1) dd { color: var(--taro); }
+  .fact:nth-child(2) dd { color: var(--lychee); }
+  .fact:nth-child(3) dd { color: var(--sugar); }
+
+  .fact small {
+    display: block;
+    font-family: var(--body);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--milk-mute);
+    margin-top: 4px;
+  }
+
+  /* ---------- phone ---------- */
+
+  .stage {
+    position: sticky;
+    top: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .phone {
+    position: relative;
+    width: 320px;
+    height: 660px;
+    border-radius: 46px;
+    padding: 11px;
+    background: linear-gradient(160deg, #4A3560, #1B1226 55%);
+    box-shadow:
+      0 2px 0 rgba(255, 255, 255, .12) inset,
+      0 50px 90px -30px rgba(0, 0, 0, .9),
+      0 0 90px -20px rgba(177, 138, 240, .45);
+    flex: none;
+  }
+
+  /* once the intro has played it must never replay (removing .shaking would
+     otherwise restart phoneIn from scratch); .shaking is declared after so it wins */
+  .phone.landed { animation: none; }
+
+  .phone.shaking { animation: shake .45s ease-in-out; }
+
+  @keyframes shake {
+    10% { transform: translate(-3px, 1px) rotate(-.6deg); }
+    30% { transform: translate(3px, -2px) rotate(.5deg); }
+    50% { transform: translate(-2px, 1px); }
+    70% { transform: translate(2px, -1px); }
+  }
+
+  .screen {
+    position: relative;
+    height: 100%;
+    border-radius: 36px;
+    background: var(--app-bg);
+    color: var(--app-ink);
+    overflow: clip; /* clip, not hidden: forbids focus-triggered programmatic scroll */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .notch {
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92px;
+    height: 24px;
+    border-radius: 999px;
+    background: #17101F;
+    z-index: 9;
+  }
+
+  .app-top {
+    padding: 46px 22px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .app-title {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 21px;
+    letter-spacing: -.02em;
+  }
+
+  .app-title span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .3em;
+    color: var(--app-mute);
+    margin-left: 7px;
+  }
+
+  .balance {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 14px;
+    background: var(--app-ink);
+    color: var(--app-bg);
+    border-radius: 999px;
+    padding: 6px 13px 6px 9px;
+  }
+
+  .balance b { display: inline-block; font-variant-numeric: tabular-nums; }
+
+  .app-body {
+    flex: 1;
+    overflow: hidden;
+    padding: 0 22px 14px;
+  }
+
+  .panel {
+    display: none;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .panel::-webkit-scrollbar { display: none; }
+
+  .panel.on {
+    display: block;
+    animation: slidein .34s cubic-bezier(.2, .8, .3, 1);
+  }
+
+  @keyframes slidein {
+    from { opacity: 0; transform: translateX(calc(26px * var(--dir, 0))) translateY(calc(10px * (1 - var(--dir, 0) * var(--dir, 0)))); }
+  }
+
+  /* --- panel: card --- */
+
+  .memcard {
+    position: relative;
+    aspect-ratio: 1.62;
+    border-radius: 20px;
+    padding: 16px 18px;
+    color: #fff;
+    background:
+      linear-gradient(135deg, #7B4BD6 0%, #C15CE0 34%, #FF6E96 62%, #FFB13D 100%);
+    box-shadow: 0 18px 34px -16px rgba(123, 75, 214, .85);
+    overflow: hidden;
+    transition: transform .18s ease-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  /* one-shot entrance sweep, timed to fire just after the phone lands */
+  .memcard::before {
+    content: "";
+    position: absolute;
+    inset: -60%;
+    background: linear-gradient(
+      70deg,
+      transparent 38%,
+      rgba(255, 255, 255, .5) 48%,
+      rgba(255, 255, 255, .1) 54%,
+      transparent 62%);
+    transform: translateX(-55%) rotate(8deg);
+    animation: sweep 1.1s ease-out 1.25s 1 both;
+    pointer-events: none;
+  }
+
+  @keyframes sweep {
+    to { transform: translateX(55%) rotate(8deg); }
+  }
+
+  /* pointer-driven foil: the rainbow answers YOUR hand, not a loop */
+  .memcard::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at var(--gx, 50%) var(--gy, 40%), rgba(255, 255, 255, .5), transparent 42%),
+      conic-gradient(from 40deg at var(--gx, 50%) var(--gy, 40%),
+        rgba(255, 80, 80, .32), rgba(255, 220, 80, .32), rgba(120, 255, 160, .32),
+        rgba(90, 200, 255, .32), rgba(200, 120, 255, .32), rgba(255, 80, 80, .32)),
+      repeating-linear-gradient(115deg, transparent 0 6px, rgba(255, 255, 255, .12) 6px 7px);
+    mix-blend-mode: overlay;
+    opacity: 0;
+    transition: opacity .25s;
+    pointer-events: none;
+  }
+
+  .memcard:hover::after { opacity: 1; }
+
+  .foil {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, .14) 2.4px, transparent 2.6px);
+    background-size: 26px 26px;
+    pointer-events: none;
+  }
+
+  .memcard > * { position: relative; z-index: 1; }
+
+  .tier {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    opacity: .95;
+  }
+
+  .tier [lang] { letter-spacing: .14em; }
+
+  .memcard .name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: -.02em;
+    line-height: 1.05;
+  }
+
+  .memcard .num {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: .12em;
+    color: rgba(42, 27, 61, .92); /* ink — white fails contrast on the amber end */
+  }
+
+  .card-qq {
+    position: absolute;
+    right: 10px;
+    bottom: 34px;
+    transform: rotate(-8deg);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .25));
+  }
+
+  .tierline { margin-top: 8px; }
+
+  .tiertrack {
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(42, 27, 61, .25);
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+
+  .tiertrack i {
+    display: block;
+    height: 100%;
+    width: 60%;
+    border-radius: 2px;
+    background: #2A1B3D;
+  }
+
+  .tiernext {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: .04em;
+    color: #2A1B3D; /* ink — white fails contrast on the amber end */
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 11.5px;
+    letter-spacing: .01em;
+    color: var(--app-mute);
+    margin: 0 0 10px;
+  }
+
+  .section-label b {
+    font-variant-numeric: tabular-nums;
+    color: var(--app-ink);
+  }
+
+  .seals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .seal { flex: none; }
+
+  /* --- panel: stamp --- */
+
+  .stamp-panel {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* centered flex + overflow clips both ends */
+    text-align: center;
+    gap: 4px;
+    padding: 6px 0 10px;
+  }
+
+  .venue {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -.02em;
+  }
+
+  .venue-sub {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 11.5px;
+    color: var(--app-mute);
+    margin-bottom: 6px;
+  }
+
+  .cup-holder {
+    position: relative;
+    width: 138px;
+    height: 168px;
+  }
+
+  #cup {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 100%;
+  }
+
+  #cup.wobble { animation: wobble .4s ease-in-out; }
+
+  @keyframes wobble {
+    33% { transform: rotate(-2deg) scale(1.04, .97); }
+    66% { transform: rotate(1.4deg); }
+  }
+
+  #tea {
+    transition: transform .45s cubic-bezier(.34, 1.56, .64, 1);
+  }
+
+  .drop-pearl {
+    animation: drop .5s cubic-bezier(.3, .1, .3, 1) both;
+  }
+
+  @keyframes drop {
+    0%   { transform: translateY(-104px); }
+    70%  { transform: translateY(0); }
+    85%  { transform: translateY(-9px); }
+    100% { transform: translateY(0); }
+  }
+
+  .qq-name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: .14em;
+    color: var(--app-mute);
+    margin: 0 0 8px;
+  }
+
+  .pearl-row {
+    display: flex;
+    gap: 9px;
+    margin-bottom: 12px;
+  }
+
+  .pearl {
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background: #EBDFCF;
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .06);
+    transition: transform .3s cubic-bezier(.2, 1.6, .4, 1), background .3s;
+  }
+
+  .pearl.filled {
+    background: radial-gradient(circle at 32% 28%, #6B4A2A, #2E1B0E);
+    transform: scale(1.18);
+  }
+
+  .tap {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: -.01em;
+    color: #fff;
+    background: var(--app-ink);
+    border: none;
+    border-radius: 999px;
+    padding: 15px 34px;
+    cursor: pointer;
+    box-shadow: 0 8px 0 #170F21;
+    transition: transform .09s, box-shadow .09s, background .25s;
+  }
+
+  .tap:active {
+    transform: translateY(6px);
+    box-shadow: 0 2px 0 #170F21;
+  }
+
+  .tap:focus-visible {
+    outline: 3px solid var(--taro);
+    outline-offset: 3px;
+  }
+
+  .tap.free {
+    background: linear-gradient(100deg, #2FA86E, #5FD79B);
+    box-shadow: 0 8px 0 #1F7A4E;
+  }
+
+  .hint {
+    font-size: 12.5px;
+    color: var(--app-mute);
+    margin-top: 8px;
+    min-height: 18px;
+  }
+
+  #confetti {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* --- redeem pass sheet --- */
+
+  .pass {
+    position: absolute;
+    inset: 0;
+    z-index: 8;
+    background: var(--app-ink);
+    color: var(--app-bg);
+    transform: translateY(102%);
+    visibility: hidden; /* keeps the offscreen Done button out of the tab order */
+    transition: transform .55s cubic-bezier(.16, 1, .3, 1), visibility 0s .55s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 30px 24px;
+  }
+
+  .pass.up {
+    transform: translateY(0);
+    visibility: visible;
+    transition: transform .55s cubic-bezier(.16, 1, .3, 1), visibility 0s 0s;
+  }
+
+  .ticket {
+    position: relative;
+    width: 100%;
+    max-width: 230px;
+    border-radius: 18px;
+    background: linear-gradient(150deg, #FFE9B8, #FFC940);
+    color: var(--app-ink);
+    padding: 18px 20px 16px;
+    text-align: center;
+    box-shadow: 0 24px 44px -18px rgba(0, 0, 0, .6);
+  }
+
+  /* perforation notches */
+  .ticket::before, .ticket::after {
+    content: "";
+    position: absolute;
+    top: 58%;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--app-ink);
+  }
+
+  .ticket::before { left: -9px; }
+  .ticket::after  { right: -9px; }
+
+  .ticket .t-head {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 21px;
+    letter-spacing: -.01em;
+    margin-top: 6px;
+  }
+
+  .ticket .t-zh {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: .22em;
+    margin-bottom: 2px;
+  }
+
+  .ticket .t-venue {
+    font-size: 11.5px;
+    color: #6B4E12;
+    margin-bottom: 12px;
+  }
+
+  .t-divider {
+    border: none;
+    border-top: 2px dashed rgba(42, 27, 61, .35);
+    margin: 0 0 12px;
+  }
+
+  .qr-wrap {
+    position: relative;
+    width: 118px;
+    height: 118px;
+    margin: 0 auto 10px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 9px;
+    overflow: hidden;
+  }
+
+  .qr-wrap svg { display: block; width: 100%; height: 100%; }
+
+  .scanline {
+    position: absolute;
+    left: 6px;
+    right: 6px;
+    top: 8%;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, transparent, var(--lychee), transparent);
+    animation: scan 1.6s ease-in-out infinite alternate;
+  }
+
+  @keyframes scan {
+    to { top: 88%; }
+  }
+
+  .t-note {
+    font-size: 10px;
+    color: #6B4E12;
+  }
+
+  .pass-done {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--app-bg);
+    background: rgba(255, 255, 255, .14);
+    border: 1.5px solid rgba(255, 255, 255, .3);
+    border-radius: 999px;
+    padding: 11px 34px;
+    cursor: pointer;
+  }
+
+  .pass-done:focus-visible {
+    outline: 3px solid var(--taro);
+    outline-offset: 3px;
+  }
+
+  /* --- panel: collect --- */
+
+  .collect-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 10px;
+  }
+
+  .collect-head .section-label { margin: 0; flex: none; }
+
+  .collect-bar {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--app-line);
+    overflow: hidden;
+  }
+
+  .collect-bar i {
+    display: block;
+    height: 100%;
+    width: 58%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--lychee), var(--sugar));
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .slot {
+    position: relative;
+    aspect-ratio: .95;
+    border-radius: 14px;
+    background: var(--app-card);
+    border: 1.5px solid var(--app-line);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 6px;
+    overflow: hidden;
+    font: inherit; /* locked slots are <button>s */
+  }
+
+  button.slot { cursor: pointer; }
+
+  .slot:focus-visible {
+    outline: 3px solid var(--taro);
+    outline-offset: 2px;
+  }
+
+  .slot span {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 10.5px;
+    letter-spacing: -.01em;
+    text-align: center;
+    line-height: 1.15;
+    color: var(--app-ink);
+  }
+
+  .slot.locked { background: #F6EEE3; }
+  .slot.locked span { color: var(--app-lock); }
+
+  .slot.wiggle { animation: wiggle .3s ease-in-out; }
+
+  @keyframes wiggle {
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+  }
+
+  .slot.rare {
+    border-color: #FFC940;
+    background: linear-gradient(160deg, #FFF7E7, #FFEFD2);
+    box-shadow: 0 0 0 3px rgba(255, 177, 61, .25), 0 0 18px -2px rgba(255, 201, 64, .5);
+  }
+
+  .slot.rare::after {
+    content: "";
+    position: absolute;
+    top: -20%;
+    bottom: -20%;
+    width: 55%;
+    background: linear-gradient(105deg, transparent, rgba(255, 255, 255, .65), transparent);
+    transform: translateX(-160%) skewX(-12deg);
+    animation: rareshine 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes rareshine {
+    0%   { transform: translateX(-160%) skewX(-12deg); }
+    45%  { transform: translateX(340%) skewX(-12deg); }
+    100% { transform: translateX(340%) skewX(-12deg); }
+  }
+
+  .rare-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: #935B0A;
+  }
+
+  .sparkle {
+    position: absolute;
+    font-size: 10px;
+    color: #E8A50C;
+    animation: twinkle 1.8s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  .sparkle.s1 { top: 7px; right: 9px; }
+  .sparkle.s2 { bottom: 22px; left: 8px; animation-delay: -.9s; }
+
+  @keyframes twinkle {
+    from { opacity: .3; transform: scale(.8); }
+    to   { opacity: 1;  transform: scale(1.15); }
+  }
+
+  .new-pill {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 8px;
+    letter-spacing: .08em;
+    color: #fff;
+    background: var(--lychee);
+    border-radius: 999px;
+    padding: 2px 7px;
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .badge {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 12.5px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: var(--app-card);
+    border: 1.5px solid var(--app-line);
+    color: var(--app-ink);
+  }
+
+  .badge.got {
+    background: var(--app-ink);
+    border-color: var(--app-ink);
+    color: var(--app-bg);
+  }
+
+  .badge [lang] { opacity: .75; margin-left: 4px; font-size: 11px; }
+
+  /* --- panel: tonight --- */
+
+  .nightmap {
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    line-height: 0;
+  }
+
+  .vdot {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: vpulse 2.4s ease-in-out infinite;
+  }
+
+  .vdot.d2 { animation-delay: -.8s; }
+  .vdot.d3 { animation-delay: -1.6s; }
+
+  @keyframes vpulse {
+    50% { transform: scale(1.45); opacity: .75; }
+  }
+
+  .hotlist { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+
+  .hotrow {
+    display: grid;
+    grid-template-columns: 1fr 64px 26px;
+    align-items: center;
+    gap: 10px;
+    background: var(--app-card);
+    border: 1.5px solid var(--app-line);
+    border-radius: 12px;
+    padding: 9px 12px;
+  }
+
+  .hotrow .hn {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 12.5px;
+    color: var(--app-ink);
+  }
+
+  .hotrow .hn [lang] { color: var(--app-mute); font-size: 11px; margin-left: 5px; font-weight: 700; }
+
+  .heatbar {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--app-line);
+    overflow: hidden;
+  }
+
+  .heatbar i {
+    display: block;
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--sugar), var(--lychee));
+  }
+
+  .hotrow .heatn {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 12.5px;
+    color: var(--app-ink);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+
+  .mapnote {
+    font-size: 10.5px;
+    color: var(--app-mute);
+    text-align: center;
+  }
+
+  /* --- tab bar --- */
+
+  .tabs {
+    position: relative;
+    display: flex;
+    gap: 4px;
+    padding: 10px 12px 18px;
+    border-top: 1.5px solid var(--app-line);
+    background: var(--app-card);
+  }
+
+  .tab-pill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 12px;
+    background: var(--app-ink);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .tab-pill.ready {
+    transition: transform .35s cubic-bezier(.3, 1.4, .4, 1), width .35s cubic-bezier(.3, 1.4, .4, 1);
+  }
+
+  .tab {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: -.01em;
+    padding: 8px 2px;
+    min-height: 44px;
+    justify-content: center;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--app-mute);
+    cursor: pointer;
+    transition: color .2s;
+  }
+
+  .tab .zh {
+    font-size: 10px; /* hanzi below ~10px crush into blobs */
+    font-weight: 700;
+    letter-spacing: .1em;
+    opacity: .85;
+  }
+
+  .tab[aria-selected="true"] {
+    color: var(--app-bg);
+    background: var(--app-ink); /* no-JS fallback: pill only exists with JS */
+  }
+
+  .js .tab[aria-selected="true"] { background: transparent; }
+
+  .tab:focus-visible {
+    outline: 3px solid var(--taro);
+    outline-offset: 2px;
+  }
+
+  .caption {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: .05em;
+    color: var(--milk-mute);
+    text-align: center;
+    max-width: 300px;
+  }
+
+  /* demo locale switch: the page mixes, the product localizes */
+  .lang-toggle {
+    display: flex;
+    gap: 4px;
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid var(--edge);
+    border-radius: 999px;
+    padding: 4px;
+  }
+
+  .lt {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: .08em;
+    color: var(--milk-mute);
+    background: transparent;
+    border: none;
+    border-radius: 999px;
+    padding: 6px 14px;
+    cursor: pointer;
+  }
+
+  .lt.on {
+    background: var(--taro);
+    color: #1B1226;
+    font-weight: 700;
+  }
+
+  .lt:focus-visible {
+    outline: 3px solid var(--taro);
+    outline-offset: 2px;
+  }
+
+  /* app chrome is single-language per locale — a real app picks one */
+  .tab .zh {
+    display: none;
+    font-size: 13px;
+    letter-spacing: .06em;
+    opacity: 1;
+  }
+
+  [data-applang="zh"] .tab .en { display: none; }
+  [data-applang="zh"] .tab .zh { display: block; }
+
+  /* ---------- marquee divider ---------- */
+
+  .marquee {
+    margin-top: 104px;
+    padding: 14px 0;
+    border-top: 1px solid var(--edge);
+    border-bottom: 1px solid var(--edge);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marq-inner {
+    display: inline-flex;
+    animation: marq 36s linear infinite;
+  }
+
+  .marq-seg {
+    display: inline-block;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .22em;
+    color: var(--milk-mute);
+    padding-right: 2em;
+  }
+
+  .marq-seg [lang] { color: var(--taro); letter-spacing: .1em; }
+
+  @keyframes marq {
+    to { transform: translateX(-50%); }
+  }
+
+  /* ---------- mechanics ---------- */
+
+  .mechanics { margin-top: 96px; }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(28px, 3.4vw, 40px);
+    letter-spacing: -.025em;
+    text-wrap: balance;
+    margin-bottom: 10px;
+  }
+
+  .h2-zh {
+    font-size: .55em;
+    font-weight: 700;
+    color: var(--milk-dim);
+    letter-spacing: .08em;
+  }
+
+  .sub {
+    color: var(--milk-dim);
+    max-width: 62ch;
+    margin-bottom: 40px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: var(--ground-2);
+    border: 1px solid var(--edge);
+    border-radius: var(--r-lg);
+    padding: 26px 24px 28px;
+    transition: transform .25s cubic-bezier(.2, .8, .3, 1), border-color .25s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px) rotate(-.5deg);
+    border-color: var(--taro);
+  }
+
+  .card:nth-child(even):hover {
+    transform: translateY(-5px) rotate(.5deg);
+  }
+
+  .chip {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+
+  .cards .card:nth-child(1) .chip { background: rgba(177, 138, 240, .16); color: var(--taro); }
+  .cards .card:nth-child(2) .chip { background: rgba(255, 110, 150, .16); color: var(--lychee); }
+  .cards .card:nth-child(3) .chip { background: rgba(255, 177, 61, .16); color: var(--sugar); }
+  .cards .card:nth-child(4) .chip { background: rgba(95, 215, 155, .16); color: var(--matcha); }
+
+  .card h3 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -.02em;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    font-size: 14.5px;
+    color: var(--milk-dim);
+  }
+
+  .card p + p {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--edge);
+    font-size: 13px;
+    color: var(--milk-mute);
+  }
+
+  /* ---------- merchant strip ---------- */
+
+  .merchant { margin-top: 96px; }
+
+  .merchant h2 { font-size: clamp(22px, 2.8vw, 30px); }
+
+  .zh-sub {
+    font-family: var(--display);
+    font-size: 14px;
+    color: var(--milk-mute);
+    margin-bottom: 28px;
+  }
+
+  .shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px 28px;
+    font-size: 14.5px;
+    color: var(--milk-dim);
+  }
+
+  .shop-grid b {
+    display: block;
+    color: var(--milk);
+    font-family: var(--display);
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  /* ---------- footer ---------- */
+
+  .foot {
+    margin-top: 104px;
+    padding-top: 32px;
+    border-top: 1px solid var(--edge);
+    display: flex;
+    justify-content: space-between;
+    gap: 28px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+
+  .foot p {
+    max-width: 56ch;
+    color: var(--milk-dim);
+    font-size: 15px;
+  }
+
+  .foot p + p { margin-top: 12px; }
+
+  .foot strong { color: var(--milk); }
+
+  .stamp-mark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--milk-mute);
+    border: 1px dashed var(--edge);
+    border-radius: var(--r-sm);
+    padding: 12px 18px;
+    white-space: nowrap;
+  }
+
+  /* ---------- scroll reveals (JS + motion-preference gated) ---------- */
+
+  @media (prefers-reduced-motion: no-preference) {
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity .6s cubic-bezier(.16, 1, .3, 1),
+        transform .6s cubic-bezier(.16, 1, .3, 1);
+      transition-delay: calc(var(--i, 0) * 90ms);
+    }
+
+    .js .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* keep hover lift working on revealed cards */
+  .js .card.reveal.in:hover { transform: translateY(-5px) rotate(-.5deg); }
+  .js .card.reveal.in:nth-child(even):hover { transform: translateY(-5px) rotate(.5deg); }
+
+  /* once revealed, restore the fast hover transition — otherwise the reveal's
+     .6s + staggered delay makes the 4th card's lift start 270ms late */
+  .js .card.reveal.in {
+    transition: transform .25s cubic-bezier(.2, .8, .3, 1), border-color .25s;
+    transition-delay: 0s;
+  }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 48px; }
+    .stage { position: static; }
+    .facts { max-width: none; }
+  }
+
+  @media (max-width: 460px) {
+    .facts { grid-template-columns: 1fr; }
+    .phone {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      aspect-ratio: 320 / 660;
+    }
+    .cup-holder { width: 112px; height: 136px; }
+    .stamp-mark { white-space: normal; text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .001ms !important;
+      animation-delay: 0s !important; /* fill:both + delay = invisible content */
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+      transition-delay: 0s !important;
+    }
+
+    /* surgical opt-outs: things that would otherwise freeze mid-state */
+    .memcard::before { display: none; }
+    .pulse { animation: none; }
+    .scanline { display: none; }
+    .orb { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="orb o3"></div>
+<div class="orb o4"></div>
+<div class="orb o5"></div>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="lockup">
+      <svg width="40" height="40" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M8.5 17 L39.5 17 C41.3 24.5 41 32.5 38.8 38.5 C37.8 41.6 35.3 43.5 32.2 43.5 L15.8 43.5 C12.7 43.5 10.2 41.6 9.2 38.5 C7 32.5 6.7 24.5 8.5 17 Z" fill="#FFF4E4"/>
+        <path d="M9.1 33.5 L38.9 33.5 C38.6 35.8 38.1 37.7 37.5 39.2 C36.5 41.8 34.3 43.3 31.6 43.3 L16.4 43.3 C13.7 43.3 11.5 41.8 10.5 39.2 C9.9 37.7 9.4 35.8 9.1 33.5 Z" fill="#C99A63"/>
+        <circle cx="16.8" cy="40" r="2.9" fill="#2E1B0E"/>
+        <circle cx="24" cy="41.2" r="2.9" fill="#2E1B0E"/>
+        <circle cx="31.2" cy="40" r="2.9" fill="#2E1B0E"/>
+        <circle cx="15.9" cy="39.1" r=".8" fill="#FFFFFF" opacity=".7"/>
+        <circle cx="23.1" cy="40.3" r=".8" fill="#FFFFFF" opacity=".7"/>
+        <circle cx="30.3" cy="39.1" r=".8" fill="#FFFFFF" opacity=".7"/>
+        <path d="M8.5 17 L39.5 17 C41.3 24.5 41 32.5 38.8 38.5 C37.8 41.6 35.3 43.5 32.2 43.5 L15.8 43.5 C12.7 43.5 10.2 41.6 9.2 38.5 C7 32.5 6.7 24.5 8.5 17 Z" fill="none" stroke="#2A1B3D" stroke-width="2.5" stroke-linejoin="round"/>
+        <rect x="35.5" y="2" width="5.2" height="11.5" rx="2.4" fill="#FF6E96" stroke="#2A1B3D" stroke-width="2.2" transform="rotate(8 38.1 7.5)"/>
+        <g transform="rotate(-8 24 14)">
+          <path d="M10.5 13.5 C11 6.5 16.5 3.5 24 3.5 C31.5 3.5 37 6.5 37.5 13.5 Z" fill="#B18AF0" stroke="#2A1B3D" stroke-width="2.5" stroke-linejoin="round"/>
+          <rect x="6.5" y="12.8" width="35" height="6.4" rx="3.2" fill="#B18AF0" stroke="#2A1B3D" stroke-width="2.5"/>
+          <circle cx="19" cy="4.8" r="3.1" fill="#2E1B0E"/>
+          <circle cx="18" cy="3.9" r=".95" fill="#FFFFFF"/>
+        </g>
+        <ellipse cx="11.6" cy="31.4" rx="2.7" ry="1.8" fill="#FF6E96" opacity=".55"/>
+        <ellipse cx="36.4" cy="31.4" rx="2.7" ry="1.8" fill="#FF6E96" opacity=".55"/>
+        <circle cx="15.5" cy="27.5" r="3.6" fill="#2A1B3D"/>
+        <circle cx="32.5" cy="27.5" r="3.6" fill="#2A1B3D"/>
+        <circle cx="14.3" cy="26.2" r="1.25" fill="#FFFFFF"/>
+        <circle cx="31.3" cy="26.2" r="1.25" fill="#FFFFFF"/>
+        <circle cx="16.7" cy="29" r=".6" fill="#FFFFFF" opacity=".85"/>
+        <circle cx="33.7" cy="29" r=".6" fill="#FFFFFF" opacity=".85"/>
+        <ellipse cx="24" cy="31.5" rx="2.1" ry="1.6" fill="#2A1B3D"/>
+      </svg>
+      <div>
+        <div class="wordmark">PEARL</div>
+        <span class="hanzi" lang="zh-Hans">珍珠</span>
+      </div>
+    </div>
+    <div class="ticker">
+      <span class="pulse"></span>
+      <span>a good Friday in Burwood: <b id="live">412</b> drinks stamped</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Visual concept · Sydney · <span lang="zh-Hans">宵夜</span> 8pm–midnight</p>
+      <h1>Six pearls. <span class="hl">Free drink.</span> Any shop.</h1>
+      <p class="lede">
+        One card, every dessert shop in the precinct. Built for the 10pm walk
+        through <strong>Burwood, Eastwood, Haymarket</strong> — four friends
+        deep, one person ordering for everyone.
+      </p>
+
+      <dl class="facts">
+        <div class="fact">
+          <dt>Night market crowd</dt>
+          <dd><b class="fact-n" data-n="180">180</b>k<small>Burwood Chinatown, organisers' weekly est.</small></dd>
+        </div>
+        <div class="fact">
+          <dt>RedNote AU</dt>
+          <dd><b class="fact-n" data-n="700">700</b>k<small>active users — every drink gets posted</small></dd>
+        </div>
+        <div class="fact">
+          <dt>Students</dt>
+          <dd><b class="fact-n" data-n="300">300</b>k<small>same eight postcodes</small></dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="stage">
+      <div class="phone" id="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <canvas id="confetti"></canvas>
+
+          <!-- redeem pass sheet -->
+          <div class="pass" id="pass" aria-hidden="true">
+            <div class="ticket">
+              <svg width="58" height="64" viewBox="0 0 138 168" aria-hidden="true">
+                <!-- id-free ticket variant: full cup, starry, gold brim pearl (claimed) -->
+                <path d="M22 64 L116 64 C121 84 120 108 114.5 128 C112.5 141 105 150 94 150 L44 150 C33 150 25.5 141 23.5 128 C18 108 17 84 22 64 Z" fill="#C99A63"/>
+                <circle cx="50" cy="143" r="7.5" fill="#2E1B0E"/>
+                <circle cx="66" cy="145" r="7.5" fill="#2E1B0E"/>
+                <circle cx="82" cy="144" r="7.5" fill="#2E1B0E"/>
+                <circle cx="97" cy="143" r="7.5" fill="#2E1B0E"/>
+                <path d="M22 64 L116 64 C121 84 120 108 114.5 128 C112.5 141 105 150 94 150 L44 150 C33 150 25.5 141 23.5 128 C18 108 17 84 22 64 Z" fill="none" stroke="#2A1B3D" stroke-width="6.5" stroke-linejoin="round"/>
+                <rect x="102" y="4" width="15" height="34" rx="5" fill="#FF6E96" stroke="#2A1B3D" stroke-width="5.5" transform="rotate(8 109.5 21)"/>
+                <g transform="rotate(-8 69 44)">
+                  <path d="M30 42 C31.5 21 47 13 69 13 C91 13 106.5 21 108 42 Z" fill="#B18AF0" stroke="#2A1B3D" stroke-width="6.5" stroke-linejoin="round"/>
+                  <rect x="19" y="40" width="100" height="26" rx="12" fill="#B18AF0" stroke="#2A1B3D" stroke-width="6.5"/>
+                  <circle cx="54" cy="15" r="8.5" fill="#FFB13D"/>
+                  <circle cx="51.5" cy="12" r="2.6" fill="#FFFFFF"/>
+                </g>
+                <ellipse cx="30" cy="109" rx="7.5" ry="5" fill="#FF6E96" opacity=".55"/>
+                <ellipse cx="108" cy="109" rx="7.5" ry="5" fill="#FF6E96" opacity=".55"/>
+                <path d="M0,-11.5 L3,-3 11.5,0 3,3 0,11.5 -3,3 -11.5,0 -3,-3 Z" transform="translate(45 100)" fill="#FFB13D" stroke="#2A1B3D" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M0,-11.5 L3,-3 11.5,0 3,3 0,11.5 -3,3 -11.5,0 -3,-3 Z" transform="translate(93 100)" fill="#FFB13D" stroke="#2A1B3D" stroke-width="2.5" stroke-linejoin="round"/>
+                <ellipse cx="69" cy="113" rx="8" ry="6.2" fill="#2A1B3D"/>
+              </svg>
+              <div class="t-head">FREE DRINK</div>
+              <div class="t-zh" lang="zh-Hans">免费一杯</div>
+              <div class="t-venue">Auntie Lin's Dessert · Burwood</div>
+              <hr class="t-divider">
+              <div class="qr-wrap">
+                <svg id="qr" viewBox="0 0 21 21" aria-hidden="true"></svg>
+                <div class="scanline"></div>
+              </div>
+              <p class="t-note" data-i18n="tnote">Show at counter — three seconds, no till change</p>
+            </div>
+            <button class="pass-done" id="passdone" data-i18n="done">Done</button>
+          </div>
+
+          <div class="app-top">
+            <div class="app-title">PEARL<span lang="zh-Hans">珍珠</span></div>
+            <div class="balance">
+              <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" fill="#FFB13D"/>
+                <circle cx="9.4" cy="9.4" r="2.6" fill="#fff" opacity=".65"/>
+              </svg>
+              <b id="bal">18</b>
+            </div>
+          </div>
+
+          <div class="app-body">
+
+            <!-- CARD -->
+            <div class="panel on" id="p-card" role="tabpanel" aria-labelledby="t-card" tabindex="0">
+              <div class="memcard" id="memcard">
+                <div class="foil"></div>
+                <div class="tier"><span lang="zh-Hans">黑糖</span> Brown Sugar · Lv. 3</div>
+                <svg class="card-qq" width="52" height="52" viewBox="0 0 48 48" aria-hidden="true">
+                  <path d="M8.5 17 L39.5 17 C41.3 24.5 41 32.5 38.8 38.5 C37.8 41.6 35.3 43.5 32.2 43.5 L15.8 43.5 C12.7 43.5 10.2 41.6 9.2 38.5 C7 32.5 6.7 24.5 8.5 17 Z" fill="#FFF4E4"/>
+                  <path d="M9.1 33.5 L38.9 33.5 C38.6 35.8 38.1 37.7 37.5 39.2 C36.5 41.8 34.3 43.3 31.6 43.3 L16.4 43.3 C13.7 43.3 11.5 41.8 10.5 39.2 C9.9 37.7 9.4 35.8 9.1 33.5 Z" fill="#C99A63"/>
+                  <circle cx="16.8" cy="40" r="2.9" fill="#2E1B0E"/>
+                  <circle cx="24" cy="41.2" r="2.9" fill="#2E1B0E"/>
+                  <circle cx="31.2" cy="40" r="2.9" fill="#2E1B0E"/>
+                  <circle cx="15.9" cy="39.1" r=".8" fill="#FFFFFF" opacity=".7"/>
+                  <circle cx="23.1" cy="40.3" r=".8" fill="#FFFFFF" opacity=".7"/>
+                  <circle cx="30.3" cy="39.1" r=".8" fill="#FFFFFF" opacity=".7"/>
+                  <path d="M8.5 17 L39.5 17 C41.3 24.5 41 32.5 38.8 38.5 C37.8 41.6 35.3 43.5 32.2 43.5 L15.8 43.5 C12.7 43.5 10.2 41.6 9.2 38.5 C7 32.5 6.7 24.5 8.5 17 Z" fill="none" stroke="#2A1B3D" stroke-width="2.5" stroke-linejoin="round"/>
+                  <rect x="35.5" y="2" width="5.2" height="11.5" rx="2.4" fill="#FF6E96" stroke="#2A1B3D" stroke-width="2.2" transform="rotate(8 38.1 7.5)"/>
+                  <g transform="rotate(-8 24 14)">
+                    <path d="M10.5 13.5 C11 6.5 16.5 3.5 24 3.5 C31.5 3.5 37 6.5 37.5 13.5 Z" fill="#B18AF0" stroke="#2A1B3D" stroke-width="2.5" stroke-linejoin="round"/>
+                    <rect x="6.5" y="12.8" width="35" height="6.4" rx="3.2" fill="#B18AF0" stroke="#2A1B3D" stroke-width="2.5"/>
+                    <circle cx="19" cy="4.8" r="3.1" fill="#2E1B0E"/>
+                    <circle cx="18" cy="3.9" r=".95" fill="#FFFFFF"/>
+                  </g>
+                  <ellipse cx="11.6" cy="31.4" rx="2.7" ry="1.8" fill="#FF6E96" opacity=".55"/>
+                  <ellipse cx="36.4" cy="31.4" rx="2.7" ry="1.8" fill="#FF6E96" opacity=".55"/>
+                  <circle cx="15.5" cy="27.5" r="3.6" fill="#2A1B3D"/>
+                  <circle cx="32.5" cy="27.5" r="3.6" fill="#2A1B3D"/>
+                  <circle cx="14.3" cy="26.2" r="1.25" fill="#FFFFFF"/>
+                  <circle cx="31.3" cy="26.2" r="1.25" fill="#FFFFFF"/>
+                  <circle cx="16.7" cy="29" r=".6" fill="#FFFFFF" opacity=".85"/>
+                  <circle cx="33.7" cy="29" r=".6" fill="#FFFFFF" opacity=".85"/>
+                  <ellipse cx="24" cy="31.5" rx="2.1" ry="1.6" fill="#2A1B3D"/>
+                </svg>
+                <div>
+                  <div class="name">Mei L.</div>
+                  <div class="num">PRL · 4417 8802</div>
+                  <div class="tierline">
+                    <div class="tiertrack"><i></i></div>
+                    <div class="tiernext">6 drinks → <span lang="zh-Hans">琥珀</span> Amber · Lv. 4</div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="section-label"><span data-i18n="precincts">Precincts stamped</span> · <b>3/7</b></p>
+              <div class="seals" id="seals"></div>
+            </div>
+
+            <!-- STAMP -->
+            <div class="panel" id="p-stamp" role="tabpanel" aria-labelledby="t-stamp" tabindex="0">
+              <div class="stamp-panel">
+                <div class="venue" data-i18n="venue">Auntie Lin's Dessert</div>
+                <div class="venue-sub">Burwood · <span data-i18n="away">42m away</span></div>
+
+                <div class="cup-holder">
+                  <svg id="cup" width="138" height="168" viewBox="0 0 138 168" aria-hidden="true">
+                    <defs>
+                      <clipPath id="cupclip">
+                        <path d="M22 64 L116 64 C121 84 120 108 114.5 128 C112.5 141 105 150 94 150 L44 150 C33 150 25.5 141 23.5 128 C18 108 17 84 22 64 Z"/>
+                      </clipPath>
+                    </defs>
+                    <path d="M22 64 L116 64 C121 84 120 108 114.5 128 C112.5 141 105 150 94 150 L44 150 C33 150 25.5 141 23.5 128 C18 108 17 84 22 64 Z" fill="#FFFFFF"/>
+                    <g clip-path="url(#cupclip)">
+                      <rect id="tea" x="16" y="141" width="106" height="120" fill="#C99A63" style="transform:translateY(-56px)"/>
+                      <circle cx="50" cy="146" r="7.5" fill="#2E1B0E"/>
+                      <circle cx="66" cy="148" r="7.5" fill="#2E1B0E"/>
+                      <circle cx="82" cy="147" r="7.5" fill="#2E1B0E"/>
+                      <circle cx="97" cy="146" r="7.5" fill="#2E1B0E"/>
+                      <!-- landing decoy: exact double of the JS drop pearl (cx91 cy140 r7) so removeChild is invisible — do not move or delete -->
+                      <circle cx="91" cy="140" r="7" fill="#2E1B0E"/>
+                      <circle cx="47.5" cy="143.5" r="2" fill="#FFFFFF" opacity=".6"/>
+                      <!-- sleeping pearl buddy -->
+                      <path d="M62.5 146.8 q1.6 1.3 3.2 0" stroke="#FFF4E4" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                      <path d="M67.3 146.8 q1.6 1.3 3.2 0" stroke="#FFF4E4" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                      <circle cx="88.5" cy="137.5" r="2" fill="#FFFFFF" opacity=".6"/>
+                      <g id="dropzone"></g>
+                    </g>
+                    <path d="M22 64 L116 64 C121 84 120 108 114.5 128 C112.5 141 105 150 94 150 L44 150 C33 150 25.5 141 23.5 128 C18 108 17 84 22 64 Z" fill="none" stroke="#2A1B3D" stroke-width="6.5" stroke-linejoin="round"/>
+                    <rect x="102" y="4" width="15" height="34" rx="5" fill="#FF6E96" stroke="#2A1B3D" stroke-width="5.5" transform="rotate(8 109.5 21)"/>
+                    <g transform="rotate(-8 69 44)">
+                      <path d="M30 42 C31.5 21 47 13 69 13 C91 13 106.5 21 108 42 Z" fill="#B18AF0" stroke="#2A1B3D" stroke-width="6.5" stroke-linejoin="round"/>
+                      <rect x="19" y="40" width="100" height="26" rx="12" fill="#B18AF0" stroke="#2A1B3D" stroke-width="6.5"/>
+                      <!-- the pearl QQ is saving: turns sugar-gold when a freebie is claimable -->
+                      <circle id="brimpearl" cx="54" cy="15" r="8.5" fill="#2E1B0E"/>
+                      <circle cx="51.5" cy="12" r="2.6" fill="#FFFFFF"/>
+                    </g>
+                    <ellipse cx="30" cy="109" rx="7.5" ry="5" fill="#FF6E96" opacity=".55"/>
+                    <ellipse cx="108" cy="109" rx="7.5" ry="5" fill="#FF6E96" opacity=".55"/>
+                    <g id="face-idle">
+                      <circle cx="45" cy="100" r="10.5" fill="#2A1B3D"/>
+                      <circle cx="93" cy="100" r="10.5" fill="#2A1B3D"/>
+                      <circle cx="41.2" cy="96.2" r="3.6" fill="#FFFFFF"/>
+                      <circle cx="89.2" cy="96.2" r="3.6" fill="#FFFFFF"/>
+                      <circle cx="48.5" cy="104.5" r="1.8" fill="#FFFFFF" opacity=".85"/>
+                      <circle cx="96.5" cy="104.5" r="1.8" fill="#FFFFFF" opacity=".85"/>
+                      <ellipse cx="69" cy="112.5" rx="5.5" ry="4" fill="#2A1B3D"/>
+                    </g>
+                    <g id="face-happy" style="display:none">
+                      <path d="M35 101 Q45 89 55 101" stroke="#2A1B3D" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+                      <path d="M83 101 Q93 89 103 101" stroke="#2A1B3D" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+                      <path d="M58.5 108 Q69 121.5 79.5 108 Z" fill="#2A1B3D"/>
+                    </g>
+                    <g id="face-starry" style="display:none">
+                      <path d="M0,-11.5 L3,-3 11.5,0 3,3 0,11.5 -3,3 -11.5,0 -3,-3 Z" transform="translate(45 100)" fill="#FFB13D" stroke="#2A1B3D" stroke-width="2.5" stroke-linejoin="round"/>
+                      <path d="M0,-11.5 L3,-3 11.5,0 3,3 0,11.5 -3,3 -11.5,0 -3,-3 Z" transform="translate(93 100)" fill="#FFB13D" stroke="#2A1B3D" stroke-width="2.5" stroke-linejoin="round"/>
+                      <ellipse cx="69" cy="113" rx="8" ry="6.2" fill="#2A1B3D"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="qq-name">QQ</div>
+
+                <div class="pearl-row" id="pearls">
+                  <span class="pearl filled"></span>
+                  <span class="pearl filled"></span>
+                  <span class="pearl filled"></span>
+                  <span class="pearl filled"></span>
+                  <span class="pearl"></span>
+                  <span class="pearl"></span>
+                </div>
+
+                <button class="tap" id="tap">Tap to stamp</button>
+                <p class="hint" id="hint">Two more for a free drink.</p>
+              </div>
+            </div>
+
+            <!-- COLLECT -->
+            <div class="panel" id="p-collect" role="tabpanel" aria-labelledby="t-collect" tabindex="0">
+              <div class="collect-head">
+                <p class="section-label" data-i18n="winter">Winter drop</p>
+                <div class="collect-bar"><i></i></div>
+                <p class="section-label"><b>7/12</b></p>
+              </div>
+              <div class="grid" id="grid"></div>
+              <p class="section-label" data-i18n="trade">Trade</p>
+              <div class="badges">
+                <span class="badge got" data-i18n="badge1">Shout a friend</span>
+                <span class="badge" data-i18n="badge2">Swap dupes</span>
+              </div>
+            </div>
+
+            <!-- TONIGHT -->
+            <div class="panel" id="p-tonight" role="tabpanel" aria-labelledby="t-tonight" tabindex="0">
+              <p class="section-label" data-i18n="tonight">Burwood strip · 9:41pm</p>
+              <div class="nightmap">
+                <svg viewBox="0 0 276 160" width="100%" aria-hidden="true">
+                  <rect width="276" height="160" rx="16" fill="#2A1B3D"/>
+                  <path d="M0 96 H276" stroke="#4A3560" stroke-width="10"/>
+                  <path d="M120 0 V160" stroke="#4A3560" stroke-width="8"/>
+                  <path d="M0 40 H276" stroke="#3B2A4E" stroke-width="4" stroke-dasharray="8 7"/>
+                  <path d="M208 0 V160" stroke="#3B2A4E" stroke-width="4" stroke-dasharray="8 7"/>
+                  <circle class="vdot" cx="96" cy="96" r="9" fill="#FFB13D"/>
+                  <circle class="vdot d2" cx="150" cy="66" r="7" fill="#FF6E96"/>
+                  <circle class="vdot d3" cx="208" cy="112" r="6" fill="#FF6E96"/>
+                  <circle class="vdot d2" cx="52" cy="40" r="5" fill="#B18AF0"/>
+                  <circle class="vdot d3" cx="242" cy="40" r="5" fill="#B18AF0"/>
+                  <circle cx="128" cy="122" r="6" fill="none" stroke="#FFF4E4" stroke-width="2.5"/>
+                  <circle cx="128" cy="122" r="2" fill="#FFF4E4"/>
+                  <text x="138" y="126" font-size="9" fill="#C9BCD4" font-family="system-ui">you</text>
+                </svg>
+              </div>
+              <div class="hotlist">
+                <div class="hotrow">
+                  <span class="hn" data-i18n="hot1">Auntie Lin's</span>
+                  <span class="heatbar"><i style="width:100%"></i></span>
+                  <span class="heatn">41</span>
+                </div>
+                <div class="hotrow">
+                  <span class="hn" data-i18n="hot2">Half Sugar</span>
+                  <span class="heatbar"><i style="width:68%"></i></span>
+                  <span class="heatn">28</span>
+                </div>
+                <div class="hotrow">
+                  <span class="hn" data-i18n="hot3">Night Owl Tea</span>
+                  <span class="heatbar"><i style="width:41%"></i></span>
+                  <span class="heatn">17</span>
+                </div>
+              </div>
+              <p class="mapnote" data-i18n="mapnote">Stamps in the last hour · demo data</p>
+            </div>
+
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="App sections">
+            <span class="tab-pill" aria-hidden="true"></span>
+            <button class="tab" role="tab" id="t-card" aria-selected="true" aria-controls="p-card" data-panel="p-card"><span class="en">Card</span><span class="zh" lang="zh-Hans">会员卡</span></button>
+            <button class="tab" role="tab" id="t-stamp" aria-selected="false" aria-controls="p-stamp" data-panel="p-stamp" tabindex="-1"><span class="en">Stamp</span><span class="zh" lang="zh-Hans">盖章</span></button>
+            <button class="tab" role="tab" id="t-collect" aria-selected="false" aria-controls="p-collect" data-panel="p-collect" tabindex="-1"><span class="en">Collect</span><span class="zh" lang="zh-Hans">图鉴</span></button>
+            <button class="tab" role="tab" id="t-tonight" aria-selected="false" aria-controls="p-tonight" data-panel="p-tonight" tabindex="-1"><span class="en">Tonight</span><span class="zh" lang="zh-Hans">今晚</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="lang-toggle" role="group" aria-label="App language">
+        <button class="lt on" data-l="en" aria-pressed="true">EN</button>
+        <button class="lt" data-l="zh" aria-pressed="false" lang="zh-Hans">中文</button>
+      </div>
+      <p class="caption">Tilt the card. Two taps to a free drink.</p>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marq-inner">
+      <span class="marq-seg">BURWOOD <span lang="zh-Hans">宝活</span> ✦ EASTWOOD <span lang="zh-Hans">伊士活</span> ✦ HAYMARKET <span lang="zh-Hans">唐人街</span> ✦ CHATSWOOD <span lang="zh-Hans">车士活</span> ✦ HURSTVILLE <span lang="zh-Hans">好事围</span> ✦ STRATHFIELD <span lang="zh-Hans">史卓菲</span> ✦ KENSINGTON <span lang="zh-Hans">肯辛顿</span> ✦&nbsp;</span>
+      <span class="marq-seg">BURWOOD <span lang="zh-Hans">宝活</span> ✦ EASTWOOD <span lang="zh-Hans">伊士活</span> ✦ HAYMARKET <span lang="zh-Hans">唐人街</span> ✦ CHATSWOOD <span lang="zh-Hans">车士活</span> ✦ HURSTVILLE <span lang="zh-Hans">好事围</span> ✦ STRATHFIELD <span lang="zh-Hans">史卓菲</span> ✦ KENSINGTON <span lang="zh-Hans">肯辛顿</span> ✦&nbsp;</span>
+    </div>
+  </div>
+
+  <section class="mechanics">
+    <h2>Four decisions doing all the work</h2>
+    <p class="sub">
+      Everything here is chosen so the product sells itself at a market stall in
+      four seconds, with a loud crowd and no pitch.
+    </p>
+
+    <div class="cards">
+      <div class="card reveal" style="--i:0">
+        <span class="chip">Collection</span>
+        <h3>Cups, not stamps</h3>
+        <p>
+          A punch card is a chore. Twelve seasonal cups with an SSR drop is a
+          compulsion — the same instinct that made Yo-Chi's golden ticket work.
+        </p>
+        <p>Screenshot rate is the metric, not scan rate.</p>
+      </div>
+
+      <div class="card reveal" style="--i:1">
+        <span class="chip">Word of mouth</span>
+        <h3>One order, four stamps</h3>
+        <p>
+          Boba is a group purchase. One person carries four drinks, so one scan
+          credits four people. That's four signups from one order.
+        </p>
+        <p>The run is already social — the app just has to notice. And every
+        one of the four still pours six paid drinks before their own freebie.</p>
+      </div>
+
+      <div class="card reveal" style="--i:2">
+        <span class="chip">First visit</span>
+        <h3>The first drink is free</h3>
+        <p>
+          Not "collect six and get one." Scan, and there's a free drink waiting
+          right now. The offer replaces the pitch entirely.
+        </p>
+        <p>One QR, three words: <em>Free boba. Scan.</em> The launch freebie is
+        on PEARL — never on the shop.</p>
+      </div>
+
+      <div class="card reveal" style="--i:3">
+        <span class="chip">Hard limit</span>
+        <h3>Three seconds flat</h3>
+        <p>
+          Confetti fires optimistically; the ledger settles after. If it slows
+          the line, staff quietly stop mentioning it and the network dies in
+          six weeks.
+        </p>
+        <p>Confetti is free. Latency never is.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="merchant">
+    <h2>If it's your counter <span class="h2-zh" lang="zh-Hans">· 给老板的话</span></h2>
+    <p class="zh-sub" lang="zh-Hans">先卖出六杯，才送一杯 —— 送出那杯的店，迎来一位带着朋友的新客。</p>
+
+    <div class="card reveal">
+      <div class="shop-grid">
+        <div>
+          <b>Who pays for the free drink?</b>
+          The shop that pours it — and behind every earned freebie are six
+          paid, stamped drinks, most poured at other counters. Boba comes four
+          friends deep: the free drink walks in with three paying ones.
+        </div>
+        <div>
+          <b>What does it cost?</b>
+          Pilot shops pour free. After that, a flat weekly fee — never a
+          percentage of sales. Delivery apps take 25–30% of every order; this
+          is one drink's cost of goods per seven visits.
+        </div>
+        <div>
+          <b>Whose customers?</b>
+          Yours. Every stamp and redemption at your counter is visible to you,
+          exportable, and never sold.
+        </div>
+        <div>
+          <b>Setup?</b>
+          One QR sticker. No POS change, no hardware, no staff training,
+          nothing to tap behind the counter.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot reveal">
+    <div>
+      <p>
+        <strong>What this is for:</strong> put it in front of five Burwood merchants
+        and thirty students before writing a line of production code. If the
+        aesthetic doesn't land here, it won't land at the counter — and that's a
+        cheap thing to find out now.
+      </p>
+      <p>
+        <strong>Run a counter in Burwood, Eastwood or Haymarket?</strong>
+        The first five pilot shops pour free — PEARL funds every launch freebie.
+      </p>
+    </div>
+    <div class="stamp-mark">Concept · not shipped · Aug 2026</div>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    "use strict";
+
+    var root = document.documentElement;
+    root.classList.add("js");
+
+    var rmq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var reduce = rmq.matches;
+    if (rmq.addEventListener) {
+      rmq.addEventListener("change", function (e) { reduce = e.matches; });
+    }
+
+    var SVG_NS = "http://www.w3.org/2000/svg";
+
+    /* ---- tabs: sliding pill, roving tabindex, arrow keys ---- */
+    var tabs = [].slice.call(document.querySelectorAll(".tab"));
+    var panels = [].slice.call(document.querySelectorAll(".panel"));
+    var pill = document.querySelector(".tab-pill");
+    var current = 0;
+
+    function placePill() {
+      var t = tabs[current];
+      pill.style.width = t.offsetWidth + "px";
+      pill.style.height = t.offsetHeight + "px";
+      pill.style.transform = "translate(" + t.offsetLeft + "px," + t.offsetTop + "px)";
+    }
+
+    function select(i, focus) {
+      var dir = i > current ? 1 : (i < current ? -1 : 0);
+      current = i;
+      tabs.forEach(function (t, j) {
+        var on = j === i;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach(function (p, j) {
+        var on = j === i;
+        if (on) p.style.setProperty("--dir", String(dir));
+        p.classList.toggle("on", on);
+      });
+      placePill();
+      if (focus) tabs[i].focus();
+    }
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { select(i); });
+    });
+
+    document.querySelector(".tabs").addEventListener("keydown", function (e) {
+      var n = null;
+      if (e.key === "ArrowRight") n = (current + 1) % tabs.length;
+      else if (e.key === "ArrowLeft") n = (current - 1 + tabs.length) % tabs.length;
+      else if (e.key === "Home") n = 0;
+      else if (e.key === "End") n = tabs.length - 1;
+      if (n !== null) { e.preventDefault(); select(n, true); }
+    });
+
+    requestAnimationFrame(function () {
+      placePill();
+      requestAnimationFrame(function () { pill.classList.add("ready"); });
+    });
+    window.addEventListener("resize", placePill);
+
+    /* ---- card tilt + pointer-driven foil (hover devices only) ---- */
+    var card = document.getElementById("memcard");
+    if (card && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      var rect = null, pendingTilt = false, lastEv = null;
+
+      function applyTilt() {
+        pendingTilt = false;
+        if (!lastEv || !rect) return;
+        var x = (lastEv.clientX - rect.left) / rect.width - 0.5;
+        var y = (lastEv.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform =
+          "perspective(700px) rotateY(" + (x * 16) + "deg) rotateX(" + (-y * 16) + "deg)";
+        card.style.setProperty("--gx", ((x + 0.5) * 100) + "%");
+        card.style.setProperty("--gy", ((y + 0.5) * 100) + "%");
+      }
+
+      card.addEventListener("pointerenter", function () {
+        rect = card.getBoundingClientRect();
+        card.style.transition = "none";
+      });
+      card.addEventListener("pointermove", function (e) {
+        if (reduce) return;
+        lastEv = e;
+        if (!pendingTilt) { pendingTilt = true; requestAnimationFrame(applyTilt); }
+      });
+      card.addEventListener("pointerleave", function () {
+        rect = null;
+        card.style.transition = "transform .6s cubic-bezier(.2,1.4,.3,1)";
+        card.style.transform = "";
+      });
+    }
+
+    /* ---- precinct seals ---- */
+    // seal glyphs are traditional (zh-Hant): physical chops are carved in
+    // traditional forms, and the page's running text stays simplified
+    var SEALS = [
+      { en: "BURWOOD",     zh: "寶活",   got: true },
+      { en: "HAYMARKET",   zh: "唐人街", got: true },
+      { en: "EASTWOOD",    zh: "伊士活", got: true },
+      { en: "CHATSWOOD",   zh: "車士活", got: false },
+      { en: "HURSTVILLE",  zh: "好事圍", got: false },
+      { en: "STRATHFIELD", zh: "史卓菲", got: false },
+      { en: "KENSINGTON",  zh: "肯辛頓", got: false }
+    ];
+
+    // Chop layout: hanzi centerpiece inside a small solid ring, EN name curved
+    // along the bottom arc, PEARL curved along the top — how real seals set
+    // long text. Arc ids are suffixed per seal so the seven SVGs don't collide.
+    var sealsBox = document.getElementById("seals");
+    SEALS.forEach(function (s, idx) {
+      var ink = s.got ? "#B82450" : "#8D7FA1";
+      var zhSize = s.zh.length > 2 ? 8 : 9.5;
+      var div = document.createElement("div");
+      div.className = "seal";
+      div.innerHTML =
+        '<svg width="76" height="76" viewBox="0 0 56 56" role="img" aria-label="' +
+          s.en + (s.got ? " stamped" : " locked") + '">' +
+          '<defs>' +
+            '<path id="seal-b' + idx + '" d="M 9 28 A 19 19 0 0 0 47 28" fill="none"/>' +
+            '<path id="seal-t' + idx + '" d="M 9 28 A 19 19 0 0 1 47 28" fill="none"/>' +
+          '</defs>' +
+          '<circle cx="28" cy="28" r="26" fill="none" stroke="' + ink + '" stroke-width="2" stroke-dasharray="3 3"/>' +
+          '<circle cx="28" cy="28" r="13" fill="none" stroke="' + ink + '" stroke-width="1.2"/>' +
+          '<text x="28" y="31.2" text-anchor="middle" font-size="' + zhSize + '" font-weight="800" fill="' + ink + '" font-family="ui-rounded, PingFang TC, PingFang SC, sans-serif" lang="zh-Hant">' + s.zh + '</text>' +
+          '<text font-size="6" font-weight="700" letter-spacing=".08em" fill="' + ink + '" font-family="system-ui, sans-serif" text-anchor="middle">' +
+            '<textPath href="#seal-b' + idx + '" startOffset="50%">' + s.en + '</textPath>' +
+          '</text>' +
+          '<text font-size="5" font-weight="700" letter-spacing=".34em" fill="' + ink + '" opacity=".8" font-family="system-ui, sans-serif" text-anchor="middle">' +
+            '<textPath href="#seal-t' + idx + '" startOffset="50%">PEARL</textPath>' +
+          '</text>' +
+        '</svg>';
+      if (!s.got) div.style.opacity = ".55";
+      sealsBox.appendChild(div);
+    });
+
+    /* ---- confetti: pearls + sparks + rects ---- */
+    var cv = document.getElementById("confetti");
+    var ctx = cv.getContext("2d");
+    var screenEl = document.querySelector(".screen");
+    var bits = [];
+    var raf = null;
+    var cw = 0, ch = 0;
+    var COLORS = ["#B18AF0", "#FF6E96", "#FFB13D", "#5FD79B", "#2A1B3D"];
+    var PEARLS = ["#2E1B0E", "#6B4A2A", "#C99A63"];
+
+    function sizeCanvas() {
+      // measure the stable .screen box, never the canvas itself — sizing a
+      // canvas from its own rect × dpr is a feedback loop that doubles it
+      var r = screenEl.getBoundingClientRect();
+      var d = window.devicePixelRatio || 1;
+      var w = Math.round(r.width * d);
+      var h = Math.round(r.height * d);
+      if (w === cv.width && h === cv.height) return;
+      cw = r.width;
+      ch = r.height;
+      cv.width = w;
+      cv.height = h;
+      ctx.setTransform(d, 0, 0, d, 0, 0);
+    }
+    window.addEventListener("resize", sizeCanvas);
+    sizeCanvas();
+
+    function burst(bx, by, n, big) {
+      if (reduce) return;
+      sizeCanvas();
+      for (var i = 0; i < n; i++) {
+        var large = big && i < 7;
+        var roll = Math.random();
+        bits.push({
+          x: bx,
+          y: by,
+          vx: (Math.random() - 0.5) * (big ? 12 : 7),
+          vy: Math.random() * -(big ? 11 : 7) - 3,
+          s: large ? Math.random() * 4 + 8 : Math.random() * 5 + 3,
+          rot: Math.random() * 6.28,
+          vr: large ? (Math.random() - 0.5) * 0.08 : (Math.random() - 0.5) * 0.3,
+          type: roll < 0.35 ? "pearl" : (roll < 0.55 ? "spark" : "rect"),
+          c: COLORS[(Math.random() * COLORS.length) | 0],
+          p: PEARLS[(Math.random() * PEARLS.length) | 0],
+          life: 1
+        });
+      }
+      if (!raf) raf = requestAnimationFrame(tick);
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, cw, ch);
+      bits = bits.filter(function (b) {
+        b.vy += 0.42;
+        b.x += b.vx;
+        b.y += b.vy;
+        b.rot += b.vr;
+        b.life -= 0.011;
+        if (b.life <= 0 || b.y > ch + 20) return false;
+        ctx.save();
+        ctx.globalAlpha = Math.max(b.life, 0);
+        ctx.translate(b.x, b.y);
+        ctx.rotate(b.rot);
+        if (b.type === "pearl") {
+          ctx.fillStyle = b.p;
+          ctx.beginPath();
+          ctx.arc(0, 0, b.s / 2, 0, 6.29);
+          ctx.fill();
+          ctx.globalAlpha = Math.max(b.life, 0) * 0.55;
+          ctx.fillStyle = "#fff";
+          ctx.beginPath();
+          ctx.arc(-b.s * 0.16, -b.s * 0.16, b.s / 6, 0, 6.29);
+          ctx.fill();
+        } else if (b.type === "spark") {
+          ctx.fillStyle = "#FFD97A";
+          ctx.fillRect(-b.s / 2, -b.s / 8, b.s, b.s / 4);
+          ctx.fillRect(-b.s / 8, -b.s / 2, b.s / 4, b.s);
+        } else {
+          ctx.fillStyle = b.c;
+          ctx.fillRect(-b.s / 2, -b.s / 2, b.s, b.s * 0.6);
+        }
+        ctx.restore();
+        return true;
+      });
+      if (bits.length) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        ctx.clearRect(0, 0, cw, ch);
+        raf = null;
+      }
+    }
+
+    /* ---- stamping ---- */
+    var pearlEls = [].slice.call(document.querySelectorAll("#pearls .pearl"));
+    var count = document.querySelectorAll("#pearls .pearl.filled").length;
+    var tap = document.getElementById("tap");
+    var hint = document.getElementById("hint");
+    var bal = document.getElementById("bal");
+    var tea = document.getElementById("tea");
+    var cup = document.getElementById("cup");
+    var brim = document.getElementById("brimpearl");
+    var phone = document.getElementById("phone");
+    var pass = document.getElementById("pass");
+    var passdone = document.getElementById("passdone");
+    var dropzone = document.getElementById("dropzone");
+    var appTop = document.querySelector(".app-top");
+    var appBody = document.querySelector(".app-body");
+    var tabsBar = document.querySelector(".tabs");
+    var balance = 18;
+    var moodTimer = null;
+    var passTimer = null;
+
+    // lock the intro out once it has played, so removing .shaking later
+    // can never restart the fly-in mid-celebration
+    phone.addEventListener("animationend", function onIn(e) {
+      if (e.animationName === "phoneIn") {
+        phone.classList.add("landed");
+        phone.removeEventListener("animationend", onIn);
+      }
+    });
+
+    var faces = {
+      idle: document.getElementById("face-idle"),
+      happy: document.getElementById("face-happy"),
+      starry: document.getElementById("face-starry")
+    };
+
+    function setMood(m) {
+      for (var k in faces) faces[k].style.display = k === m ? "" : "none";
+    }
+
+    function setTea() {
+      tea.style.transform = "translateY(" + (-count * 14) + "px)";
+    }
+    setTea();
+
+    function bumpEl(el) {
+      el.classList.remove("bump");
+      void el.offsetWidth;
+      el.classList.add("bump");
+    }
+
+    function dropPearl() {
+      if (reduce) return;
+      var c = document.createElementNS(SVG_NS, "circle");
+      c.setAttribute("cx", "91");
+      c.setAttribute("cy", "140");
+      c.setAttribute("r", "7");
+      c.setAttribute("fill", "#2E1B0E");
+      c.setAttribute("class", "drop-pearl");
+      dropzone.appendChild(c);
+      c.addEventListener("animationend", function () {
+        if (c.parentNode) c.parentNode.removeChild(c);
+        cup.classList.remove("wobble");
+        void cup.getBoundingClientRect(); // forced layout so the animation restarts (SVG has no offsetWidth)
+        cup.classList.add("wobble");
+      });
+      cup.addEventListener("animationend", function onWob(e) {
+        if (e.animationName === "wobble") {
+          cup.classList.remove("wobble");
+          cup.removeEventListener("animationend", onWob);
+        }
+      });
+    }
+
+    function microBurst(el) {
+      var pr = el.getBoundingClientRect();
+      var cr = cv.getBoundingClientRect();
+      burst(pr.left - cr.left + pr.width / 2, pr.top - cr.top + pr.height / 2, 12, false);
+    }
+
+    function showPass() {
+      pass.classList.add("up");
+      pass.setAttribute("aria-hidden", "false");
+      appTop.inert = true;
+      appBody.inert = true;
+      tabsBar.inert = true;
+      passdone.focus();
+    }
+
+    tap.addEventListener("click", function () {
+      if (count >= 6) { showPass(); return; }
+
+      count++;
+      balance++;
+      bal.textContent = String(balance);
+      bumpEl(bal);
+
+      dropPearl();
+      setTea();
+
+      setMood("happy");
+      clearTimeout(moodTimer);
+      moodTimer = setTimeout(function () {
+        if (count < 6) setMood("idle");
+      }, 700);
+
+      var pearlEl = pearlEls[count - 1];
+      setTimeout(function () { pearlEl.classList.add("filled"); }, reduce ? 0 : 350);
+      microBurst(pearlEl);
+
+      if (navigator.vibrate) navigator.vibrate(12);
+
+      if (count === 6) {
+        setMood("starry");
+        if (brim) brim.setAttribute("fill", "#FFB13D"); // the saved pearl goes gold: freebie claimable
+        tap.textContent = t("claim");
+        tap.classList.add("free");
+        hint.textContent = t("show");
+        if (!reduce) {
+          phone.classList.add("shaking");
+          phone.addEventListener("animationend", function onShake(e) {
+            if (e.animationName === "shake") {
+              phone.classList.remove("shaking");
+              phone.removeEventListener("animationend", onShake);
+            }
+          });
+        }
+        sizeCanvas();
+        burst(cw / 2, ch * 0.5, 80, true);
+        passTimer = setTimeout(showPass, 700);
+      } else {
+        hint.textContent = t("left")(6 - count);
+      }
+    });
+
+    passdone.addEventListener("click", function () {
+      if (!pass.classList.contains("up")) return;
+      clearTimeout(passTimer);
+      pass.classList.remove("up");
+      pass.setAttribute("aria-hidden", "true");
+      appTop.inert = false;
+      appBody.inert = false;
+      tabsBar.inert = false;
+      count = 0;
+      pearlEls.forEach(function (p) { p.classList.remove("filled"); });
+      setTea();
+      setMood("idle");
+      if (brim) brim.setAttribute("fill", "#2E1B0E");
+      tap.textContent = t("tap");
+      tap.classList.remove("free");
+      hint.textContent = t("onhouse");
+      if (document.getElementById("p-stamp").classList.contains("on")) tap.focus();
+      else tabs[current].focus();
+    });
+
+    /* ---- app locale: only the phone localizes; the page keeps its bilingual mix ---- */
+    var I18N = {
+      en: {
+        /* phone UI */
+        precincts: "Precincts stamped",
+        away: "42m away",
+        venue: "Auntie Lin's Dessert",
+        winter: "Winter drop",
+        trade: "Trade",
+        tonight: "Burwood strip · 9:41pm",
+        mapnote: "Stamps in the last hour · demo data",
+        done: "Done",
+        tnote: "Show at counter — three seconds, no till change",
+        tap: "Tap to stamp",
+        claim: "Free drink — claim it",
+        show: "Show this at the counter.",
+        onhouse: "On the house — staff tapped nothing. Six to go.",
+        badge1: "Shout a friend",
+        badge2: "Swap dupes",
+        hot1: "Auntie Lin's",
+        hot2: "Half Sugar",
+        hot3: "Night Owl Tea",
+        left: function (n) {
+          return n === 1 ? "One more for a free drink." : n + " more for a free drink.";
+        }
+      },
+      zh: {
+        /* phone UI */
+        precincts: "已集章",
+        away: "42米",
+        venue: "林阿姨甜品",
+        winter: "冬季系列",
+        trade: "交换",
+        tonight: "Burwood 街区 · 晚上9:41",
+        mapnote: "过去一小时的盖章 · 演示数据",
+        done: "完成",
+        tnote: "柜台出示 —— 三秒钟，收银机不用动",
+        tap: "点我盖章",
+        claim: "免费一杯 — 领取",
+        show: "在柜台出示。",
+        onhouse: "这杯请你 —— 店员什么都不用点。再集六个。",
+        badge1: "请朋友喝",
+        badge2: "换重复",
+        hot1: "林阿姨甜品",
+        hot2: "半糖",
+        hot3: "夜猫子茶",
+        left: function (n) { return "再" + n + "杯，免费一杯。"; }
+      }
+    };
+    var appLang = "en";
+
+    function t(k) { return I18N[appLang][k]; }
+
+    function applyLang(l) {
+      appLang = l;
+      screenEl.setAttribute("data-applang", l);
+      [].slice.call(document.querySelectorAll("[data-i18n]")).forEach(function (el) {
+        el.textContent = t(el.getAttribute("data-i18n"));
+        if (l === "zh") el.setAttribute("lang", "zh-Hans");
+        else el.removeAttribute("lang");
+      });
+      // dynamic strings re-derive from current demo state
+      tap.textContent = count >= 6 ? t("claim") : t("tap");
+      hint.textContent = count >= 6 ? t("show") : t("left")(6 - count);
+      placePill(); // tab label sizes change between locales
+    }
+
+    [].slice.call(document.querySelectorAll(".lt")).forEach(function (b) {
+      b.addEventListener("click", function () {
+        [].slice.call(document.querySelectorAll(".lt")).forEach(function (o) {
+          var on = o === b;
+          o.classList.toggle("on", on);
+          o.setAttribute("aria-pressed", String(on));
+        });
+        applyLang(b.getAttribute("data-l"));
+      });
+    });
+
+    /* ---- pseudo-QR (deterministic, decorative) ---- */
+    var qr = document.getElementById("qr");
+    if (qr) {
+      function qrRect(x, y, w, h, fill) {
+        var r = document.createElementNS(SVG_NS, "rect");
+        r.setAttribute("x", x); r.setAttribute("y", y);
+        r.setAttribute("width", w); r.setAttribute("height", h);
+        r.setAttribute("fill", fill);
+        qr.appendChild(r);
+      }
+      // finder patterns at three corners
+      [[0, 0], [14, 0], [0, 14]].forEach(function (f) {
+        qrRect(f[0], f[1], 7, 7, "#2A1B3D");
+        qrRect(f[0] + 1, f[1] + 1, 5, 5, "#fff");
+        qrRect(f[0] + 2, f[1] + 2, 3, 3, "#2A1B3D");
+      });
+      function inFinder(x, y) {
+        return (x < 8 && y < 8) || (x > 12 && y < 8) || (x < 8 && y > 12);
+      }
+      for (var i = 0; i < 441; i++) {
+        var x = i % 21, y = (i / 21) | 0;
+        if (inFinder(x, y)) continue;
+        if (((i * 2654435761) >>> 13) & 1) qrRect(x, y, 1, 1, "#2A1B3D");
+      }
+    }
+
+    /* ---- collection grid ---- */
+    var CUPS = [
+      { n: "Brown Sugar",    c: "#C99A63", got: true,  lid: "flat" },
+      { n: "Taro Milk",      c: "#B18AF0", got: true,  lid: "dome" },
+      { n: "Mango Sago",     c: "#FFB13D", got: true,  lid: "cream" },
+      { n: "Matcha Latte",   c: "#8FBF6A", got: true,  lid: "flat" },
+      { n: "Lychee Jasmine", c: "#FF9FBB", got: true,  lid: "dome" },
+      { n: "Wintermelon",    c: "#D9C48A", got: true,  lid: "flat", isNew: true },
+      { n: "Golden Pearl",   c: "#FFC940", got: true,  lid: "dome", rare: true },
+      { n: "Black Sesame",   c: "#5A5060", got: false, lid: "flat" },
+      { n: "Thai Tea",       c: "#E8873C", got: false, lid: "cream" },
+      { n: "Grass Jelly",    c: "#6B5F55", got: false, lid: "flat" },
+      { n: "Yakult Yuzu",    c: "#F2E06B", got: false, lid: "dome" },
+      { n: "Osmanthus",      c: "#E0B84C", got: false, lid: "cream" }
+    ];
+
+    function cupSvg(cup) {
+      var locked = !cup.got;
+      var body = locked ? "#CBBFD8" : cup.c;
+      var lidFill = locked ? "#BCAECB" : "#FF6E96";
+      var s =
+        '<svg width="30" height="38" viewBox="0 0 30 40" aria-hidden="true">' +
+        '<path d="M6 11h18l-1.8 22a3 3 0 0 1-3 2.8h-8.4a3 3 0 0 1-3-2.8L6 11Z" fill="' +
+          (locked ? "#EDE4F0" : "#fff") + '" stroke="#EFE2D2" stroke-width="1.4"/>' +
+        '<path d="M7.2 22h15.6l-1 11a3 3 0 0 1-3 2.8h-8.4a3 3 0 0 1-3-2.8l-1-11Z" fill="' + body + '"/>';
+      if (cup.lid === "dome") {
+        s += '<path d="M5 8 a10 7 0 0 1 20 0 Z" fill="' + lidFill + '"/>' +
+             '<rect x="4" y="8" width="22" height="3.6" rx="1.8" fill="' + lidFill + '"/>';
+      } else if (cup.lid === "cream") {
+        s += '<circle cx="10" cy="7.5" r="4" fill="' + (locked ? "#D9CFE2" : "#FFF6EA") + '"/>' +
+             '<circle cx="15" cy="5.5" r="4.6" fill="' + (locked ? "#D9CFE2" : "#FFF6EA") + '"/>' +
+             '<circle cx="20" cy="7.5" r="4" fill="' + (locked ? "#D9CFE2" : "#FFF6EA") + '"/>' +
+             '<rect x="4" y="8.4" width="22" height="3.2" rx="1.6" fill="' + lidFill + '"/>';
+      } else {
+        s += '<rect x="4" y="8" width="22" height="4.4" rx="2.2" fill="' + lidFill + '"/>';
+      }
+      if (!locked) {
+        s += '<circle cx="11" cy="31" r="1.9" fill="#2E1B0E"/>' +
+             '<circle cx="15" cy="32.6" r="1.9" fill="#2E1B0E"/>' +
+             '<circle cx="19" cy="31" r="1.9" fill="#2E1B0E"/>';
+      }
+      s += "</svg>";
+      return s;
+    }
+
+    var grid = document.getElementById("grid");
+    CUPS.forEach(function (cup) {
+      // locked slots are real buttons so the wiggle has a keyboard path
+      var d = document.createElement(cup.got ? "div" : "button");
+      if (!cup.got) {
+        d.type = "button";
+        d.setAttribute("aria-label", "Locked — keep stamping to unlock");
+      }
+      d.className = "slot" + (cup.got ? "" : " locked") + (cup.rare ? " rare" : "");
+      var label = cup.got ? cup.n : "???";
+      d.innerHTML =
+        cupSvg(cup) +
+        "<span>" + label + "</span>" +
+        (cup.rare ? '<span class="rare-tag">SSR</span>' +
+          '<span class="sparkle s1">✦</span><span class="sparkle s2">✦</span>' : "") +
+        (cup.isNew ? '<span class="new-pill">NEW</span>' : "");
+      if (!cup.got) {
+        d.addEventListener("click", function () {
+          d.classList.remove("wiggle");
+          void d.offsetWidth;
+          d.classList.add("wiggle");
+        });
+        d.addEventListener("animationend", function (e) {
+          if (e.animationName === "wiggle") d.classList.remove("wiggle");
+        });
+      }
+      grid.appendChild(d);
+    });
+
+    /* ---- count-up facts + scroll reveals ---- */
+    function countUp(el, delay) {
+      var target = +el.getAttribute("data-n");
+      if (reduce) { el.textContent = String(target); return; }
+      setTimeout(function () {
+        var start = null;
+        function step(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / 900, 1);
+          el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(step);
+        }
+        el.textContent = "0";
+        requestAnimationFrame(step);
+      }, delay);
+    }
+
+    if ("IntersectionObserver" in window) {
+      var factEls = [].slice.call(document.querySelectorAll(".fact-n"));
+      var revealEls = [].slice.call(document.querySelectorAll(".reveal"));
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          io.unobserve(en.target);
+          if (en.target.classList.contains("fact-n")) {
+            countUp(en.target, factEls.indexOf(en.target) * 120);
+          } else {
+            en.target.classList.add("in");
+          }
+        });
+      }, { threshold: 0.35 });
+
+      factEls.forEach(function (el) { io.observe(el); });
+      revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+      [].slice.call(document.querySelectorAll(".reveal")).forEach(function (el) {
+        el.classList.add("in");
+      });
+    }
+
+    /* ---- live ticker ---- */
+    var live = document.getElementById("live");
+    var drinks = 412;
+    setInterval(function () {
+      drinks += Math.random() < 0.6 ? 1 : 2;
+      live.textContent = String(drinks);
+      bumpEl(live);
+    }, 5200);
+  })();
+</script>
+</body>
+</html>
