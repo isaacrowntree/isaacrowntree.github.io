@@ -1,6 +1,6 @@
 /* PEARL demo app — offline-first shell cache.
    Bump CACHE on every deploy that changes app files. */
-var CACHE = "pearl-app-v3";
+var CACHE = "pearl-app-v4";
 var ASSETS = [
   "./",
   "./index.html",
