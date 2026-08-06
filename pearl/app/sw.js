@@ -1,6 +1,6 @@
 /* PEARL demo app — offline-first shell cache.
    Bump CACHE on every deploy that changes app files. */
-var CACHE = "pearl-app-v1";
+var CACHE = "pearl-app-v2";
 var ASSETS = [
   "./",
   "./index.html",
@@ -8,6 +8,7 @@ var ASSETS = [
   "./icon.svg",
   "./icon-192.png",
   "./icon-512.png",
+  "./icon-512-maskable.png",
   "./apple-touch-icon.png"
 ];
 

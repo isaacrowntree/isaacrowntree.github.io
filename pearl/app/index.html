@@ -1820,7 +1820,6 @@
     var wtSteps = WT_CONSUMER;
     var wtIdx = -1;
     var wtActive = false;
-    var wtResume = false;
 
     function wtStrings() {
       wtskip.textContent = appLang === "zh" ? "跳过" : "Skip";
@@ -1862,6 +1861,18 @@
         wtalt.style.display = "none";
       }
       requestAnimationFrame(function () { wtSpotTo(s.target); });
+      // re-measure after the panel slide-in settles — measuring during the
+      // .34s slidein catches the 26px from-keyframe offset
+      var thisIdx = wtIdx;
+      setTimeout(function () {
+        if (wtActive && wtIdx === thisIdx) wtSpotTo(wtSteps[thisIdx].target);
+      }, 380);
+    }
+
+    function wtSyncInert() {
+      // the backdrop blocks pointers on guided steps; block keyboard too,
+      // or arrow keys swap the panel under a stale spotlight
+      tabsBar.inert = wtActive && wtIdx >= 0 && !wtSteps[wtIdx].free;
     }
 
     function wtGo(i) {
@@ -1869,6 +1880,7 @@
       var s = wtSteps[wtIdx];
       if (s.tab !== null && s.tab !== current) select(s.tab);
       wtRender();
+      wtSyncInert();
     }
 
     function wtStart(steps) {
@@ -1885,6 +1897,7 @@
       wtback.classList.remove("on");
       wtcard.classList.remove("on");
       wtspot.classList.add("hidden");
+      wtSyncInert();
       if (markDone) {
         try { localStorage.setItem("pearl-wt-done", "1"); } catch (e) {}
       }
@@ -1893,7 +1906,6 @@
     function wtAfterPass() {
       // resume the tour after the user's celebration ticket is dismissed
       if (wtActive && wtSteps === WT_CONSUMER && wtIdx === 2) {
-        wtResume = false;
         wtGo(3);
       }
     }
