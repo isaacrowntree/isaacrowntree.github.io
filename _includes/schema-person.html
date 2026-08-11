@@ -1,0 +1,12 @@
+{%- comment -%}
+  Person JSON-LD, emitted from the `schema:` block in _config.yml.
+
+  jekyll-seo-tag does NOT read a top-level `site.schema` key — before this
+  include existed the whole block was inert and only seo-tag's generic
+  WebSite schema shipped. This makes the config the live source of truth.
+{%- endcomment -%}
+{%- if site.schema -%}
+<script type="application/ld+json">
+{{ site.schema | jsonify }}
+</script>
+{%- endif -%}

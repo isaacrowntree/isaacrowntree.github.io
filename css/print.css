@@ -44,7 +44,7 @@
   .mono, .section-label, .section-meta, .hero-role, .hero-tagline,
   .role__period, .role__company, .work-card__id-label, .work-card__kicker,
   .stack-badge, .work-card__link, .oss-card__title, .oss-card__kicker,
-  .skill-row__label, .skill-pill, .ref-card__role, .education__label,
+  .skill-row__label, .skill-pill, .ref__role, .education__label,
   .education__items, .footer-bar {
     font-family: 'Menlo', 'Courier New', monospace !important;
     color: #444 !important;
@@ -152,11 +152,11 @@
   .skill-row:first-child { border-top: none !important; padding-top: 0 !important; }
   .skill-row__label { color: #2563eb !important; }
 
-  .refs-grid { grid-template-columns: 1fr !important; }
-  .ref-card::before { color: #cbd5e1 !important; }
-  .ref-card__quote { color: #111 !important; font-size: 10pt; }
-  .ref-card__name { color: #111 !important; }
-  .ref-card__role { color: #555 !important; }
+  .refs-list { grid-template-columns: 1fr !important; }
+  .ref::before { color: #cbd5e1 !important; }
+  .ref__quote { color: #111 !important; font-size: 10pt; }
+  .ref__name { color: #111 !important; }
+  .ref__role { color: #555 !important; }
 
   .beyond { padding: 0.4cm 0; }
   .beyond-line { color: #333 !important; font-size: 10pt; }

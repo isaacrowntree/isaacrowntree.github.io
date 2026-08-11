@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0A0A1A">
 
+    {%- comment -%} {% seo %} already emits <title>, canonical, OG and Twitter tags. {%- endcomment -%}
     {% seo %}
 
     <meta name="google-site-verification" content="7gEGmNa9BjGXAHTMIPBrED3YAl43OgnP4lPMhZXZXoQ" />
-    <link rel="canonical" href="{{ site.url }}{% if page.url != '/index.html' %}{{ page.url }}{% endif %}"/>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/logo.png">
@@ -19,17 +19,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Stylesheets — ?v busts caches on every deploy. Icons are inline SVG
+         (_includes/icon.html), so there is no icon-font request. -->
+    <link rel="stylesheet" href="/css/resume.css?v={{ site.time | date: '%s' }}">
+    <link rel="stylesheet" href="/css/print.css?v={{ site.time | date: '%s' }}" media="print">
 
-    <!-- Resume stylesheet -->
-    <link rel="stylesheet" href="/css/resume.css">
-    <link rel="stylesheet" href="/css/print.css" media="print">
-
+    {% include schema-person.html %}
     {% include analytics.html %}
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <!-- Top bar -->
     <nav class="topbar" aria-label="Primary">
       <a class="topbar__brand" href="/">
@@ -38,14 +38,16 @@
       </a>
       <div class="topbar__nav">
         <a href="https://zackdesign.biz" class="topbar__link" target="_blank" rel="noopener">Zack Design</a>
-        <a href="https://github.com/isaacrowntree" class="topbar__link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://github.com/isaacrowntree" class="topbar__link" target="_blank" rel="noopener" aria-label="GitHub">{% include icon.html name="github" %}</a>
         <button type="button" class="topbar__link" data-open-cmdk aria-label="Open command palette">
-          <i class="fas fa-magnifying-glass"></i>
+          {% include icon.html name="search" %}
           <span class="kbd" data-kbd-mod>⌘</span><span class="kbd">K</span>
         </button>
       </div>
     </nav>
 
+    {%- comment -%} Section rail only means anything on the one-page resume. {%- endcomment -%}
+    {%- if page.url == '/' -%}
     <!-- Side rail (desktop only) -->
     <nav class="rail" aria-label="Section jumps">
       <button type="button" class="rail__dot" data-target="tldr" data-label="Overview" aria-label="Overview"></button>
@@ -58,12 +60,17 @@
       <button type="button" class="rail__dot" data-target="beyond" data-label="Beyond code" aria-label="Beyond code"></button>
       <button type="button" class="rail__dot" data-target="contact" data-label="Contact" aria-label="Contact"></button>
     </nav>
+    {%- endif -%}
 
-    <!-- Command palette modal -->
-    <div class="cmdk-overlay" id="cmdk" role="dialog" aria-modal="true" aria-label="Command palette" hidden="false">
-      <div class="cmdk" role="combobox" aria-haspopup="listbox">
-        <input type="text" class="cmdk__input" placeholder="Type to search sections or actions…" aria-label="Search">
-        <div class="cmdk__list" role="listbox"></div>
+    <!-- Command palette modal. `hidden` is a boolean attribute — it must be
+         absent, not "false", or the dialog is exposed to assistive tech while
+         visually closed. JS adds/removes it alongside .is-open. -->
+    <div class="cmdk-overlay" id="cmdk" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+      <div class="cmdk">
+        <input type="text" class="cmdk__input" role="combobox" aria-expanded="true"
+               aria-controls="cmdk-list" aria-autocomplete="list"
+               placeholder="Jump to a section, or run an action…" aria-label="Jump to a section or run an action">
+        <div class="cmdk__list" id="cmdk-list" role="listbox" aria-label="Results"></div>
         <div class="cmdk__footer">
           <span><span class="kbd">↑</span><span class="kbd">↓</span> navigate</span>
           <span><span class="kbd">↵</span> select</span>
@@ -73,7 +80,7 @@
       </div>
     </div>
 
-    <main>
+    <main id="main">
       {{ content }}
     </main>
 
@@ -85,6 +92,6 @@
       </div>
     </footer>
 
-    <script src="/js/app.js" defer></script>
+    <script src="/js/app.js?v={{ site.time | date: '%s' }}" defer></script>
   </body>
 </html>

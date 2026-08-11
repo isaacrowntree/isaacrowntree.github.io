@@ -1,16 +1,29 @@
 name: Isaac Rowntree
 
-description: Head of Tech at CamperMate. Coder, dancer, photographer, videographer, trombonist, motorcyclist. Twenty years of shipping software.
+description: Head of Tech at CamperMate. Coder, dancer, photographer, videographer, trombonist, motorcyclist. Shipping software since 2002.
 
 google_analytics: G-VSVH3S0MFD
 
 url: https://isaacrowntree.com
-enforce_ssl: isaacrowntree.com
 
 # SEO settings
 title: Isaac Rowntree
+# Short tagline keeps jekyll-seo-tag from appending the full description to
+# <title> — the old title ran to 152 characters and Google truncates ~60.
+tagline: Head of Tech · Software engineering
 author: Isaac Rowntree
 logo: /images/isaacAlt.jpg
+
+# og:image — jekyll-seo-tag reads page.image, not site.image, so this has to
+# come through defaults or link previews stay text-only.
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /images/isaacAlt.jpg
+
+twitter:
+  card: summary_large_image
 social:
   name: Isaac Rowntree
   links:

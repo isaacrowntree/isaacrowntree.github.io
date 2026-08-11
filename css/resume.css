@@ -65,6 +65,37 @@ html {
   scroll-padding-top: 6rem;
 }
 
+/* Skip link — keyboard users previously had to tab the topbar and all nine
+   rail dots before reaching content. */
+.skip-link {
+  position: absolute;
+  left: -100vw;
+  top: 0;
+  z-index: 200;
+  background: var(--ink-raised);
+  color: var(--pearl);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.7rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* Global focus ring — previously only .skill-pill and .rail__dot defined one,
+   so every button, link and card fell back to the UA default. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 body {
   font-family: var(--font-sans);
   color: var(--pearl);
@@ -390,15 +421,19 @@ a:hover { color: var(--accent-hover); }
   min-height: 40px;
 }
 
+/* Ink label, not pearl: #F5F3FF on the cyan end of this gradient is 1.65:1 —
+   the right-hand half of every button label was washing out. Dark ink holds
+   AA across the whole ramp (13.6:1 on --primary, 15.9:1 on --accent). */
 .btn--primary {
   background: linear-gradient(135deg, var(--primary), var(--accent));
   background-size: 200% 100%;
-  color: var(--pearl);
+  color: var(--ink);
+  font-weight: 600;
   box-shadow: 0 8px 24px -8px rgba(67, 97, 238, 0.4);
 }
 
 .btn--primary:hover {
-  color: var(--pearl);
+  color: var(--ink);
   background-position: 100% 0%;
   box-shadow: 0 12px 32px -8px rgba(34, 211, 238, 0.5);
   transform: translateY(-1px);
@@ -1190,7 +1225,8 @@ a:hover { color: var(--accent-hover); }
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(245, 243, 255, 0.25);
+  /* 0.25 gave 2.06:1 — under the 3:1 WCAG 1.4.11 floor for UI components */
+  background: rgba(245, 243, 255, 0.42);
   cursor: pointer;
   transition: background 0.25s var(--ease), transform 0.25s var(--ease);
   border: none;
@@ -1289,8 +1325,15 @@ a:hover { color: var(--accent-hover); }
   color: var(--pearl);
   font-family: var(--font-sans);
   font-size: 1.05rem;
-  outline: none;
   letter-spacing: -0.005em;
+}
+
+/* The input is the palette's only focus stop — give it a visible ring rather
+   than `outline: none` with no replacement. */
+.cmdk__input:focus-visible {
+  outline: none;
+  border-bottom-color: var(--accent);
+  box-shadow: 0 1px 0 0 var(--accent);
 }
 
 .cmdk__input::placeholder { color: var(--pearl-muted); }
@@ -1451,4 +1494,34 @@ a:hover { color: var(--accent-hover); }
     transition-duration: 0.1s !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* -------------------------------------------------------------------------
+   404 — uses the main layout now (the old standalone Bootstrap 4 + jQuery
+   404 layout was deleted; it shipped a second design system and a second
+   Font Awesome major).
+   ------------------------------------------------------------------------- */
+.error-page {
+  padding-block: clamp(5rem, 14vw, 9rem);
+}
+
+.error-page .eyebrow {
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+
+.error-page h1 {
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+  line-height: 1.05;
+  margin: 0 0 1rem;
+}
+
+.error-page__lead {
+  color: var(--pearl-soft);
+  font-size: 1.05rem;
+  max-width: 52ch;
+  margin: 0 0 2rem;
 }

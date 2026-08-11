@@ -18,14 +18,14 @@ layout: default
           Coder <span class="sep">·</span> Dancer <span class="sep">·</span> Photographer <span class="sep">·</span> Videographer <span class="sep">·</span> Trombonist <span class="sep">·</span> Motorcyclist
         </p>
         <div class="hero-actions">
-          <a href="mailto:isaac@rowntree.me" class="btn btn--primary"><i class="fas fa-envelope"></i>Email</a>
-          <button type="button" class="btn btn--ghost" data-print><i class="fas fa-file-arrow-down"></i>Download PDF</button>
+          <a href="mailto:isaac@rowntree.me" class="btn btn--primary">{% include icon.html name="envelope" %}Email</a>
+          <button type="button" class="btn btn--ghost" data-print>{% include icon.html name="file-arrow-down" %}Download PDF</button>
           <button type="button" class="btn btn--ghost" data-open-cmdk>
-            <i class="fas fa-magnifying-glass"></i>Jump to…
+            {% include icon.html name="search" %}Jump to…
             <span class="kbd" data-kbd-mod>⌘</span><span class="kbd">K</span>
           </button>
-          <a href="https://github.com/isaacrowntree" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fab fa-github"></i>GitHub</a>
-          <a href="https://zackdesign.biz" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fas fa-rocket"></i>Zack Design</a>
+          <a href="https://github.com/isaacrowntree" target="_blank" rel="noopener" class="btn btn--ghost">{% include icon.html name="github" %}GitHub</a>
+          <a href="https://zackdesign.biz" target="_blank" rel="noopener" class="btn btn--ghost">{% include icon.html name="rocket" %}Zack Design</a>
         </div>
       </div>
     </div>
@@ -37,7 +37,13 @@ layout: default
 <section class="tldr" id="tldr">
   <div class="wrap">
     <p class="tldr-body">
-      Twenty years of shipping software — from solo WordPress plugins in 2002 to a fleet of <em>26 Cloudflare Workers</em> and an AI-powered travel platform at CamperMate today. Currently Head of Tech at CamperMate and proprietor of <a href="https://zackdesign.biz">Zack Design</a>, shipping <a href="https://sessionhq.org">SessionHQ</a> — a modern multi-tenant check-in SaaS.
+      {%- comment -%}
+        Years are computed, not written, so this line never goes stale.
+        WordPress first shipped in 2003, so the 2002 start is described as
+        web work rather than WordPress plugins.
+      {%- endcomment -%}
+      {%- assign years_shipping = site.time | date: '%Y' | minus: 2002 -%}
+      {{ years_shipping }} years of shipping software — from solo web work in 2002 to a fleet of <em>26 Cloudflare Workers</em> and an AI-powered travel platform at CamperMate today. Currently Head of Tech at CamperMate and proprietor of <a href="https://zackdesign.biz">Zack Design</a>, shipping <a href="https://sessionhq.org">SessionHQ</a> — a modern multi-tenant check-in SaaS.
     </p>
     <div class="tldr-meta">
       <span>Based in Sydney, AU</span>
@@ -65,7 +71,8 @@ layout: default
     <div class="timeline">
       <article class="role">
         <div class="role__period">
-          Jul 2020 — Present<small>5+ years</small>
+          {%- assign campermate_years = site.time | date: '%Y' | minus: 2020 -%}
+          Jul 2020 — Present<small>{{ campermate_years }}+ years</small>
         </div>
         <div>
           <h3 class="role__title">Head of Tech</h3>
@@ -114,7 +121,7 @@ layout: default
             Fourteen years running Zack Design as a boutique consultancy, with two stints inside Ray White and a side-line teaching VET multimedia.
           </p>
           <ul class="role__bullets">
-            <li><strong>Zack Design (2002–2016)</strong> — Open-source WordPress plugins; Senior Developer at <a href="http://www.bendix.com.au/">Bendix Brakes</a> (Drupal); Tech Lead + Network Architect at iSolar Schools (renewables monitoring) and Power Portal; Tech Lead on a Rails telco POS app</li>
+            <li><strong>Zack Design (2002–2016)</strong> — Open-source WordPress plugins; Senior Developer at <a href="https://www.bendix.com.au/">Bendix Brakes</a> (Drupal); Tech Lead + Network Architect at iSolar Schools (renewables monitoring) and Power Portal; Tech Lead on a Rails telco POS app</li>
             <li><strong>Ray White Group (2012–2015)</strong> — Senior Developer on Ray White Office + Agent + Retail sites; Tech Lead on Loan Market Broker, Intranet (Whiteboard), Living Here; Lead Architect on AWS migration; SEO work that <strong>lifted lead conversion from 2.5% → 5%</strong>; SCRUM Master; internal email-signature app saving <strong>$15k/year</strong></li>
             <li><strong>Swinburne + Gordon TAFE (2009–2011)</strong> — taught VET multimedia, business, finance, OH&amp;S + 1-on-1 disability + adult short courses</li>
           </ul>
@@ -203,8 +210,8 @@ layout: default
           </div>
           <div class="work-card__aside-label">Links</div>
           <div class="work-card__links">
-            <a href="https://sessionhq.org" target="_blank" rel="noopener" class="work-card__link"><i class="fas fa-globe"></i>sessionhq.org</a>
-            <a href="https://zackdesign.biz/sessionhq-launch/" target="_blank" rel="noopener" class="work-card__link"><i class="fas fa-book"></i>Launch story</a>
+            <a href="https://sessionhq.org" target="_blank" rel="noopener" class="work-card__link">{% include icon.html name="globe" %}sessionhq.org</a>
+            <a href="https://zackdesign.biz/sessionhq-launch/" target="_blank" rel="noopener" class="work-card__link">{% include icon.html name="book" %}Launch story</a>
           </div>
         </aside>
       </article>
@@ -282,7 +289,7 @@ layout: default
         <div class="section-label">Shipped in public</div>
         <h2 class="section-title">Open source</h2>
       </div>
-      <a href="https://github.com/isaacrowntree" target="_blank" rel="noopener" class="btn btn--ghost btn--sm"><i class="fab fa-github"></i>More on GitHub</a>
+      <a href="https://github.com/isaacrowntree" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">{% include icon.html name="github" %}More on GitHub</a>
     </div>
 
     <div class="oss-grid">
@@ -295,7 +302,7 @@ layout: default
         <p class="oss-card__body">A test-driven, <strong>code-as-data</strong> engine for the question every rider Googles: <em>will this part fit my bike?</em> Rear shocks, forks, ebike motors &amp; batteries, drivetrain, brakes, cockpit — deterministic checks that return <strong>pass / warn / block with reasons</strong>, never a black-box yes/no. AI and guided measurement fill the frame data manufacturers don't publish. MIT.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">TypeScript</span><span class="stack-badge">Deterministic</span><span class="stack-badge">Test-driven</span><span class="stack-badge">Zero-dep</span>
-          <a href="https://github.com/isaacrowntree/bike-part-planner" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+          <a href="https://github.com/isaacrowntree/bike-part-planner" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
         </div>
       </article>
 
@@ -307,8 +314,8 @@ layout: default
         <p class="oss-card__body">True-3D technical drawings in SVG — in <strong>~180 lines, zero dependencies</strong>. Rotate, project, depth-sort, paint. Import a <strong>glTF/OBJ mesh</strong> and it extracts the feature edges into a rotatable, themeable, crawlable line drawing — no WebGL. Renders server-side too. MIT.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">TypeScript</span><span class="stack-badge">SVG</span><span class="stack-badge">glTF import</span><span class="stack-badge">Zero-dep</span>
-          <a href="https://isaacrowntree.com/linework/" target="_blank" rel="noopener" class="oss-card__link"><i class="fas fa-arrow-up-right-from-square"></i>demo</a>
-          <a href="https://github.com/isaacrowntree/linework" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+          <a href="https://isaacrowntree.com/linework/" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="external" %}demo</a>
+          <a href="https://github.com/isaacrowntree/linework" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
         </div>
       </article>
 
@@ -320,7 +327,7 @@ layout: default
         <p class="oss-card__body">Offline-first barbell strength log you actually own. Guided <strong>5×5 &amp; Madcow</strong> with auto-progression, per-side plate math, PR tracking. IndexedDB-first and fully offline; optional per-user Durable Object sync; self-hostable on Cloudflare. MIT.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">Next.js</span><span class="stack-badge">React</span><span class="stack-badge">Durable Objects</span>
-          <a href="https://github.com/isaacrowntree/rampset" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+          <a href="https://github.com/isaacrowntree/rampset" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
         </div>
       </article>
 
@@ -332,7 +339,7 @@ layout: default
         <p class="oss-card__body">Typed async client for the Interactive Brokers Client Portal Web API. <strong>Five surfaces</strong> — Rust facade, HTTP sidecar, CLI, MCP server, TypeScript client — generated from one vendored OpenAPI spec (155 paths, 1030 types) with a 13-step normalisation pipeline.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">Rust</span><span class="stack-badge">Tokio</span><span class="stack-badge">Axum</span><span class="stack-badge">OpenAPI</span><span class="stack-badge">MCP</span>
-          <a href="https://github.com/isaacrowntree/bezant" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+          <a href="https://github.com/isaacrowntree/bezant" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
         </div>
       </article>
 
@@ -344,7 +351,7 @@ layout: default
         <p class="oss-card__body">Slack from the terminal. Inbox, messages, search, reactions, status — no leaving flow. Ships as a Homebrew tap.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">Go</span><span class="stack-badge">Cobra</span><span class="stack-badge">Slack API</span>
-          <a href="https://github.com/triptechtravel/slackbuzz-cli" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+          <a href="https://github.com/triptechtravel/slackbuzz-cli" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
         </div>
       </article>
 
@@ -356,7 +363,7 @@ layout: default
         <p class="oss-card__body">ClickUp from the terminal with git integration and AI-agent-friendly JSON output. 30+ commands for tasks, sprints, comments.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">Go</span><span class="stack-badge">Cobra</span><span class="stack-badge">GitHub API</span>
-          <a href="https://github.com/triptechtravel/clickup-cli" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+          <a href="https://github.com/triptechtravel/clickup-cli" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
         </div>
       </article>
 
@@ -368,7 +375,7 @@ layout: default
         <p class="oss-card__body">Personal-finance ETL for Australian banks → ATO-ready tax reports. 9 bank parsers, rules-based categorisation, local SQLite.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">Python</span><span class="stack-badge">Flask</span><span class="stack-badge">SQLite</span>
-          <a href="https://github.com/isaacrowntree/ledger" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+          <a href="https://github.com/isaacrowntree/ledger" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
         </div>
       </article>
 
@@ -380,7 +387,7 @@ layout: default
         <p class="oss-card__body">High-performance ZIP for React Native via Nitro JSI. ~500 files/sec, progress callbacks, AES-256, zero bridge overhead.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">TypeScript</span><span class="stack-badge">Swift</span><span class="stack-badge">Kotlin</span>
-          <a href="https://github.com/isaacrowntree/react-native-nitro-unzip" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+          <a href="https://github.com/isaacrowntree/react-native-nitro-unzip" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
         </div>
       </article>
 
@@ -392,7 +399,7 @@ layout: default
         <p class="oss-card__body">Claude Code plugin marketplace for social posting (X, Reddit, FB, IG), eBay listings, and Himalaya email — scripts + skills, no MCP.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">Python</span><span class="stack-badge">Claude Code</span>
-          <a href="https://github.com/isaacrowntree/claude-social-skills" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+          <a href="https://github.com/isaacrowntree/claude-social-skills" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
         </div>
       </article>
 
@@ -404,7 +411,7 @@ layout: default
         <p class="oss-card__body">AI-assisted <code>.cube</code> LUT generator for DaVinci Resolve and Premiere. Analyses a frame, writes a targeted correction LUT.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">Python</span><span class="stack-badge">Ruby</span>
-          <a href="https://github.com/isaacrowntree/color-grade-ai" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+          <a href="https://github.com/isaacrowntree/color-grade-ai" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
         </div>
       </article>
 
@@ -416,7 +423,7 @@ layout: default
         <p class="oss-card__body">Kills LED PWM flicker in 4K video in <strong>400MB of RAM</strong>. GPU-accelerated, streams via ffmpeg without buffering whole clips.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">Python</span><span class="stack-badge">ffmpeg</span><span class="stack-badge">GPU</span>
-          <a href="https://github.com/isaacrowntree/deflicker-runner" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+          <a href="https://github.com/isaacrowntree/deflicker-runner" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
         </div>
       </article>
 
@@ -428,7 +435,7 @@ layout: default
         <p class="oss-card__body">iPhone-as-macro-scanner paired with Mac running SAM 3 segmentation + local Qwen3-VL identification. Everything stays on-device.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">Swift</span><span class="stack-badge">Python</span><span class="stack-badge">SAM 3</span>
-          <a href="https://github.com/isaacrowntree/stamp-scanner" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>repo</a>
+          <a href="https://github.com/isaacrowntree/stamp-scanner" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
         </div>
       </article>
 
@@ -457,9 +464,9 @@ layout: default
         <p class="oss-card__repo">lodev09/react-native-true-sheet · PR #589</p>
         <p class="oss-card__body">Fixed the sheet footer swallowing touch events, so controls underneath stayed tappable.</p>
         <div class="oss-card__footer">
-          <span class="contrib-badge contrib-badge--merged"><i class="fas fa-code-merge"></i>Merged</span>
+          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}Merged</span>
           <span class="stack-badge">iOS</span><span class="stack-badge">Android</span>
-          <a href="https://github.com/lodev09/react-native-true-sheet/pull/589" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>PR</a>
+          <a href="https://github.com/lodev09/react-native-true-sheet/pull/589" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
         </div>
       </article>
 
@@ -471,9 +478,9 @@ layout: default
         <p class="oss-card__repo">axelmarciano/expo-open-ota · PR #35</p>
         <p class="oss-card__body">Fixed cold-manifest 500s that surfaced immediately after an OTA publish.</p>
         <div class="oss-card__footer">
-          <span class="contrib-badge contrib-badge--merged"><i class="fas fa-code-merge"></i>Merged</span>
+          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}Merged</span>
           <span class="stack-badge">Go</span><span class="stack-badge">Expo Updates</span>
-          <a href="https://github.com/axelmarciano/expo-open-ota/pull/35" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>PR</a>
+          <a href="https://github.com/axelmarciano/expo-open-ota/pull/35" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
         </div>
       </article>
 
@@ -485,9 +492,9 @@ layout: default
         <p class="oss-card__repo">ahujasid/ableton-mcp · PR #78</p>
         <p class="oss-card__body">Hardened connection handling for WSL2 and improved overall reliability.</p>
         <div class="oss-card__footer">
-          <span class="contrib-badge contrib-badge--merged"><i class="fas fa-code-merge"></i>Merged</span>
+          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}Merged</span>
           <span class="stack-badge">Python</span><span class="stack-badge">MCP</span>
-          <a href="https://github.com/ahujasid/ableton-mcp/pull/78" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>PR</a>
+          <a href="https://github.com/ahujasid/ableton-mcp/pull/78" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
         </div>
       </article>
 
@@ -501,7 +508,7 @@ layout: default
         <div class="oss-card__footer">
           <span class="contrib-badge">Open</span>
           <span class="stack-badge">Fabric</span><span class="stack-badge">TypeScript</span>
-          <a href="https://github.com/callstack/react-native-paper/pull/4880" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>PR</a>
+          <a href="https://github.com/callstack/react-native-paper/pull/4880" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
         </div>
       </article>
 
@@ -515,7 +522,7 @@ layout: default
         <div class="oss-card__footer">
           <span class="contrib-badge">Open</span>
           <span class="stack-badge">Elixir</span><span class="stack-badge">Redis</span>
-          <a href="https://github.com/sequinstream/sequin/pull/2131" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>PR</a>
+          <a href="https://github.com/sequinstream/sequin/pull/2131" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
         </div>
       </article>
 
@@ -527,9 +534,9 @@ layout: default
         <p class="oss-card__repo">react-native-community/directory · PR #2242</p>
         <p class="oss-card__body">Listed <strong>react-native-nitro-unzip</strong> in the official React Native directory.</p>
         <div class="oss-card__footer">
-          <span class="contrib-badge contrib-badge--merged"><i class="fas fa-code-merge"></i>Merged</span>
+          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}Merged</span>
           <span class="stack-badge">Community</span>
-          <a href="https://github.com/react-native-community/directory/pull/2242" target="_blank" rel="noopener" class="oss-card__link"><i class="fab fa-github"></i>PR</a>
+          <a href="https://github.com/react-native-community/directory/pull/2242" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
         </div>
       </article>
 
@@ -704,7 +711,7 @@ layout: default
   <div class="education" id="education">
     <span class="education__label">Education</span>
     <div class="education__items">
-      BAppSc Information Technology<span class="sep">·</span>Cert IV Training &amp; Assessment<span class="sep">·</span><a href="https://bento.io" target="_blank" rel="noopener">BentoBox</a><span class="sep">·</span>PD courses in AWS, UX, Agile, Salesforce
+      BAppSc Information Technology<span class="sep">·</span>Cert IV Training &amp; Assessment<span class="sep">·</span>BentoBox<span class="sep">·</span>PD courses in AWS, UX, Agile, Salesforce
     </div>
   </div>
 </div>
@@ -717,12 +724,12 @@ layout: default
       I'm always interested in conversations about engineering leadership, AI-in-production, SaaS product work, and deep technical problems.
     </p>
     <div class="contact-channels">
-      <a href="mailto:isaac@rowntree.me" class="btn btn--primary"><i class="fas fa-envelope"></i>isaac@rowntree.me</a>
-      <a href="https://github.com/isaacrowntree" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fab fa-github"></i>GitHub</a>
-      <a href="https://twitter.com/tikwanleep" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fab fa-x-twitter"></i>Twitter / X</a>
-      <a href="https://www.linkedin.com/in/zemonstas/" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fab fa-linkedin"></i>LinkedIn</a>
-      <a href="https://www.instagram.com/zemonstas" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fab fa-instagram"></i>@zemonstas</a>
-      <button type="button" class="btn btn--ghost" data-print><i class="fas fa-file-arrow-down"></i>Download PDF</button>
+      <a href="mailto:isaac@rowntree.me" class="btn btn--primary">{% include icon.html name="envelope" %}isaac@rowntree.me</a>
+      <a href="https://github.com/isaacrowntree" target="_blank" rel="noopener" class="btn btn--ghost">{% include icon.html name="github" %}GitHub</a>
+      <a href="https://twitter.com/tikwanleep" target="_blank" rel="noopener" class="btn btn--ghost">{% include icon.html name="x" %}Twitter / X</a>
+      <a href="https://www.linkedin.com/in/zemonstas/" target="_blank" rel="noopener" class="btn btn--ghost">{% include icon.html name="linkedin" %}LinkedIn</a>
+      <a href="https://www.instagram.com/zemonstas" target="_blank" rel="noopener" class="btn btn--ghost">{% include icon.html name="instagram" %}@zemonstas</a>
+      <button type="button" class="btn btn--ghost" data-print>{% include icon.html name="file-arrow-down" %}Download PDF</button>
     </div>
   </div>
 </section>
