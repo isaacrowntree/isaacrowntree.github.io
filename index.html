@@ -43,7 +43,7 @@ layout: default
         web work rather than WordPress plugins.
       {%- endcomment -%}
       {%- assign years_shipping = site.time | date: '%Y' | minus: 2002 -%}
-      {{ years_shipping }} years of shipping software — from solo web work in 2002 to a fleet of <em>26 Cloudflare Workers</em> and an AI-powered travel platform at CamperMate today. Currently Head of Tech at CamperMate and proprietor of <a href="https://zackdesign.biz">Zack Design</a>, shipping <a href="https://sessionhq.org">SessionHQ</a> — a modern multi-tenant check-in SaaS.
+      {{ years_shipping }} years of shipping software — from solo web work in 2002 to a fleet of <em>26 Cloudflare Workers</em> and an AI-powered travel platform at CamperMate today. Currently Head of Tech at CamperMate and proprietor of <a href="https://zackdesign.biz">Zack Design</a>, shipping <a href="https://sessionhq.org">SessionHQ</a> — a modern multi-tenant check-in SaaS. Strongest where platform architecture meets AI-in-production: zero-downtime replatforms at the edge, RAG and agentic search tied directly to revenue — and the leadership range to carry both from proposal to board.
     </p>
     <div class="tldr-meta">
       <span>Based in Sydney, AU</span>
@@ -78,15 +78,16 @@ layout: default
           <h3 class="role__title">Head of Tech</h3>
           <div class="role__company">CamperMate · Australia / New Zealand travel platform</div>
           <p class="role__summary">
-            Strategic replatform across six production systems with zero downtime. Scaled the engineering org, cut software/infrastructure spend to budget, and shipped an AI-powered travel platform used at significant scale.
+            Strategic replatform across six production systems with zero downtime. Rebuilt the engineering team, cut software/infrastructure spend to budget, and shipped an AI-powered travel platform with <strong>booking volume growing multiples year on year</strong>.
           </p>
           <ul class="role__bullets">
-            <li>Scaled team from <strong>5 under-performers to 3 top-tier performers</strong>; aligned software and infra spend with budget</li>
-            <li>Architected <strong>6 production systems</strong>: React Native app, Next.js platform, B2B dashboard, Analytics portal, Retool admin, + 26 Cloudflare Worker microservices (400k+ LOC)</li>
-            <li>Built the <strong>AI-powered travel platform</strong> — itineraries, translations, smart search — driving substantial user + revenue growth in 3 years</li>
+            <li>Grew online bookings from <strong>zero to a multi-million-dollar annual channel</strong>, with booking volume roughly doubling every year since launch</li>
+            <li>Rebuilt the engineering team into a smaller, stronger unit — 3 senior engineers out-shipping the previous 5 — while cutting software/infra spend <strong>roughly in half</strong></li>
+            <li>Architected <strong>6 production systems</strong>: React Native app, Next.js platform (millions of web visits a year), B2B dashboard, Analytics portal, Retool admin, + 26 Cloudflare Worker microservices (400k+ LOC)</li>
+            <li>Built the <strong>AI-powered travel platform</strong> — itineraries, translations, smart search — the primary product lever for booking growth</li>
             <li>Led <strong>org-wide security transformation</strong>: OAuth, YubiKey hardware keys, pen testing</li>
             <li>Maintained <strong>continuous iOS/Android operation</strong> through a full replatform while retiring legacy systems</li>
-            <li>Established SRE practice (DataDog, Rollbar, automated alerting) → <strong>99.9% uptime, sub-second responses, 99.94% crash-free rate</strong></li>
+            <li>Established SRE practice (DataDog, Rollbar, automated alerting) → <strong>99.9% uptime, 99.5%+ crash-free users, ~3× category-median app engagement</strong></li>
           </ul>
         </div>
       </article>
@@ -139,7 +140,7 @@ layout: default
         <div class="section-label">Flagship builds</div>
         <h2 class="section-title">Selected work</h2>
       </div>
-      <div class="section-meta">Four deep builds</div>
+      <div class="section-meta">Five deep builds</div>
     </div>
 
     <div class="work-grid">
@@ -152,9 +153,9 @@ layout: default
           <span class="work-card__kicker">Six systems, zero downtime, still shipping</span>
         </div>
         <div class="work-card__body">
-          <p>Ongoing replacement of the legacy CamperMate stack with six interconnected production systems, using Cloudflare Worker proxies for risk-free transitions. Substantial revenue growth and large user base achieved in 3 years, while continuously operating the iOS/Android apps through the migration.</p>
+          <p>Ongoing replacement of the legacy CamperMate stack with six interconnected production systems, using Cloudflare Worker proxies for incremental, reversible transitions — booking volume roughly doubling every year, while continuously operating the iOS/Android apps through the migration.</p>
           <ul>
-            <li><strong>React Native app</strong> 35+ modules, 80%+ test coverage, 99.94% crash-free, large-scale active users</li>
+            <li><strong>React Native app</strong> 35+ modules, 80%+ test coverage, 99.5%+ crash-free users, ~3× category-median engagement</li>
             <li><strong>Next.js travel platform</strong> 70k+ LOC TypeScript, 119 App Router pages, 202 components, 35+ languages, 10k+ POIs with AI-generated itineraries</li>
             <li><strong>B2B dashboard + Analytics portal</strong> multi-tenant SaaS, RBAC, municipal clients, Power BI integration</li>
             <li><strong>26 Cloudflare Workers</strong> 400k+ LOC, global edge deployment, proxy-based risk-free transitions, zero-downtime deploys</li>
@@ -164,7 +165,8 @@ layout: default
           <div class="work-card__aside-label">Stack</div>
           <div class="work-card__stack">
             <span class="stack-badge">React Native</span>
-            <span class="stack-badge">Next.js 15</span>
+            <span class="stack-badge">Next.js 16</span>
+            <span class="stack-badge">OpenNext</span>
             <span class="stack-badge">CF Workers</span>
             <span class="stack-badge">PlanetScale</span>
             <span class="stack-badge">Typesense</span>
@@ -227,6 +229,8 @@ layout: default
           <p>Four years of compounding AI investment across CamperMate — started when Elasticsearch was first introduced for search, grew into a full AI layer: generated itineraries, contextual activity recommendations, typo-tolerant hybrid search, automated multi-language content translation, and a conversational travel agent. Running on Cloudflare AI Workers with hybrid online/offline capability in the mobile app.</p>
           <ul>
             <li><strong>Conversational agent</strong> travel Q&amp;A grounded over POIs and routes</li>
+            <li><strong>Agentic search harness</strong> iterated against live GA4 / BigQuery engagement data</li>
+            <li><strong>MCP surface</strong> exposing the platform to AI agents</li>
             <li><strong>RAG + vector search</strong> across 10k+ POIs in <strong>35+ languages</strong></li>
             <li><strong>Automated translation</strong> keeps the catalogue current without manual ops</li>
             <li><strong>Search evolution</strong> Elasticsearch → Typesense for typo-tolerance at scale</li>
@@ -240,10 +244,40 @@ layout: default
             <span class="stack-badge">GPT-4</span>
             <span class="stack-badge">Llama</span>
             <span class="stack-badge">RAG</span>
+            <span class="stack-badge">MCP</span>
             <span class="stack-badge">Vector Search</span>
             <span class="stack-badge">Typesense</span>
             <span class="stack-badge">Elasticsearch</span>
             <span class="stack-badge">TypeScript</span>
+          </div>
+        </aside>
+      </article>
+
+      <!-- Offline maps pipeline -->
+      <article class="work-card">
+        <div class="work-card__id">
+          <span class="work-card__id-label">2026 · Platform</span>
+          <h3 class="work-card__title">Offline Maps Pipeline</h3>
+          <span class="work-card__kicker">9 regions, 9× smaller, four cents a month</span>
+        </div>
+        <div class="work-card__body">
+          <p>Self-hosted OSM vector→raster offline-basemap pipeline for the CamperMate mobile app — planetiler builds, tileserver-gl rendering, MapLibre on device. A normalised MBTiles dedup schema plus WebP compression turned a storage problem into a rounding error.</p>
+          <ul>
+            <li><strong>21 GB → 2.3 GB</strong> across all 9 ANZ regions — <strong>~9× smaller</strong></li>
+            <li><strong>71.8% block-level dedup</strong> on the largest region</li>
+            <li><strong>~$0.04/month</strong> R2 storage for the entire tile fleet</li>
+            <li><strong>Hybrid online/offline</strong> — the same tiles serve the app with no signal</li>
+          </ul>
+        </div>
+        <aside class="work-card__aside">
+          <div class="work-card__aside-label">Stack</div>
+          <div class="work-card__stack">
+            <span class="stack-badge">planetiler</span>
+            <span class="stack-badge">tileserver-gl</span>
+            <span class="stack-badge">MapLibre</span>
+            <span class="stack-badge">MBTiles / SQLite</span>
+            <span class="stack-badge">WebP</span>
+            <span class="stack-badge">Cloudflare R2</span>
           </div>
         </aside>
       </article>
@@ -336,7 +370,7 @@ layout: default
           <h3 class="oss-card__title">bezant</h3>
           <span class="oss-card__kicker">Rust · Trading infra</span>
         </div>
-        <p class="oss-card__body">Typed async client for the Interactive Brokers Client Portal Web API. <strong>Five surfaces</strong> — Rust facade, HTTP sidecar, CLI, MCP server, TypeScript client — generated from one vendored OpenAPI spec (155 paths, 1030 types) with a 13-step normalisation pipeline.</p>
+        <p class="oss-card__body">Typed async client for the Interactive Brokers Client Portal Web API. <strong>Five surfaces</strong> — Rust facade, HTTP sidecar, CLI, MCP server, TypeScript client — generated from one vendored OpenAPI spec (154 paths, 1030 types) with a 13-step normalisation pipeline.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">Rust</span><span class="stack-badge">Tokio</span><span class="stack-badge">Axum</span><span class="stack-badge">OpenAPI</span><span class="stack-badge">MCP</span>
           <a href="https://github.com/isaacrowntree/bezant" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
@@ -372,7 +406,7 @@ layout: default
           <h3 class="oss-card__title">ledger</h3>
           <span class="oss-card__kicker">Python · Finance</span>
         </div>
-        <p class="oss-card__body">Personal-finance ETL for Australian banks → ATO-ready tax reports. 9 bank parsers, rules-based categorisation, local SQLite.</p>
+        <p class="oss-card__body">Personal-finance ETL for Australian banks → ATO-ready tax reports. 10 parsers across 7 sources, rules-based categorisation, local SQLite.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">Python</span><span class="stack-badge">Flask</span><span class="stack-badge">SQLite</span>
           <a href="https://github.com/isaacrowntree/ledger" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
@@ -384,7 +418,7 @@ layout: default
           <h3 class="oss-card__title">react-native-nitro-unzip</h3>
           <span class="oss-card__kicker">RN · Native module</span>
         </div>
-        <p class="oss-card__body">High-performance ZIP for React Native via Nitro JSI. ~500 files/sec, progress callbacks, AES-256, zero bridge overhead.</p>
+        <p class="oss-card__body">High-performance ZIP for React Native via Nitro JSI. Benchmarked ~10,000 files/sec, progress callbacks, AES-256, zero bridge overhead.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">TypeScript</span><span class="stack-badge">Swift</span><span class="stack-badge">Kotlin</span>
           <a href="https://github.com/isaacrowntree/react-native-nitro-unzip" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
@@ -405,6 +439,18 @@ layout: default
 
       <article class="oss-card">
         <div class="oss-card__head">
+          <h3 class="oss-card__title">sequin</h3>
+          <span class="oss-card__kicker">Elixir · Postgres CDC fork</span>
+        </div>
+        <p class="oss-card__body">Maintained fork of sequinstream/sequin — Postgres change data capture to streams, queues and search indexes. Upstream went unmaintained in Feb 2026; TripTech stewards the fork and runs Sequin in production.</p>
+        <div class="oss-card__footer">
+          <span class="stack-badge">Elixir</span><span class="stack-badge">Postgres</span><span class="stack-badge">Kafka</span>
+          <a href="https://github.com/triptechtravel/sequin" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
           <h3 class="oss-card__title">color-grade-ai</h3>
           <span class="oss-card__kicker">Claude skill · Video</span>
         </div>
@@ -420,7 +466,7 @@ layout: default
           <h3 class="oss-card__title">deflicker-runner</h3>
           <span class="oss-card__kicker">Python · Video</span>
         </div>
-        <p class="oss-card__body">Kills LED PWM flicker in 4K video in <strong>400MB of RAM</strong>. GPU-accelerated, streams via ffmpeg without buffering whole clips.</p>
+        <p class="oss-card__body">Kills LED PWM flicker in 4K video in <strong>400MB of RAM</strong>. CUDA decode/encode, streams via ffmpeg without buffering whole clips.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">Python</span><span class="stack-badge">ffmpeg</span><span class="stack-badge">GPU</span>
           <a href="https://github.com/isaacrowntree/deflicker-runner" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
@@ -432,7 +478,7 @@ layout: default
           <h3 class="oss-card__title">stamp-scanner</h3>
           <span class="oss-card__kicker">iOS + Mac · Vision</span>
         </div>
-        <p class="oss-card__body">iPhone-as-macro-scanner paired with Mac running SAM 3 segmentation + local Qwen3-VL identification. Everything stays on-device.</p>
+        <p class="oss-card__body">iPhone-as-macro-scanner paired with Mac running SAM 3 segmentation + local Qwen3-VL identification. Local-first, with optional Colnect catalogue lookup.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">Swift</span><span class="stack-badge">Python</span><span class="stack-badge">SAM 3</span>
           <a href="https://github.com/isaacrowntree/stamp-scanner" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
@@ -458,15 +504,15 @@ layout: default
 
       <article class="oss-card">
         <div class="oss-card__head">
-          <h3 class="oss-card__title">react-native-true-sheet</h3>
-          <span class="oss-card__kicker">React Native · bottom sheet</span>
+          <h3 class="oss-card__title">react-native-nitro-toast</h3>
+          <span class="oss-card__kicker">React Native · Nitro toast</span>
         </div>
-        <p class="oss-card__repo">lodev09/react-native-true-sheet · PR #589</p>
-        <p class="oss-card__body">Fixed the sheet footer swallowing touch events, so controls underneath stayed tappable.</p>
+        <p class="oss-card__repo">kiethuynh0904/react-native-nitro-toast · PR #28</p>
+        <p class="oss-card__body">Added tappable toasts (onPress) and a count badge (badgeCount) to the Nitro-based toast library.</p>
         <div class="oss-card__footer">
-          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}Merged</span>
-          <span class="stack-badge">iOS</span><span class="stack-badge">Android</span>
-          <a href="https://github.com/lodev09/react-native-true-sheet/pull/589" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
+          <span class="contrib-badge">Open</span>
+          <span class="stack-badge">TypeScript</span><span class="stack-badge">Nitro</span>
+          <a href="https://github.com/kiethuynh0904/react-native-nitro-toast/pull/28" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
         </div>
       </article>
 
@@ -475,12 +521,12 @@ layout: default
           <h3 class="oss-card__title">expo-open-ota</h3>
           <span class="oss-card__kicker">Expo · OTA server</span>
         </div>
-        <p class="oss-card__repo">axelmarciano/expo-open-ota · PR #35</p>
-        <p class="oss-card__body">Fixed cold-manifest 500s that surfaced immediately after an OTA publish.</p>
+        <p class="oss-card__repo">mercuretechnologies/xprem (formerly expo-open-ota) · PR #35</p>
+        <p class="oss-card__body">Fixed cold-manifest 500s that surfaced immediately after an OTA publish; the maintainer adopted the fix, plus tests, in PR #41.</p>
         <div class="oss-card__footer">
-          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}Merged</span>
+          <span class="contrib-badge">Adopted upstream</span>
           <span class="stack-badge">Go</span><span class="stack-badge">Expo Updates</span>
-          <a href="https://github.com/axelmarciano/expo-open-ota/pull/35" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
+          <a href="https://github.com/mercuretechnologies/xprem/pull/35" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
         </div>
       </article>
 
@@ -514,33 +560,20 @@ layout: default
 
       <article class="oss-card">
         <div class="oss-card__head">
-          <h3 class="oss-card__title">sequin</h3>
-          <span class="oss-card__kicker">Sequin Stream · CDC infra</span>
+          <h3 class="oss-card__title">Upstream bug reports</h3>
+          <span class="oss-card__kicker">Filed · fixed upstream</span>
         </div>
-        <p class="oss-card__repo">sequinstream/sequin · PR #2131</p>
-        <p class="oss-card__body">MutexOwner now retries on transient Redis errors instead of crashing the process.</p>
+        <p class="oss-card__repo">supabase-js · braze-swift-sdk · next.js</p>
+        <p class="oss-card__body">Reports that led to fixes: supabase-js silently dropping <code>auth.lockAcquireTimeout</code> (#2308), a Braze Swift SDK crash after <code>changeUser()</code> (#191), and an unsafe RSC bot-protection recommendation in the Next.js CDN caching docs (#96880). More open at OpenNext, Sentry, Typesense and Statsig.</p>
         <div class="oss-card__footer">
-          <span class="contrib-badge">Open</span>
-          <span class="stack-badge">Elixir</span><span class="stack-badge">Redis</span>
-          <a href="https://github.com/sequinstream/sequin/pull/2131" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
+          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}3 fixed</span>
+          <a href="https://github.com/supabase/supabase-js/issues/2308" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}supabase</a>
+          <a href="https://github.com/braze-inc/braze-swift-sdk/issues/191" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}braze</a>
+          <a href="https://github.com/vercel/next.js/issues/96880" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}next.js</a>
         </div>
       </article>
 
-      <article class="oss-card">
-        <div class="oss-card__head">
-          <h3 class="oss-card__title">directory</h3>
-          <span class="oss-card__kicker">React Native · community</span>
-        </div>
-        <p class="oss-card__repo">react-native-community/directory · PR #2242</p>
-        <p class="oss-card__body">Listed <strong>react-native-nitro-unzip</strong> in the official React Native directory.</p>
-        <div class="oss-card__footer">
-          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}Merged</span>
-          <span class="stack-badge">Community</span>
-          <a href="https://github.com/react-native-community/directory/pull/2242" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
-        </div>
-      </article>
-
-    </div>
+      </div>
   </div>
 </section>
 
@@ -594,6 +627,9 @@ layout: default
         <div class="skill-row__label">Infra &amp; Data</div>
         <div class="skill-row__items">
           <span class="skill-pill">Cloudflare Workers</span>
+          <span class="skill-pill">OpenNext</span>
+          <span class="skill-pill">R2</span>
+          <span class="skill-pill">Durable Objects</span>
           <span class="skill-pill">Supabase</span>
           <span class="skill-pill">PlanetScale</span>
           <span class="skill-pill">Postgres</span>
@@ -621,6 +657,11 @@ layout: default
           <span class="skill-pill">Qwen3-VL</span>
           <span class="skill-pill">RAG</span>
           <span class="skill-pill">Vector search</span>
+          <span class="skill-pill">Conversational agents</span>
+          <span class="skill-pill">Agent harnesses &amp; evals</span>
+          <span class="skill-pill">MCP servers</span>
+          <span class="skill-pill">llama.cpp / MLX</span>
+          <span class="skill-pill">Local-LLM benchmarking</span>
           <span class="skill-pill">SAM 3</span>
           <span class="skill-pill">Ollama</span>
           <span class="skill-pill">ETL pipelines</span>

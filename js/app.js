@@ -322,3 +322,53 @@
   // Render initial palette state
   render();
 })();
+
+// ---------------------------------------------------------- GitHub stars
+// Live star counts on OSS cards. Card titles match repo names exactly, so no
+// markup changes needed. Badges render only when a repo has more than 1 star,
+// and the two API responses are cached in localStorage for 6 hours.
+(function () {
+  const KEY = 'gh-stars-v1';
+  const TTL = 6 * 60 * 60 * 1000;
+
+  function render(stars) {
+    document.querySelectorAll('.oss-card').forEach((card) => {
+      const title = card.querySelector('.oss-card__title');
+      const footer = card.querySelector('.oss-card__footer');
+      if (!title || !footer || card.querySelector('.oss-card__stars')) return;
+      const n = stars[title.textContent.trim()];
+      if (!n || n <= 1) return;
+      const badge = document.createElement('span');
+      badge.className = 'stack-badge oss-card__stars';
+      badge.textContent = `★ ${n}`;
+      footer.insertBefore(badge, footer.firstChild);
+    });
+  }
+
+  let cached = null;
+  try {
+    cached = JSON.parse(localStorage.getItem(KEY));
+  } catch (e) {}
+  if (cached && cached.stars && Date.now() - cached.t < TTL) {
+    render(cached.stars);
+    return;
+  }
+
+  Promise.all([
+    fetch('https://api.github.com/users/isaacrowntree/repos?per_page=100').then((r) => (r.ok ? r.json() : [])),
+    fetch('https://api.github.com/orgs/triptechtravel/repos?per_page=100').then((r) => (r.ok ? r.json() : [])),
+  ])
+    .then(([mine, org]) => {
+      const stars = {};
+      mine.concat(org).forEach((r) => {
+        if (r && r.name) stars[r.name] = r.stargazers_count;
+      });
+      try {
+        localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), stars }));
+      } catch (e) {}
+      render(stars);
+    })
+    .catch(() => {
+      if (cached && cached.stars) render(cached.stars); // stale beats nothing
+    });
+})();
