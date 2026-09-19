@@ -1,6 +1,6 @@
 name: Isaac Rowntree
 
-description: Head of Tech at CamperMate. Coder, dancer, photographer, videographer, trombonist, motorcyclist. Shipping software since 2002.
+description: Head of Tech at TripTech / CamperMate · THL. Coder, dancer, photographer, videographer, trombonist, motorcyclist. Shipping software since 2002.
 
 google_analytics: G-VSVH3S0MFD
 
@@ -23,6 +23,7 @@ defaults:
       image: /images/isaacAlt.jpg
 
 twitter:
+  username: tikwanleep
   card: summary_large_image
 social:
   name: Isaac Rowntree
@@ -48,7 +49,7 @@ schema:
   jobTitle: Head of Tech
   worksFor:
     "@type": Organization
-    name: CamperMate
+    name: Tourism Holdings Limited
   alumniOf:
     "@type": EducationalOrganization
     name: Bachelor of Applied Science (Information Technology)
