@@ -23,6 +23,7 @@ defaults:
       image: /images/isaacAlt.jpg
 
 twitter:
+  username: tikwanleep
   card: summary_large_image
 social:
   name: Isaac Rowntree
