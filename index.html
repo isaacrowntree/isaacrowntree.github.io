@@ -376,10 +376,37 @@ layout: default
           <h3 class="oss-card__title">rampset</h3>
           <span class="oss-card__kicker">Next.js · PWA</span>
         </div>
-        <p class="oss-card__body">Offline-first barbell strength log you actually own. Guided <strong>5×5 &amp; Madcow</strong> with auto-progression, per-side plate math, PR tracking. IndexedDB-first and fully offline; optional per-user Durable Object sync; self-hostable on Cloudflare. MIT.</p>
+        <p class="oss-card__body">Offline-first barbell strength log you actually own. <strong>5×5, Madcow or your own routine</strong>, per-side plate math, PR tracking, import from StrongLifts. Fully offline on the phone; passkey sign-in with <a href="https://isaacrowntree.com/durable-auth/">durable-auth</a> and sync with <a href="https://isaacrowntree.com/durable-sync/">durable-sync</a>. Free to use, MIT to self-host.</p>
         <div class="oss-card__footer">
           <span class="stack-badge">Next.js</span><span class="stack-badge">React</span><span class="stack-badge">Durable Objects</span>
+          <a href="https://liftlog.zackdesign.biz" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="external" %}try it</a>
           <a href="https://github.com/isaacrowntree/rampset" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">durable-sync</h3>
+          <span class="oss-card__kicker">TypeScript · Cloudflare</span>
+        </div>
+        <p class="oss-card__body">Offline-first sync for Cloudflare Durable Objects: an <strong>append-only op log</strong> on the server, a durable outbox on the device. No Postgres, no container, zero dependencies. Extracted from <a href="https://isaacrowntree.github.io/rampset/">Rampset</a> after a production data-loss incident; pairs with <a href="https://isaacrowntree.com/durable-auth/">durable-auth</a>. MIT, on npm.</p>
+        <div class="oss-card__footer">
+          <span class="stack-badge">TypeScript</span><span class="stack-badge">Durable Objects</span><span class="stack-badge">Offline-first</span><span class="stack-badge">Zero-dep</span>
+          <a href="https://isaacrowntree.com/durable-sync/" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="external" %}demo</a>
+          <a href="https://github.com/isaacrowntree/durable-sync" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">durable-auth</h3>
+          <span class="oss-card__kicker">TypeScript · Cloudflare</span>
+        </div>
+        <p class="oss-card__body">Passkey sign-in for Cloudflare Workers, kept in <strong>one Durable Object</strong>: accounts, sessions and email recovery, with step-up before sensitive actions. No auth service, no user database. Rampset's sign-in, extracted; pairs with <a href="https://isaacrowntree.com/durable-sync/">durable-sync</a>. MIT, on npm.</p>
+        <div class="oss-card__footer">
+          <span class="stack-badge">TypeScript</span><span class="stack-badge">Passkeys</span><span class="stack-badge">Durable Objects</span>
+          <a href="https://isaacrowntree.com/durable-auth/" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="external" %}docs</a>
+          <a href="https://github.com/isaacrowntree/durable-auth" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}repo</a>
         </div>
       </article>
 
