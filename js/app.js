@@ -97,7 +97,7 @@
     { id: 'tldr', keywords: 'summary about intro bio head of tech campermate sydney', group: 'Jump to', label: 'Overview', icon: 'compass', type: 'jump' },
     { id: 'experience', keywords: 'roles career history campermate redbubble ray white tafe zack design senior developer', group: 'Jump to', label: 'Experience', icon: 'briefcase', type: 'jump' },
     { id: 'work', keywords: 'projects case studies replatform sessionhq ai travel platform cloudflare workers react native nextjs', group: 'Jump to', label: 'Selected work', icon: 'rocket', type: 'jump' },
-    { id: 'oss', keywords: 'github repos libraries linework rampset durable-sync durable-auth passkeys sync bike part planner typescript mit', group: 'Jump to', label: 'Open source', icon: 'code-branch', type: 'jump' },
+    { id: 'oss', keywords: 'github repos libraries dolphone flipper one phone modem linework rampset durable-sync durable-auth passkeys sync bike part planner typescript mit', group: 'Jump to', label: 'Open source', icon: 'code-branch', type: 'jump' },
     { id: 'contributions', keywords: 'pull requests prs upstream expo react native paper sequin ableton mcp', group: 'Jump to', label: 'Contributions', icon: 'code-merge', type: 'jump' },
     { id: 'skills', keywords: 'tech stack languages typescript react native nextjs cloudflare workers supabase postgres aws terraform', group: 'Jump to', label: 'Skills', icon: 'layer-group', type: 'jump' },
     { id: 'references', keywords: 'testimonials quotes referees recommendations', group: 'Jump to', label: 'References', icon: 'quote-left', type: 'jump' },
