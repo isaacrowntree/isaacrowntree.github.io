@@ -52,7 +52,7 @@ schema:
     name: Tourism Holdings Limited
   alumniOf:
     "@type": EducationalOrganization
-    name: Bachelor of Applied Science (Information Technology)
+    name: RMIT University
   knowsAbout:
     - Software Engineering
     - Engineering Leadership
