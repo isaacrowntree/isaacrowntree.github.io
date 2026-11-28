@@ -557,36 +557,94 @@ layout: default
         <div class="section-label">Merged into other people's code</div>
         <h2 class="section-title">Contributions</h2>
       </div>
-      <div class="section-meta">Fixes to libraries I ship on</div>
+      <div class="section-meta">Fixes to libraries I ship on · 9 merged, 6 adopted in 2026</div>
     </div>
 
     <div class="oss-grid">
 
       <article class="oss-card">
         <div class="oss-card__head">
-          <h3 class="oss-card__title">react-native-nitro-toast</h3>
-          <span class="oss-card__kicker">React Native · Nitro toast</span>
+          <h3 class="oss-card__title">Expo</h3>
+          <span class="oss-card__kicker">Expo SDK · expo-file-system</span>
         </div>
-        <p class="oss-card__repo">kiethuynh0904/react-native-nitro-toast · PR #28</p>
-        <p class="oss-card__body">Added tappable toasts (onPress) and a count badge (badgeCount) to the Nitro-based toast library.</p>
+        <p class="oss-card__repo">expo/expo · PRs #50106, #50472</p>
+        <p class="oss-card__body">Fixed an iOS crash when a download or upload task is cancelled or released while its request completes, and kept the <code>NSError</code> domain and code in download failure messages so apps can tell a timeout from a lost connection.</p>
         <div class="oss-card__footer">
-          <span class="contrib-badge">Open</span>
-          <span class="stack-badge">TypeScript</span><span class="stack-badge">Nitro</span>
-          <a href="https://github.com/kiethuynh0904/react-native-nitro-toast/pull/28" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
+          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}2 merged</span>
+          <span class="stack-badge">Swift</span><span class="stack-badge">iOS</span>
+          <a href="https://github.com/expo/expo/pull/50106" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}#50106</a>
+          <a href="https://github.com/expo/expo/pull/50472" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}#50472</a>
         </div>
       </article>
 
       <article class="oss-card">
         <div class="oss-card__head">
-          <h3 class="oss-card__title">expo-open-ota</h3>
-          <span class="oss-card__kicker">Expo · OTA server</span>
+          <h3 class="oss-card__title">OpenNext</h3>
+          <span class="oss-card__kicker">Next.js on any platform</span>
         </div>
-        <p class="oss-card__repo">mercuretechnologies/xprem (formerly expo-open-ota) · PR #35</p>
-        <p class="oss-card__body">Fixed cold-manifest 500s that surfaced immediately after an OTA publish; the maintainer adopted the fix, plus tests, in PR #41.</p>
+        <p class="oss-card__repo">opennextjs/opennextjs-aws · PR #1245</p>
+        <p class="oss-card__body">Scoped the composable cache's pending writes to the request instead of the isolate. On Cloudflare Workers a promise belongs to the request that made it, so a shared one left other requests waiting forever.</p>
         <div class="oss-card__footer">
-          <span class="contrib-badge">Adopted upstream</span>
-          <span class="stack-badge">Go</span><span class="stack-badge">Expo Updates</span>
-          <a href="https://github.com/mercuretechnologies/xprem/pull/35" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
+          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}Merged</span>
+          <span class="stack-badge">TypeScript</span><span class="stack-badge">Workers</span>
+          <a href="https://github.com/opennextjs/opennextjs-aws/pull/1245" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">react-native-paper</h3>
+          <span class="oss-card__kicker">Callstack · UI kit</span>
+        </div>
+        <p class="oss-card__repo">callstack/react-native-paper · PR #4880</p>
+        <p class="oss-card__body">Fall back to the theme <code>fontWeight</code> to prevent a SIGSEGV on the new Fabric renderer.</p>
+        <div class="oss-card__footer">
+          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}Merged</span>
+          <span class="stack-badge">Fabric</span><span class="stack-badge">TypeScript</span>
+          <a href="https://github.com/callstack/react-native-paper/pull/4880" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">react-native-true-sheet</h3>
+          <span class="oss-card__kicker">React Native · Bottom sheets</span>
+        </div>
+        <p class="oss-card__repo">lodev09/react-native-true-sheet · PRs #548, #1024</p>
+        <p class="oss-card__body">Undimmed, non-dismissible sheets now pass touches through to the screen behind on iOS, and on Android a sheet hands drags to a scrollable that mounts after it presents.</p>
+        <div class="oss-card__footer">
+          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}2 merged</span>
+          <span class="stack-badge">Swift</span><span class="stack-badge">Kotlin</span>
+          <a href="https://github.com/lodev09/react-native-true-sheet/pull/548" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}#548</a>
+          <a href="https://github.com/lodev09/react-native-true-sheet/pull/1024" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}#1024</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">apollo-link-scalars</h3>
+          <span class="oss-card__kicker">Apollo · Custom scalars</span>
+        </div>
+        <p class="oss-card__repo">eturino/apollo-link-scalars · PR #1735</p>
+        <p class="oss-card__body">Swapped a <code>localeCompare</code> sort, run on every operation, for a plain comparison. On Hermes on a budget Android phone, sorting 400 keys went from 403 ms to 4 ms.</p>
+        <div class="oss-card__footer">
+          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}Merged</span>
+          <span class="stack-badge">TypeScript</span><span class="stack-badge">Hermes</span>
+          <a href="https://github.com/eturino/apollo-link-scalars/pull/1735" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">react-native-background-downloader</h3>
+          <span class="oss-card__kicker">React Native · Downloads</span>
+        </div>
+        <p class="oss-card__repo">kesha-antonov/react-native-background-downloader · PR #153</p>
+        <p class="oss-card__body">Guarded the iOS TurboModule event emitter to stop a SIGABRT crash.</p>
+        <div class="oss-card__footer">
+          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}Merged</span>
+          <span class="stack-badge">Objective-C++</span><span class="stack-badge">TurboModules</span>
+          <a href="https://github.com/kesha-antonov/react-native-background-downloader/pull/153" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
         </div>
       </article>
 
@@ -606,15 +664,19 @@ layout: default
 
       <article class="oss-card">
         <div class="oss-card__head">
-          <h3 class="oss-card__title">react-native-paper</h3>
-          <span class="oss-card__kicker">Callstack · UI kit</span>
+          <h3 class="oss-card__title">Adopted by maintainers</h3>
+          <span class="oss-card__kicker">My fix · their release</span>
         </div>
-        <p class="oss-card__repo">callstack/react-native-paper · PR #4880</p>
-        <p class="oss-card__body">Fall back to the theme <code>fontWeight</code> to prevent a SIGSEGV on the new Fabric renderer.</p>
+        <p class="oss-card__repo">xprem · opennextjs-cloudflare · Google Mobile Ads · Braze · op-sqlite</p>
+        <p class="oss-card__body">Fixes the maintainers shipped in their own PRs: cold-manifest 500s after an OTA publish (xprem #41), R2 cache uploads through the Worker binding to avoid API rate limits (OpenNext #1159), the iOS consent form's presenter (Google Mobile Ads #946), clearing queued in-app messages on user change (Braze Swift and Android SDKs), and a use-after-free when closing a database (op-sqlite #386).</p>
         <div class="oss-card__footer">
-          <span class="contrib-badge">Open</span>
-          <span class="stack-badge">Fabric</span><span class="stack-badge">TypeScript</span>
-          <a href="https://github.com/callstack/react-native-paper/pull/4880" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}PR</a>
+          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}6 adopted</span>
+          <a href="https://github.com/mercuretechnologies/xprem/pull/35" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}xprem</a>
+          <a href="https://github.com/opennextjs/opennextjs-cloudflare/pull/1099" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}opennext</a>
+          <a href="https://github.com/invertase/react-native-google-mobile-ads/pull/936" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}ads</a>
+          <a href="https://github.com/braze-inc/braze-swift-sdk/pull/192" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}braze-swift</a>
+          <a href="https://github.com/braze-inc/braze-android-sdk/pull/99" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}braze-android</a>
+          <a href="https://github.com/OP-Engineering/op-sqlite/pull/385" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}op-sqlite</a>
         </div>
       </article>
 
@@ -623,13 +685,29 @@ layout: default
           <h3 class="oss-card__title">Upstream bug reports</h3>
           <span class="oss-card__kicker">Filed · fixed upstream</span>
         </div>
-        <p class="oss-card__repo">supabase-js · braze-swift-sdk · next.js</p>
-        <p class="oss-card__body">Reports that led to fixes: supabase-js silently dropping <code>auth.lockAcquireTimeout</code> (#2308), a Braze Swift SDK crash after <code>changeUser()</code> (#191), and an unsafe RSC bot-protection recommendation in the Next.js CDN caching docs (#96880). More open at OpenNext, Sentry, Typesense and Statsig.</p>
+        <p class="oss-card__repo">supabase-js · op-sqlite · next.js</p>
+        <p class="oss-card__body">Reports that led to fixes: supabase-js silently dropping <code>auth.lockAcquireTimeout</code> (#2308), op-sqlite committing large batches on the JS thread and losing SQLite's error codes (#459, #462, fixed in 19.0), and an unsafe RSC bot-protection recommendation in the Next.js CDN caching docs (#96880).</p>
         <div class="oss-card__footer">
-          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}3 fixed</span>
+          <span class="contrib-badge contrib-badge--merged">{% include icon.html name="code-merge" %}4 fixed</span>
           <a href="https://github.com/supabase/supabase-js/issues/2308" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}supabase</a>
-          <a href="https://github.com/braze-inc/braze-swift-sdk/issues/191" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}braze</a>
+          <a href="https://github.com/OP-Engineering/op-sqlite/issues/462" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}op-sqlite</a>
           <a href="https://github.com/vercel/next.js/issues/96880" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}next.js</a>
+        </div>
+      </article>
+
+      <article class="oss-card">
+        <div class="oss-card__head">
+          <h3 class="oss-card__title">In review</h3>
+          <span class="oss-card__kicker">Open PRs</span>
+        </div>
+        <p class="oss-card__repo">react-native-maps · react-native-paper · node-mysql2 · react-native-nitro-toast</p>
+        <p class="oss-card__body">Three marker fixes for react-native-maps on iOS and Android (press position, callout z-order, phantom info windows), a ref type for Paper's Button, a per-result-set text parser for mysql2, and tappable toasts with a count badge for nitro-toast.</p>
+        <div class="oss-card__footer">
+          <span class="contrib-badge">6 open</span>
+          <a href="https://github.com/react-native-maps/react-native-maps/pulls?q=is%3Apr+author%3Aisaacrowntree" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}maps</a>
+          <a href="https://github.com/callstack/react-native-paper/pull/5256" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}paper</a>
+          <a href="https://github.com/sidorares/node-mysql2/pull/4630" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}mysql2</a>
+          <a href="https://github.com/kiethuynh0904/react-native-nitro-toast/pull/28" target="_blank" rel="noopener" class="oss-card__link">{% include icon.html name="github" %}toast</a>
         </div>
       </article>
 
